@@ -1,0 +1,38 @@
+[user]
+	name = viszu
+	email = viszu84@gmail.com
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[color]
+	ui = true
+[credential]
+	helper = cache --timeout=3600
+[alias]
+	a = add
+	i = init
+	aa = add .
+	ps = push
+	lg = log
+	lgp = log -p
+	lgo = log --oneline
+	st = status
+	sts = status -s
+	df = diff
+	dfc = diff --cached
+	ci = commit -m
+	cia = commit -am
+	br = branch
+	co = checkout
+	rt = remote
+	rtr = remote rm
+	pl = pull
+	cl = clone
+	smi = submodule init
+	sma = submodule add
+	smu = submodule update
+	rtaog = remote add origin
+	psuogmt = push -u origin master
+	pssub = submodule foreach 'git push origin master'
+	plsub = submodule foreach 'git pull origin master'

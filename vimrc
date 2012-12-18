@@ -77,8 +77,8 @@ set textwidth=80 wrap linebreak
 set backspace=indent,eol,start
 set backspace=2
 " Timeout for keycodes (such as arrow keys and function keys) is only 10ms.
-" Timeout for Vim keymaps is half a second.
-set timeout timeoutlen=500 ttimeoutlen=10
+" Timeout for Vim keymaps is a second.
+set timeout timeoutlen=1000 ttimeoutlen=10
 " Limit Vim's "hit-enter" messages.
 set shortmess=atI
 " Mouse on in terminal.

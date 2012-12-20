@@ -19,8 +19,6 @@ set autoindent
 set nostartofline
 " Don't insert extra space(after .?!).
 set nojoinspaces
-" Share clipboard with Linux(except 'x,X' in normal mode).
-set clipboard^=unnamedplus
 " <C-a>, <C-x> fixup.
 set nrformats=
 " Use spaces for indentation.
@@ -82,8 +80,6 @@ set backspace=2
 set timeout timeoutlen=1000 ttimeoutlen=10
 " Limit Vim's "hit-enter" messages.
 set shortmess=atI
-" Mouse on in terminal.
-"set mouse=a
 " Enable persistent undo.
 set undofile
 set undodir=~/tmp/vim/undo
@@ -120,12 +116,10 @@ au GUIEnter * set vb t_vb=
 nnoremap <Space> <Nop>
 let mapleader = ' '
 " Map semicolon to colon.
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
-cnoremap ; :
-cnoremap : ;
+noremap ; :
+noremap : ;
+noremap! ; :
+noremap! : ;
 " Window navigation.
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -159,9 +153,6 @@ vnoremap < <gv
 vnoremap > >gv
 " Make Y behave like other capitals.
 nnoremap Y y$
-" Make 'x,X' use unnamed register (don't spam unnamedplus register)
-nnoremap x "*x
-nnoremap X "*x
 " Improve up/down movement on wrapped lines.
 nnoremap j gj
 nnoremap k gk
@@ -169,6 +160,8 @@ nnoremap k gk
 nnoremap <Leader>/ :nohls<CR>
 " Toggle paste / nopaste
 set pastetoggle=<F4>
+" '+' = Linux clipboard register.
+nnoremap <F3> "+
 " Disable <f1>'s default help functionality.
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
@@ -329,7 +322,6 @@ if has('gui_running')
   elseif has('gui_win32') || has('gui_win64')
     " mswin.vim breaks visual mode and changes the
     " behavior of a large number of keys.
-    set clipboard=unnamed
     let g:skip_loading_mswin=1
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\

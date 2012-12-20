@@ -23,6 +23,7 @@
 	dfc = diff --cached
 	ci = commit -m
 	cia = commit -am
+	ciam = commit --ammend -m
 	br = branch
 	co = checkout
 	rt = remote
@@ -34,5 +35,6 @@
 	smu = submodule update
 	rtaog = remote add origin
 	psuogmt = push -u origin master
+	psufogmt = push -uf origin master
 	pssub = submodule foreach 'git push origin master'
 	plsub = submodule foreach 'git pull origin master'

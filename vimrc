@@ -19,7 +19,7 @@ set autoindent
 set nostartofline
 " Don't insert extra space(after .?!).
 set nojoinspaces
-" Share clipboard with linux.
+" Share clipboard with Linux(except 'x,X' in normal mode).
 set clipboard^=unnamedplus
 " <C-a>, <C-x> fixup.
 set nrformats=
@@ -159,6 +159,9 @@ vnoremap < <gv
 vnoremap > >gv
 " Make Y behave like other capitals.
 nnoremap Y y$
+" Make 'x,X' use unnamed register (don't spam unnamedplus register)
+nnoremap x "*x
+nnoremap X "*x
 " Improve up/down movement on wrapped lines.
 nnoremap j gj
 nnoremap k gk

@@ -19,6 +19,8 @@ set autoindent
 set nostartofline
 " Don't insert extra space(after .?!).
 set nojoinspaces
+" Share clipboard with linux.
+set clipboard^=unnamedplus
 " <C-a>, <C-x> fixup.
 set nrformats=
 " Use spaces for indentation.
@@ -37,7 +39,6 @@ set splitbelow
 set splitright
 " For regular expressions turn magic on.
 set magic
-set clipboard=unnamed
 " Enable menu for command-line completion.
 set wildmenu
 " When using wildmenu, first press of tab completes the common part of the
@@ -325,6 +326,7 @@ if has('gui_running')
   elseif has('gui_win32') || has('gui_win64')
     " mswin.vim breaks visual mode and changes the
     " behavior of a large number of keys.
+    set clipboard=unnamed
     let g:skip_loading_mswin=1
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\

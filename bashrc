@@ -93,6 +93,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+alias v='vim'
+
 vim()
 {
     local STTYOPTS="$(stty --save)"
@@ -103,6 +105,7 @@ vim()
 
 # Tmux
 alias tmux='TERM=screen-256color-bce tmux'
+alias t='TERM=screen-256color-bce tmux'
 
 # Clear terminal history buffer.
 alias r='reset'

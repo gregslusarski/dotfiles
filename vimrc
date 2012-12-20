@@ -19,8 +19,6 @@ set autoindent
 set nostartofline
 " Don't insert extra space(after .?!).
 set nojoinspaces
-" Text formating, see ':h fo-table' for details.
-set formatoptions=tcqa
 " <C-a>, <C-x> fixup.
 set nrformats=
 " Use spaces for indentation.

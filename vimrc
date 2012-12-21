@@ -101,6 +101,8 @@ au BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
       \ exe "normal! g`\"" |
       \ endif
+" When leaving insert mode, set nopaste.
+au InsertLeave * set nopaste
 " Turns off error bells.
 set noerrorbells visualbell t_vb=
 au GUIEnter * set vb t_vb=
@@ -127,10 +129,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-c> <C-w>c
 " Move cursor in insert mode.
-imap <C-h> <C-o>h
-imap <C-j> <C-o>j
-imap <C-k> <C-o>k
-imap <C-l> <C-o>l
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
 " Switch fast between buffers.
 nnoremap <Leader>l :ls<CR>:b<Space>
 "nnoremap <Leader>l :ParaBuffers<CR>
@@ -161,7 +163,7 @@ nnoremap <Leader>/ :nohls<CR>
 " Toggle paste / nopaste
 set pastetoggle=<F4>
 " '+' = Linux clipboard register.
-nnoremap <F3> "+
+noremap <F3> "+
 " Disable <f1>'s default help functionality.
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>

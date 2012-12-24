@@ -133,6 +133,9 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
+" Toggle spell checking on and off
+nnoremap <silent> <Leader>s :set spell!<CR>
+set spelllang=en,pl
 " Switch fast between buffers.
 nnoremap <Leader>l :ls<CR>:b<Space>
 "nnoremap <Leader>l :ParaBuffers<CR>
@@ -140,6 +143,7 @@ nnoremap <Leader>l :ls<CR>:b<Space>
 nnoremap <Leader>v :e $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer.
 nnoremap <Leader>cd :lcd %:h<CR>
+nnoremap <Leader>e :e **/
 " Write current buffer.
 nnoremap <C-s> :update!<CR>
 inoremap <C-s> <C-o>:update!<CR>

@@ -85,8 +85,8 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -94,7 +94,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias v='vim'
+alias df='vimdiff'
 
+# Unmap C-s in terminal so vim can use it for saving files.
 vim()
 {
     local STTYOPTS="$(stty --save)"
@@ -125,32 +127,6 @@ alias topy='cd /media/viszu/Data/GS-Data/Dropbox/Projekty/Py2/'
 
 # Git
 alias g='git'
-#alias ga='git add'
-#alias gi='git init'
-#alias gaa='git add .'
-#alias gps='git push'
-#alias glg='git log'
-#alias glgp='git log -p'
-#alias glgo='git log --oneline'
-#alias gst='git status'
-#alias gsts='git status -s'
-#alias gdf='git diff'
-#alias gdfc='git diff --cached'
-#alias gci='git commit -m'
-#alias gcia='git commit -am'
-#alias gbr='git branch'
-#alias gco='git checkout'
-#alias grt='git remote'
-#alias grtr='git remote rm'
-#alias gpl='git pull'
-#alias gcl='git clone'
-#alias gsmi='git submodule init'
-#alias gsma='git submodule add'
-#alias gsmu='git submodule update'
-#alias grtaog='git remote add origin'
-#alias gpsuogmt='git push -u origin master'
-#alias gpssub='git submodule foreach "git push origin master"'
-#alias gplsub='git submodule foreach "git pull origin master"'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

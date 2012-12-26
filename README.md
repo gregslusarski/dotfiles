@@ -18,6 +18,7 @@ Vim plugins are installed as a git submodules, so:
     ln -s ~/dotfiles/gitconfig ~/.gitconfig
     ln -s ~/dotfiles/config/redshift.conf ~/.config/redshift.conf
     ln -s ~/dotfiles/config/Terminal/terminalrc ~/.config/Terminal/terminalrc
+    ln -s ~/dotfiles/dircolors ~/.dircolors
 
 ## Remove symlinks (careful here!)
 
@@ -28,6 +29,7 @@ Vim plugins are installed as a git submodules, so:
     rm ~/.gitconfig
     rm ~/.config/redshift.conf
     rm ~/.config/Terminal/terminalrc
+    rm ~/.dircolors
 
 ## Update Vim plugins
 

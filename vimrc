@@ -28,7 +28,7 @@ set softtabstop=2
 " Folding stuff.
 set foldmethod=indent
 " Do not fold anything by default.
-set foldlevel=999
+set foldlevel=99
 " Buffer becomes hidden when it is abandoned.
 set hidden
 " Create new split window below the current one.
@@ -56,6 +56,10 @@ nohlsearch
 set ignorecase
 set smartcase
 set nomodeline
+" Lang for spell checker.
+set spelllang=en,pl
+" Number of suggested words for spell checker popup.
+set spellsuggest=9
 " Terminal title.
 set title
 " Always show cursor position in statusline.
@@ -133,9 +137,8 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
-" Toggle spell checking on and off
-nnoremap <silent> <Leader>s :set spell!<CR>
-set spelllang=en,pl
+" Toggle spell checking.
+nnoremap <silent> <Leader>s :setlocal spell!<CR>
 " Switch fast between buffers.
 nnoremap <Leader>l :ls<CR>:b<Space>
 "nnoremap <Leader>l :ParaBuffers<CR>

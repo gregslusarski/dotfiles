@@ -151,6 +151,8 @@ nnoremap <Leader>e :e **/
 nnoremap <C-s> :update!<CR>
 inoremap <C-s> <C-o>:update!<CR>
 vnoremap <C-s> <C-c>:update!<CR>
+" Write read-only file.
+cnoremap W! w !sudo tee %
 " Write all buffers and quit Vim.
 nnoremap <Leader>wq :wa!<CR>:q<CR>
 " Utl script.

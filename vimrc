@@ -1,6 +1,5 @@
-" ==============================================================================
-" = general settings                                                           =
-" ==============================================================================
+" = GENERAL SETTINGS"{{{
+" ----------------------
 
 " Disable vi compatibilty restrictions.
 set nocompatible
@@ -26,7 +25,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 " Folding stuff.
-set foldmethod=indent
+set foldmethod=manual
 " Do not fold anything by default.
 set foldlevel=99
 " Buffer becomes hidden when it is abandoned.
@@ -93,10 +92,10 @@ endif
 " Disable swapfile and backup.
 set nobackup
 set noswapfile
+"}}}
 
-" ==============================================================================
-" = autocmd                                                                    =
-" ==============================================================================
+" = AUTOCMD"{{{
+" -------------
 
 " Remove any trailing whitespace that is in the file.
 au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -110,14 +109,11 @@ au InsertLeave * set nopaste
 " Turns off error bells.
 set noerrorbells visualbell t_vb=
 au GUIEnter * set vb t_vb=
+"}}}
 
-" ==============================================================================
-" = mappings                                                                   =
-" ==============================================================================
+" = MAPPINGS"{{{
+" --------------
 
-" ------------------------------------------------------------------------------
-" - general (mappings)                                                         -
-" ------------------------------------------------------------------------------
 " Remap leader.
 nnoremap <Space> <Nop>
 let mapleader = ' '
@@ -132,11 +128,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-c> <C-w>c
-" Move cursor in insert mode.
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
 " Toggle spell checking.
 nnoremap <silent> <Leader>s :setlocal spell!<CR>
 " Switch fast between buffers.
@@ -151,12 +142,10 @@ nnoremap <Leader>e :e **/
 nnoremap <C-s> :update!<CR>
 inoremap <C-s> <C-o>:update!<CR>
 vnoremap <C-s> <C-c>:update!<CR>
-" Write read-only file.
+" Write read-only files.
 cnoremap W! w !sudo tee %
 " Write all buffers and quit Vim.
 nnoremap <Leader>wq :wa!<CR>:q<CR>
-" Utl script.
-nnoremap <Leader>g :Utl<CR>
 " Select all text in current buffer.
 nnoremap <Leader>a ggVG
 " Reselect visual block after indent/outdent.
@@ -196,136 +185,51 @@ nnoremap <Leader>[ f[ci[
 nnoremap <Leader>] F]ci]
 nnoremap <Leader>{ f{ci{
 nnoremap <Leader>} F}ci}
+"}}}
 
-" ------------------------------------------------------------------------------
-" - cmdline-window (mappings)                                                  -
-" ------------------------------------------------------------------------------
+" = PLUGIN SETTINGS"{{{
+" ---------------------
 
-" ------------------------------------------------------------------------------
-" - quickfix list (mappings)                                                   -
-" ------------------------------------------------------------------------------
-" Move to next quickfix item.
-"nnoremap <A-right> :cnext<CR>
-" Move to previous quickfix item.
-"nnoremap <A-left> :cprevious<CR>
-" Display current quickfix item.
-"nnoremap <A-down> :cc<CR>
-" Open the quickfix window.
-"nnoremap <A-up> :cwindow<CR>
-
-" ------------------------------------------------------------------------------
-" - diff (mappings)                                                            -
-" ------------------------------------------------------------------------------
-
-" ------------------------------------------------------------------------------
-" - insert-mode completion (mappings)                                          -
-" ------------------------------------------------------------------------------
-
-" ------------------------------------------------------------------------------
-" - comments (mappings)                                                        -
-" ------------------------------------------------------------------------------
-
-" ------------------------------------------------------------------------------
-" - plugins and functions (mappings)                                           -
-" ------------------------------------------------------------------------------
-
-" ------------------------------------------------------------------------------
-" - custom text objects (mappings)                                             -
-" -----------------------------------------------------------------------------
-
-" ------------------------------------------------------------------------------
-" - git (mappings)                                                             -
-" ------------------------------------------------------------------------------
-
-" ==============================================================================
-" = plugin settings                                                            =
-" ==============================================================================
-
-" ------------------------------------------------------------------------------
-" - powerline (plugins)                                                        -
-" ------------------------------------------------------------------------------
+" - Powerline (plugins)
 "let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
 call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
 
-" ------------------------------------------------------------------------------
-" - ultisnips (plugins)                                                        -
-" ------------------------------------------------------------------------------
+" - Ultisnips (plugins)
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsListSnippets = '<c-s-l>'
 
-" ------------------------------------------------------------------------------
-" - commentary (plugins)                                                       -
-" ------------------------------------------------------------------------------
+" - Commentary (plugins)
 xmap \ <Plug>Commentary
 nmap \ <Plug>Commentary
 nmap \\ <Plug>CommentaryLine
 nmap \u <Plug>CommentaryUndo
 
-" ------------------------------------------------------------------------------
-" - lustyjuggler (plugins)                                                     -
-" ------------------------------------------------------------------------------
-"let g:LustyJugglerDefaultMappings=0
-"nnoremap <Leader>l :LustyJuggler<CR>
-
-" ------------------------------------------------------------------------------
-" - skybison (plugins)                                                         -
-" ------------------------------------------------------------------------------
-"nnoremap <Leader>b 2:<c-u>call SkyBison("b ")<CR>
-"nnoremap <Leader>t 2:<c-u>call SkyBison("tag ")<CR>
-"nnoremap <Leader>h 2:<c-u>call SkyBison("h ")<CR>
-"nnoremap <Leader>e :<c-u>call SkyBison("e ")<CR>
-
-" ------------------------------------------------------------------------------
-" - paramenu (plugins)                                                         -
-" ------------------------------------------------------------------------------
-"let g:ParaMenuFilterRegex = 1
-"let g:ParaMenuFilterFuzz = 1
-
-" CtrlP
+" - CtrlP
 "let g:ctrlp_map = '<Leader>p'
 "let g:ctrlp_max_files = 1000
 "let g:ctrlp_working_path_mode = 'c'
 
-" Buffalo
+" - Buffalo
 
-" FuzzyFinder
-"nnoremap <Leader>b :FufBuffer<CR>
-"nnoremap <Leader>d :FufDir<CR>
-"nnoremap <Leader>f :FufCoverageFile<CR>
-"nnoremap <Leader>t :FufTag<CR>
-"nnoremap <Leader>q :FufQuickfix<CR>
-"nnoremap <Leader>m :FufMruFile<CR>
-
-" Pyflakes
+" - Pyflakes
 " Error highlight color
 "highlight SpellBad term=reverse ctermfg=0 ctermbg=3
 
-" FuzzyFinder
-"let g:fuf_modesDisable = []
-"let g:fuf_mrufile_exclude = '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/)'
-
-" Taglist
+" - Taglist
 "map <Leader>t :TlistToggle<CR>
 "let Tlist_Inc_Winwidth=0
 "let Tlist_Compact_Format=1
 
-"" Nerdtree
-"let NERDTreeMinimalUI=1
-"let NERDTreeWinSize=26
-"let NERDTreeShowBookmarks=1
-"let NERDTreeShowHidden=0
-"map <Leader>n :NERDTreeToggle<CR>
-"
-"" Rope-vim
+" - Rope-vim
 "map <Leader>j :RopeGotoDefinition<CR>
 "map <Leader>r :RopeRename<CR>
+"}}}
 
-" ==============================================================================
-" = gui settings                                                               =
-" ==============================================================================
+" = GUI SETTINGS"{{{
+" ------------------
 
 if has('gui_running')
   if has('unix')
@@ -351,3 +255,4 @@ endif
 
 set background=dark
 colorscheme solarized
+"}}}

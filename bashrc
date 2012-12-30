@@ -94,6 +94,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias v='vim'
+alias sv='sudo vim'
 alias df='vimdiff'
 
 # Unmap C-s in terminal so vim can use it for saving files.
@@ -104,6 +105,9 @@ vim()
     command vim "$@"
     stty "$STTYOPTS"
 }
+
+# Git
+alias g='git'
 
 # Tmux
 alias tmux='TERM=screen-256color-bce tmux'
@@ -121,12 +125,13 @@ alias ..='cd ..'
 alias qq='exit'
 alias c='clear'
 
+# Apt stuff.
+alias sagi='sudo apt-get install'
+alias saga='sudo apt-get autoremove'
+
 # Bookmarks
 alias togs='cd /media/viszu/Data/GS-Data/'
 alias topy='cd /media/viszu/Data/GS-Data/Dropbox/Projekty/Py2/'
-
-# Git
-alias g='git'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

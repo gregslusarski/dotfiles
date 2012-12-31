@@ -1,4 +1,4 @@
-" = GENERAL SETTINGS"{{{
+" = GENERAL SETTINGS"{{{1
 " ----------------------
 
 " Disable vi compatibilty restrictions.
@@ -25,7 +25,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 " Folding stuff.
-set foldmethod=manual
+set foldmethod=marker
 " Do not fold anything by default.
 set foldlevel=99
 " Buffer becomes hidden when it is abandoned.
@@ -92,26 +92,44 @@ endif
 " Disable swapfile and backup.
 set nobackup
 set noswapfile
-"}}}
 
-" = AUTOCMD"{{{
+" = AUTOCMD"{{{1
 " -------------
 
-" Remove any trailing whitespace that is in the file.
-au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-" Jumps to the last known position in a file just after opening it.
-au BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \ exe "normal! g`\"" |
-      \ endif
-" When leaving insert mode, set nopaste.
-au InsertLeave * set nopaste
-" Turns off error bells.
-set noerrorbells visualbell t_vb=
-au GUIEnter * set vb t_vb=
-"}}}
+augroup General"{{{2
+  " Remove any trailing whitespace that is in the file.
+  au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+  " Jumps to the last known position in a file just after opening it.
+  au BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \ exe "normal! g`\"" |
+    \ endif
+  " When leaving insert mode, set nopaste.
+  au InsertLeave * set nopaste
+  " Turns off error bells.
+  set noerrorbells visualbell t_vb=
+  au GUIEnter * set vb t_vb=
+augroup END
 
-" = MAPPINGS"{{{
+augroup FTCheck"{{{2
+  "This is used instead of custom filetype.vim.
+  au!
+  au BufNewFile,BufRead *.md set ft=markdown
+  au BufNewFile,BufRead *.txt,README,HELP,INSTALL,NEWS,TODO if &ft == ""
+    \ | set ft=text|endif
+augroup END
+
+augroup FTOptions"{{{2
+  "This is used instead of custom ftplugin.
+  au!
+  au FileType markdown setlocal sw=4 sts=4 tw=72
+  au FileType python setlocal fdm=indent
+  au FileType c,cpp,cs,java setlocal fdm=syntax cin
+  au FileType git,gitcommit setlocal fdm=syntax
+  au FileType gitcommit setlocal spell
+augroup END
+
+" = MAPPINGS"{{{1
 " --------------
 
 " Remap leader.
@@ -185,9 +203,8 @@ nnoremap <Leader>[ f[ci[
 nnoremap <Leader>] F]ci]
 nnoremap <Leader>{ f{ci{
 nnoremap <Leader>} F}ci}
-"}}}
 
-" = PLUGIN SETTINGS"{{{
+" = PLUGIN SETTINGS"{{{1
 " ---------------------
 
 " - Powerline (plugins)
@@ -226,9 +243,8 @@ nmap \u <Plug>CommentaryUndo
 " - Rope-vim
 "map <Leader>j :RopeGotoDefinition<CR>
 "map <Leader>r :RopeRename<CR>
-"}}}
 
-" = GUI SETTINGS"{{{
+" = GUI SETTINGS"{{{1
 " ------------------
 
 if has('gui_running')
@@ -255,4 +271,3 @@ endif
 
 set background=dark
 colorscheme solarized
-"}}}

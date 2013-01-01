@@ -1,6 +1,5 @@
 " = GENERAL SETTINGS"{{{1
 " ----------------------
-
 " Disable vi compatibilty restrictions.
 set nocompatible
 " Initialize plugin manager.
@@ -95,7 +94,6 @@ set noswapfile
 
 " = AUTOCMD"{{{1
 " -------------
-
 augroup General"{{{2
   " Remove any trailing whitespace that is in the file.
   au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -131,7 +129,6 @@ augroup END
 
 " = MAPPINGS"{{{1
 " --------------
-
 " Remap leader.
 nnoremap <Space> <Nop>
 let mapleader = ' '
@@ -206,7 +203,6 @@ nnoremap <Leader>} F}ci}
 
 " = PLUGIN SETTINGS"{{{1
 " ---------------------
-
 " - Powerline (plugins)
 "let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
@@ -246,7 +242,6 @@ nmap \u <Plug>CommentaryUndo
 
 " = GUI SETTINGS"{{{1
 " ------------------
-
 if has('gui_running')
   if has('unix')
     set guifont=Droid\ Sans\ Mono\ 10.2

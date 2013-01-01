@@ -21,6 +21,12 @@ Vim plugins are installed as a git submodules, so:
     ln -s ~/dotfiles/dircolors ~/.dircolors
     ln -s ~/dotfiles/xfce4-keyboard-shortcuts.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
+Or use install.sh:
+
+    cd ~/dotfiles/bin
+    chmod +x install.sh
+    sh install.sh
+
 ## Remove symlinks (careful here!)
 
     rm -r ~/.vim

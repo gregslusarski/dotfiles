@@ -16,9 +16,10 @@ Vim plugins are installed as a git submodules, so:
     ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
     ln -s ~/dotfiles/bashrc ~/.bashrc
     ln -s ~/dotfiles/gitconfig ~/.gitconfig
-    ln -s ~/dotfiles/config/redshift.conf ~/.config/redshift.conf
-    ln -s ~/dotfiles/config/Terminal/terminalrc ~/.config/Terminal/terminalrc
+    ln -s ~/dotfiles/redshift.conf ~/.config/redshift.conf
+    ln -s ~/dotfiles/terminalrc ~/.config/Terminal/terminalrc
     ln -s ~/dotfiles/dircolors ~/.dircolors
+    ln -s ~/dotfiles/xfce4-keyboard-shortcuts.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
 ## Remove symlinks (careful here!)
 
@@ -30,6 +31,7 @@ Vim plugins are installed as a git submodules, so:
     rm ~/.config/redshift.conf
     rm ~/.config/Terminal/terminalrc
     rm ~/.dircolors
+    rm ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
 ## Update Vim plugins
 

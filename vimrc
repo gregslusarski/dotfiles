@@ -163,6 +163,8 @@ cnoremap W! w !sudo tee %
 nnoremap <Leader>wq :wa!<CR>:q<CR>
 " Select all text in current buffer.
 nnoremap <Leader>a ggVG
+" Echo current indent settings (mainly for testing sleuth.vim).
+nnoremap <Leader>i :echo 'et'&et 'sw'&sw 'sts'&sts 'ts'&ts 'sta'&sta<CR>
 " Reselect visual block after indent/outdent.
 vnoremap < <gv
 vnoremap > >gv

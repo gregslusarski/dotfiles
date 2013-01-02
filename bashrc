@@ -128,6 +128,7 @@ alias c='clear'
 # Apt stuff.
 alias sagi='sudo apt-get install'
 alias saga='sudo apt-get autoremove'
+alias saguu='sudo apt-get update && sudo apt-get upgrade'
 
 # Bookmarks
 alias togs='cd /media/viszu/Data/GS-Data/'

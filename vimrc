@@ -1,5 +1,5 @@
 " = GENERAL SETTINGS"{{{1
-" ----------------------
+" -----------------------
 " Disable vi compatibilty restrictions.
 set nocompatible
 " Initialize plugin manager.
@@ -40,7 +40,7 @@ set wildmenu
 " When using wildmenu, first press of tab completes the common part of the
 " string.  The rest of the tabs begin cycling through options.
 set wildmode=longest:full,full
-set wildignore=*.pdf,*.fo,*.xml
+set wildignore=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
 set completeopt=menuone,longest,preview
 " Display special characters for certain whitespace situations.
 set list
@@ -80,6 +80,8 @@ set backspace=2
 " Timeout for keycodes (such as arrow keys and function keys) is only 10ms.
 " Timeout for Vim keymaps is a second.
 set timeout timeoutlen=1000 ttimeoutlen=10
+" Mouse support.
+set mouse=a
 " Limit Vim's "hit-enter" messages.
 set shortmess=atI
 " Enable persistent undo.
@@ -93,7 +95,7 @@ set nobackup
 set noswapfile
 
 " = AUTOCMD"{{{1
-" -------------
+" --------------
 augroup General"{{{2
   " Remove any trailing whitespace that is in the file.
   au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -120,7 +122,7 @@ augroup END
 augroup FTOptions"{{{2
   "This is used instead of custom ftplugin.
   au!
-  au FileType markdown setlocal sw=4 sts=4 tw=72
+  au FileType markdown setlocal sw=4 sts=4
   au FileType python setlocal fdm=indent
   au FileType c,cpp,cs,java setlocal fdm=syntax cin
   au FileType git,gitcommit setlocal fdm=syntax
@@ -128,7 +130,7 @@ augroup FTOptions"{{{2
 augroup END
 
 " = MAPPINGS"{{{1
-" --------------
+" ---------------
 " Remap leader.
 nnoremap <Space> <Nop>
 let mapleader = ' '
@@ -203,8 +205,8 @@ nnoremap <Leader>] F]ci]
 nnoremap <Leader>{ f{ci{
 nnoremap <Leader>} F}ci}
 
-" = PLUGIN SETTINGS"{{{1
-" ---------------------
+" = PLUGINS SETTINGS"{{{1
+" -----------------------
 " - Powerline (plugins)
 "let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
@@ -243,7 +245,7 @@ nmap \u <Plug>CommentaryUndo
 "map <Leader>r :RopeRename<CR>
 
 " = GUI SETTINGS"{{{1
-" ------------------
+" -------------------
 if has('gui_running')
   if has('unix')
     set guifont=Droid\ Sans\ Mono\ 10.2

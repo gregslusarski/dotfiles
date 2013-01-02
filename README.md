@@ -24,7 +24,7 @@ Vim plugins are installed as a git submodules, so:
 Or use install.sh:
 
     cd ~/dotfiles/bin
-    chmod +x install.sh
+    sudo chmod +x install.sh
     sh install.sh
 
 ## Remove symlinks (careful here!)

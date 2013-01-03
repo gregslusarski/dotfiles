@@ -21,6 +21,7 @@ set nojoinspaces
 set nrformats=
 " Use spaces for indentation.
 set expandtab
+set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 " Folding stuff.
@@ -44,7 +45,7 @@ set wildignore=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
 set completeopt=menuone,longest,preview
 " Display special characters for certain whitespace situations.
 set list
-set listchars=tab:>·,extends:…,precedes:…,nbsp:&
+set listchars=tab:>\ ,
 " Search stuff.
 set incsearch
 " Highlight search results.
@@ -76,7 +77,6 @@ set laststatus=2
 set textwidth=80 wrap linebreak
 " Backspace.
 set backspace=indent,eol,start
-set backspace=2
 " Timeout for keycodes (such as arrow keys and function keys) is only 10ms.
 " Timeout for Vim keymaps is a second.
 set timeout timeoutlen=1000 ttimeoutlen=10
@@ -97,6 +97,7 @@ set noswapfile
 " = AUTOCMD"{{{1
 " --------------
 augroup General"{{{2
+  au!
   " Remove any trailing whitespace that is in the file.
   au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
   " Jumps to the last known position in a file just after opening it.
@@ -166,7 +167,7 @@ nnoremap <Leader>wq :wa!<CR>:q<CR>
 " Select all text in current buffer.
 nnoremap <Leader>a ggVG
 " Echo current indent settings (mainly for testing sleuth.vim).
-nnoremap <Leader>i :echo 'et'&et 'sw'&sw 'sts'&sts 'ts'&ts 'sta'&sta<CR>
+nnoremap <Leader>i :echo 'et'&et 'ts'&ts 'sw'&sw 'sts'&sts 'sta'&sta<CR>
 " Reselect visual block after indent/outdent.
 vnoremap < <gv
 vnoremap > >gv
@@ -197,13 +198,6 @@ nnoremap n nzz
 " Make <C-u> and <C-w> undoable.
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
-" Find and change inner.
-nnoremap <Leader>9 f(ci(
-nnoremap <Leader>0 F)ci)
-nnoremap <Leader>[ f[ci[
-nnoremap <Leader>] F]ci]
-nnoremap <Leader>{ f{ci{
-nnoremap <Leader>} F}ci}
 
 " = PLUGINS SETTINGS"{{{1
 " -----------------------

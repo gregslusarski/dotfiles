@@ -1,96 +1,94 @@
 " = GENERAL SETTINGS"{{{1
 " -----------------------
-" Disable vi compatibilty restrictions.
+" Disable vi compatibilty restrictions
 set nocompatible
-" Initialize plugin manager.
+" Initialize plugin manager
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
-" Enable unicode characters. This is needed for 'listchars'.
+" Enable unicode characters
 set encoding=utf-8
-" Enable syntax highlighting.
+" Enable syntax highlighting
 syntax on
-" Filetype detection:ON, plugin:ON, indent:ON.
+" Filetype detection:ON, plugin:ON, indent:ON
 filetype plugin indent on
-" When creating a new line, set indentation same as previous line.
-set autoindent
-" Emulate typical editor navigation.
+" Emulate typical editor navigation
 set nostartofline
-" Don't insert extra space(after .?!).
+" Don't insert extra space(after
 set nojoinspaces
-" <C-a>, <C-x> fixup.
+" <C-a>, <C-x> fixup
 set nrformats=
-" Use spaces for indentation.
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-" Folding stuff.
+" When creating a new line, set indentation same as previous line
+set autoindent
+" Indentation is handled by sleuth
+" set expandtab
+" set shiftwidth=2
+" set softtabstop=2
+" set tabstop=2
+" Folding stuff
 set foldmethod=marker
-" Do not fold anything by default.
+" Do not fold anything by default
 set foldlevel=99
-" Buffer becomes hidden when it is abandoned.
+" Buffer becomes hidden when it is abandoned
 set hidden
-" Create new split window below the current one.
+" Create new split window below the current one
 set splitbelow
-" Create vertical split window right of the current one.
+" Create vertical split window right of the current one
 set splitright
-" For regular expressions turn magic on.
+" For regular expressions turn magic on
 set magic
-" Enable menu for command-line completion.
+" Enable menu for command-line completion
 set wildmenu
-" When using wildmenu, first press of tab completes the common part of the
-" string.  The rest of the tabs begin cycling through options.
 set wildmode=longest:full,full
 set wildignore=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
 set completeopt=menuone,longest,preview
-" Display special characters for certain whitespace situations.
+" Display special characters for certain whitespace situations
 set list
 set listchars=tab:>\ ,
-" Search stuff.
+" Search stuff
 set incsearch
-" Highlight search results.
+" Highlight search results
 set hlsearch
-" When sourcing this file, do not immediately turn on highlighting.
+" When sourcing this file, do not immediately turn on highlighting
 nohlsearch
 set ignorecase
 set smartcase
 set nomodeline
-" Lang for spell checker.
+" Lang for spell checker
 set spelllang=en,pl
-" Number of suggested words for spell checker popup.
+" Number of suggested words for spell checker popup
 set spellsuggest=9
-" Terminal title.
+" Terminal title
 set title
-" Always show cursor position in statusline.
+" Always show cursor position in statusline
 set ruler
-" Print line numbers on the left.
+" Print line numbers on the left
 set number
-" This shows what you are typing as a command.
+" This shows what you are typing as a command
 set showcmd
 set cmdheight=2
-" Show matching brackets.
+" Show matching brackets
 set showmatch
-" Always show status line.
+" Always show status line
 set laststatus=2
 "set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-" Enable wordwrap.
+" Enable wordwrap
 set textwidth=80 wrap linebreak
-" Backspace.
+" Backspace
 set backspace=indent,eol,start
-" Timeout for keycodes (such as arrow keys and function keys) is only 10ms.
-" Timeout for Vim keymaps is a second.
+" Timeout for keycodes (such as arrow keys and function keys) is only 10ms
+" Timeout for Vim keymaps is a second
 set timeout timeoutlen=1000 ttimeoutlen=10
-" Mouse support.
+" Mouse support
 set mouse=a
-" Limit Vim's "hit-enter" messages.
+" Limit Vim's "hit-enter" messages
 set shortmess=atI
-" Enable persistent undo.
+" Enable persistent undo
 set undofile
 set undodir=~/tmp/vim/undo
 if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")
 endif
-" Disable swapfile and backup.
+" Disable swapfile and backup
 set nobackup
 set noswapfile
 
@@ -98,32 +96,33 @@ set noswapfile
 " --------------
 augroup General"{{{2
   au!
-  " Remove any trailing whitespace that is in the file.
+  " Remove any trailing whitespace that is in the file
   au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-  " Jumps to the last known position in a file just after opening it.
+  " Jumps to the last known position in a file just after opening it
   au BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \ exe "normal! g`\"" |
     \ endif
-  " When leaving insert mode, set nopaste.
+  " When leaving insert mode, set nopaste
   au InsertLeave * set nopaste
-  " Turns off error bells.
+  " Turns off error bells
   set noerrorbells visualbell t_vb=
   au GUIEnter * set vb t_vb=
 augroup END
 
 augroup FTCheck"{{{2
-  "This is used instead of custom filetype.vim.
+  " This is used instead of custom filetype.vim
   au!
   au BufNewFile,BufRead *.md set ft=markdown
+  au BufNewFile,BufRead *.rss,*.atom set ft=xml
   au BufNewFile,BufRead *.txt,README,HELP,INSTALL,NEWS,TODO if &ft == ""
     \ | set ft=text|endif
 augroup END
 
 augroup FTOptions"{{{2
-  "This is used instead of custom ftplugin.
+  " This is used instead of custom ftplugin
   au!
-  au FileType markdown setlocal sw=4 sts=4
+  " au FileType markdown setlocal sw=4 sts=4
   au FileType python setlocal fdm=indent
   au FileType c,cpp,cs,java setlocal fdm=syntax cin
   au FileType git,gitcommit setlocal fdm=syntax
@@ -132,70 +131,75 @@ augroup END
 
 " = MAPPINGS"{{{1
 " ---------------
-" Remap leader.
+" Remap leader
 nnoremap <Space> <Nop>
 let mapleader = ' '
-" Map semicolon to colon.
+" Map semicolon to colon
 noremap ; :
 noremap : ;
 noremap! ; :
 noremap! : ;
-" Window navigation.
+" Window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-c> <C-w>c
-" Toggle spell checking.
+" Toggle spell checking
 nnoremap <silent> <Leader>s :setlocal spell!<CR>
-" Switch fast between buffers.
+" Switch fast between buffers
 nnoremap <Leader>l :ls<CR>:b<Space>
 "nnoremap <Leader>l :ParaBuffers<CR>
-" Open vimrc.
+" Open vimrc
 nnoremap <Leader>v :e $MYVIMRC<CR>
-" cd to the directory containing the file in the buffer.
+" cd to the directory containing the file in the buffer
 nnoremap <Leader>cd :lcd %:h<CR>
 nnoremap <Leader>e :e **/
-" Write current buffer.
+" Write current buffer
 nnoremap <C-s> :update!<CR>
 inoremap <C-s> <C-o>:update!<CR>
 vnoremap <C-s> <C-c>:update!<CR>
-" Write read-only files.
+" Write read-only files
 cnoremap W! w !sudo tee %
-" Write all buffers and quit Vim.
+" Write all buffers and quit Vim
 nnoremap <Leader>wq :wa!<CR>:q<CR>
-" Select all text in current buffer.
+" Select all text in current buffer
 nnoremap <Leader>a ggVG
-" Echo current indent settings (mainly for testing sleuth.vim).
-nnoremap <Leader>i :echo 'et'&et 'ts'&ts 'sw'&sw 'sts'&sts 'sta'&sta<CR>
-" Reselect visual block after indent/outdent.
+" Echo current indent settings
+nnoremap <Leader>i :echo 'et'&et 'sw'&sw 'sts'&sts 'ts'&ts 'sta'&sta<CR>
+" Switch fast between tab settings
+cnoremap t2e setlocal sw=2 sts=2 ts=2 et
+cnoremap t2n setlocal sw=2 sts=2 ts=2 noet
+cnoremap t4e setlocal sw=4 sts=4 ts=4 et
+cnoremap t4n setlocal sw=4 sts=4 ts=4 noet
+" Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-" Make Y behave like other capitals.
+" Make Y behave like other capitals
 nnoremap Y y$
-" Improve up/down movement on wrapped lines.
+" Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
-" Clear search highlights.
+" Clear search highlights
 nnoremap <Leader>/ :nohls<CR>
 " Toggle paste / nopaste
 set pastetoggle=<F4>
-" '+' = Linux clipboard register.
+" '+' = Linux clipboard register
 noremap <F3> "+
-" Disable <f1>'s default help functionality.
+" Disable <f1>'s default help functionality
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
-" Esc.
+" Esc
 inoremap jk <Esc>
 inoremap kj <Esc>
-" Close all folds.
+" Close all folds
 nnoremap zm zM
-" Open all folds.
+" Open all folds
 nnoremap zr zR
-" Center screen on next / prev found.
+" Center screen on next / prev found
 nnoremap N Nzz
 nnoremap n nzz
-" Make <C-u> and <C-w> undoable.
+" Make <C-u> and <C-w> undoable
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 
@@ -244,8 +248,6 @@ if has('gui_running')
   if has('unix')
     set guifont=Droid\ Sans\ Mono\ 10.2
   elseif has('gui_win32') || has('gui_win64')
-    " mswin.vim breaks visual mode and changes the
-    " behavior of a large number of keys.
     let g:skip_loading_mswin=1
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\

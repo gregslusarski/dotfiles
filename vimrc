@@ -13,17 +13,12 @@ syntax on
 filetype plugin indent on
 " Emulate typical editor navigation
 set nostartofline
-" Don't insert extra space(after
+" Don't insert extra space(after .?!)
 set nojoinspaces
 " <C-a>, <C-x> fixup
 set nrformats=
 " When creating a new line, set indentation same as previous line
 set autoindent
-" Indentation is handled by sleuth
-" set expandtab
-" set shiftwidth=2
-" set softtabstop=2
-" set tabstop=2
 " Folding stuff
 set foldmethod=marker
 " Do not fold anything by default
@@ -165,7 +160,7 @@ cnoremap W! w !sudo tee %
 nnoremap <Leader>wq :wa!<CR>:q<CR>
 " Select all text in current buffer
 nnoremap <Leader>a ggVG
-" Echo current indent settings
+" Echo current tab settings
 nnoremap <Leader>i :echo 'et'&et 'sw'&sw 'sts'&sts 'ts'&ts 'sta'&sta<CR>
 " Switch fast between tab settings
 cnoremap t2e setlocal sw=2 sts=2 ts=2 et

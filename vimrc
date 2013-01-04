@@ -108,7 +108,6 @@ augroup END
 augroup FTCheck"{{{2
   " This is used instead of custom filetype.vim
   au!
-  au BufNewFile,BufRead *.md set ft=markdown
   au BufNewFile,BufRead *.rss,*.atom set ft=xml
   au BufNewFile,BufRead *.txt,README,HELP,INSTALL,NEWS,TODO if &ft == ""
     \ | set ft=text|endif

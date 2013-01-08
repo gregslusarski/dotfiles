@@ -37,3 +37,6 @@
 [submodule "vim/bundle/buffalo"]
 	path = vim/bundle/buffalo
 	url = https://github.com/Raimondi/vim-buffalo.git
+[submodule "vim/bundle/delimitmate"]
+	path = vim/bundle/delimitmate
+	url = https://github.com/Raimondi/delimitMate.git

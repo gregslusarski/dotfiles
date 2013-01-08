@@ -34,3 +34,6 @@
 [submodule "vim/bundle/vimple"]
 	path = vim/bundle/vimple
 	url = https://github.com/dahu/vimple.git
+[submodule "vim/bundle/buffalo"]
+	path = vim/bundle/buffalo
+	url = https://github.com/Raimondi/vim-buffalo.git

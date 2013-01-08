@@ -1,5 +1,5 @@
-" = GENERAL SETTINGS"{{{1
-" -----------------------
+" = GENERAL SETTINGS"{{{
+" ----------------------
 " Disable vi compatibilty restrictions
 set nocompatible
 " Initialize plugin manager
@@ -35,7 +35,7 @@ set magic
 set wildmenu
 set wildmode=longest:full,full
 set wildignore=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
-set completeopt=menuone,longest,preview
+set completeopt=menuone,preview
 " Display special characters for certain whitespace situations
 set list
 set listchars=tab:>\ ,
@@ -87,9 +87,19 @@ endif
 set nobackup
 set noswapfile
 
-" = AUTOCMD"{{{1
-" --------------
-augroup General"{{{2
+set complete-=i
+set smarttab
+set scrolloff=1
+set sidescrolloff=5
+set display+=lastline
+set autoread
+set autowrite
+set fileformats=unix,dos,mac
+set viminfo^=!
+"}}}
+" = AUTOCMD"{{{
+" -------------
+augroup General
   au!
   " Remove any trailing whitespace that is in the file
   au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -105,7 +115,7 @@ augroup General"{{{2
   au GUIEnter * set vb t_vb=
 augroup END
 
-augroup FTCheck"{{{2
+augroup FTCheck"
   " This is used instead of custom filetype.vim
   au!
   au BufNewFile,BufRead *.rss,*.atom set ft=xml
@@ -113,7 +123,7 @@ augroup FTCheck"{{{2
     \ | set ft=text|endif
 augroup END
 
-augroup FTOptions"{{{2
+augroup FTOptions"
   " This is used instead of custom ftplugin
   au!
   " au FileType markdown setlocal sw=4 sts=4
@@ -122,9 +132,9 @@ augroup FTOptions"{{{2
   au FileType git,gitcommit setlocal fdm=syntax
   au FileType gitcommit setlocal spell
 augroup END
-
-" = MAPPINGS"{{{1
-" ---------------
+"}}}
+" = MAPPINGS"{{{
+" --------------
 " Remap leader
 nnoremap <Space> <Nop>
 let mapleader = ' '
@@ -142,8 +152,7 @@ nnoremap <C-c> <C-w>c
 " Toggle spell checking
 nnoremap <silent> <Leader>s :setlocal spell!<CR>
 " Switch fast between buffers
-nnoremap <Leader>l :ls<CR>:b<Space>
-"nnoremap <Leader>l :ParaBuffers<CR>
+" nnoremap <Leader>l :ls<CR>:b<Space>
 " Open vimrc
 nnoremap <Leader>v :e $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer
@@ -196,9 +205,16 @@ nnoremap n nzz
 " Make <C-u> and <C-w> undoable
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
+"}}}
+" = PLUGINS SETTINGS"{{{
+" ----------------------
+" Supertab
+autocmd FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+  \ endif
 
-" = PLUGINS SETTINGS"{{{1
-" -----------------------
 " - Powerline (plugins)
 "let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
@@ -235,9 +251,9 @@ nmap \u <Plug>CommentaryUndo
 " - Rope-vim
 "map <Leader>j :RopeGotoDefinition<CR>
 "map <Leader>r :RopeRename<CR>
-
-" = GUI SETTINGS"{{{1
-" -------------------
+"}}}
+" = GUI SETTINGS"{{{
+" ------------------
 if has('gui_running')
   if has('unix')
     set guifont=Droid\ Sans\ Mono\ 10.2
@@ -258,5 +274,7 @@ else
   set t_Co=256 t_md=
 endif
 
+" let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+"}}}

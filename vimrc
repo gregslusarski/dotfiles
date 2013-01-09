@@ -115,6 +115,11 @@ augroup General
   au GUIEnter * set vb t_vb=
 augroup END
 
+augroup Plugins
+  au!
+  autocmd BufWritePost *.py call Flake8()
+augroup END
+
 augroup FTCheck"
   " This is used instead of custom filetype.vim
   au!
@@ -208,6 +213,10 @@ inoremap <C-w> <C-g>u<C-w>
 "}}}
 " = PLUGINS SETTINGS"{{{
 " ----------------------
+" Flake8
+" E111 = indentation is not a multiple of four
+let g:flake8_ignore="E111"
+
 " Supertab
 autocmd FileType *
   \ if &omnifunc != '' |

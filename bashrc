@@ -112,6 +112,8 @@ alias g='git'
 # Tmux
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='TERM=screen-256color-bce tmux'
+alias ta='tmux attach'
+alias td='tmux detach'
 
 # Clear terminal history buffer.
 alias r='reset'

@@ -18,8 +18,10 @@
 	lgp = log -p
 	lgo = log --oneline
 	st = status
+	stis = status --ignore-submodules
 	sts = status -s
 	df = diff
+	dfis = diff --ignore-submodules
 	dfc = diff --cached
 	ci = commit -m
 	cia = commit -am

@@ -265,10 +265,10 @@ nmap \u <Plug>CommentaryUndo
 " ------------------
 if has('gui_running')
   if has('unix')
-    set guifont=Droid\ Sans\ Mono\ 10.2
+    set guifont=Droid\ Sans\ Mono\ 10.0
   elseif has('gui_win32') || has('gui_win64')
     let g:skip_loading_mswin=1
-    set guifont=Droid_Sans_Mono:h10.2
+    set guifont=Droid_Sans_Mono:h10.0
     cd c:\
   endif
   set lines=44 columns=84

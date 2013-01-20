@@ -5,6 +5,7 @@ set nocompatible
 " Initialize plugin manager
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
+call pathogen#helptags()
 " Enable unicode characters
 set encoding=utf-8
 " Enable syntax highlighting
@@ -115,10 +116,10 @@ augroup General
   au GUIEnter * set vb t_vb=
 augroup END
 
-augroup Plugins
-  au!
-  autocmd BufWritePost *.py call Flake8()
-augroup END
+" augroup Plugins
+"   au!
+"   autocmd BufWritePost *.py call Flake8()
+" augroup END
 
 augroup FTCheck"
   " This is used instead of custom filetype.vim
@@ -236,6 +237,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsListSnippets = '<c-s-l>'
 
 " - Commentary (plugins)
+autocmd FileType python set commentstring=#\ %s
 xmap \ <Plug>Commentary
 nmap \ <Plug>Commentary
 nmap \\ <Plug>CommentaryLine

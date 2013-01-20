@@ -55,3 +55,6 @@
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/bundle/pymotion"]
+	path = vim/bundle/pymotion
+	url = https://github.com/viszu/vim-pymotion.git

@@ -236,6 +236,9 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsListSnippets = '<c-s-l>'
 
+" Gundo
+nnoremap <Leader>g :GundoToggle<CR>
+
 " - Commentary (plugins)
 autocmd FileType python set commentstring=#\ %s
 xmap \ <Plug>Commentary

@@ -58,3 +58,6 @@
 [submodule "vim/bundle/pymotion"]
 	path = vim/bundle/pymotion
 	url = https://github.com/viszu/vim-pymotion.git
+[submodule "vim/bundle/gundo"]
+	path = vim/bundle/gundo
+	url = https://github.com/vim-scripts/Gundo

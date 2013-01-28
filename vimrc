@@ -17,9 +17,11 @@ set nostartofline
 " Don't insert extra space(after .?!)
 set nojoinspaces
 " <C-a>, <C-x> fixup
-set nrformats=
+set nrformats-=octal
 " When creating a new line, set indentation same as previous line
 set autoindent
+set smarttab
+set shiftround
 " Folding stuff
 set foldmethod=marker
 " Do not fold anything by default
@@ -30,6 +32,9 @@ set hidden
 set splitbelow
 " Create vertical split window right of the current one
 set splitright
+set scrolloff=1
+set sidescrolloff=5
+set display+=lastline
 " For regular expressions turn magic on
 set magic
 " Enable menu for command-line completion
@@ -39,7 +44,12 @@ set wildignore=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
 set completeopt=menuone,preview
 " Display special characters for certain whitespace situations
 set list
-set listchars=tab:>\ ,
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+  if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+  endif
+endif
 " Search stuff
 set incsearch
 " Highlight search results
@@ -71,6 +81,7 @@ set laststatus=2
 set textwidth=80 wrap linebreak
 " Backspace
 set backspace=indent,eol,start
+set complete-=i
 " Timeout for keycodes (such as arrow keys and function keys) is only 10ms
 " Timeout for Vim keymaps is a second
 set timeout timeoutlen=1000 ttimeoutlen=10
@@ -78,25 +89,28 @@ set timeout timeoutlen=1000 ttimeoutlen=10
 set mouse=a
 " Limit Vim's "hit-enter" messages
 set shortmess=atI
+set fileformats+=mac
+set viminfo^=!
+" Look for file changes
+set autoread
+set autowrite
+" Command-line history
+if &history < 1000
+  set history=1000
+endif
+" Disable swapfile and backup
+set nobackup
+set noswapfile
 " Enable persistent undo
 set undofile
 set undodir=~/tmp/vim/undo
 if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")
 endif
-" Disable swapfile and backup
-set nobackup
-set noswapfile
-
-set complete-=i
-set smarttab
-set scrolloff=1
-set sidescrolloff=5
-set display+=lastline
-set autoread
-set autowrite
-set fileformats=unix,dos,mac
-set viminfo^=!
+" Netrw stuff
+if !exists('g:netrw_list_hide')
+  let g:netrw_list_hide = '^\.,\~$,^tags$'
+endif
 "}}}
 " = AUTOCMD"{{{
 " -------------
@@ -190,7 +204,7 @@ nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
 " Clear search highlights
-nnoremap <Leader>/ :nohls<CR>
+nnoremap <silent> <Leader>/ :nohls<CR>
 " Toggle paste / nopaste
 set pastetoggle=<F4>
 " '+' = Linux clipboard register
@@ -225,44 +239,44 @@ autocmd FileType *
   \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
   \ endif
 
-" - Powerline (plugins)
+" Powerline
 "let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
 call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
 
-" - Ultisnips (plugins)
+" Ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsListSnippets = '<c-s-l>'
 
 " Gundo
-nnoremap <Leader>g :GundoToggle<CR>
+nnoremap <F2> :GundoToggle<CR>
 
-" - Commentary (plugins)
+" Commentary
 autocmd FileType python set commentstring=#\ %s
 xmap \ <Plug>Commentary
 nmap \ <Plug>Commentary
 nmap \\ <Plug>CommentaryLine
 nmap \u <Plug>CommentaryUndo
 
-" - CtrlP
+" CtrlP
 "let g:ctrlp_map = '<Leader>p'
 "let g:ctrlp_max_files = 1000
 "let g:ctrlp_working_path_mode = 'c'
 
-" - Buffalo
+" Buffalo
 
-" - Pyflakes
+" Pyflakes
 " Error highlight color
 "highlight SpellBad term=reverse ctermfg=0 ctermbg=3
 
-" - Taglist
+" Taglist
 "map <Leader>t :TlistToggle<CR>
 "let Tlist_Inc_Winwidth=0
 "let Tlist_Compact_Format=1
 
-" - Rope-vim
+" Rope-vim
 "map <Leader>j :RopeGotoDefinition<CR>
 "map <Leader>r :RopeRename<CR>
 "}}}

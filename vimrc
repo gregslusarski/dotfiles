@@ -121,7 +121,7 @@ augroup General
   " Jumps to the last known position in a file just after opening it
   au BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \ exe "normal! g`\"" |
+      \ exe "normal! g`\"" |
     \ endif
   " When leaving insert mode, set nopaste
   au InsertLeave * set nopaste
@@ -159,10 +159,10 @@ augroup END
 nnoremap <Space> <Nop>
 let mapleader = ' '
 " Map semicolon to colon
-noremap ; :
-noremap : ;
-noremap! ; :
-noremap! : ;
+" noremap ; :
+" noremap : ;
+" noremap! ; :
+" noremap! : ;
 " Window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -233,7 +233,7 @@ inoremap <C-w> <C-g>u<C-w>
 let g:flake8_ignore="E111"
 
 " Supertab
-autocmd FileType *
+au FileType *
   \ if &omnifunc != '' |
   \   call SuperTabChain(&omnifunc, "<c-p>") |
   \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |

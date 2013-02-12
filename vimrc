@@ -1,5 +1,5 @@
-" = GENERAL SETTINGS"{{{
-" ----------------------
+" GENERAL"{{{
+" --------------------
 " Disable vi compatibilty restrictions
 set nocompatible
 " Initialize plugin manager
@@ -24,8 +24,8 @@ set smarttab
 set shiftround
 " Folding stuff
 set foldmethod=marker
-" Do not fold anything by default
-set foldlevel=99
+" Use custom fold text
+set foldtext=CustomFoldText()
 " Buffer becomes hidden when it is abandoned
 set hidden
 " Create new split window below the current one
@@ -78,7 +78,7 @@ set showmatch
 set laststatus=2
 "set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 " Enable wordwrap
-set textwidth=80 wrap linebreak
+set textwidth=79 wrap linebreak
 " Backspace
 set backspace=indent,eol,start
 set complete-=i
@@ -110,10 +110,77 @@ endif
 " Netrw stuff
 if !exists('g:netrw_list_hide')
   let g:netrw_list_hide = '^\.,\~$,^tags$'
-endif
-"}}}
-" = AUTOCMD"{{{
-" -------------
+endif"}}}
+" MAPPINGS"{{{
+" ------------
+" Remap leader
+nnoremap <Space> <Nop>
+let mapleader = ' '
+let maplocalleader = '\\'
+" Window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-c> <C-w>c
+" Write current buffer
+nnoremap <C-s> :update!<CR>
+inoremap <C-s> <C-o>:update!<CR>
+vnoremap <C-s> <C-c>:update!<CR>
+" Write read-only files
+cnoremap W! w !sudo tee %
+" Switch fast between tab settings
+cnoremap t2e setlocal sw=2 sts=2 ts=2 et
+cnoremap t2n setlocal sw=2 sts=2 ts=2 noet
+cnoremap t4e setlocal sw=4 sts=4 ts=4 et
+cnoremap t4n setlocal sw=4 sts=4 ts=4 noet
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+" Make Y behave like other capitals
+nnoremap Y y$
+" Improve up/down movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+" Toggle paste / nopaste
+set pastetoggle=<F4>
+" '+' = Linux clipboard register
+noremap <F3> "+
+" Disable <f1>'s default help functionality
+nnoremap <F1> <Esc>
+inoremap <F1> <Esc>
+" Esc
+inoremap jk <Esc>
+inoremap kj <Esc>
+" Center screen on next / prev found
+nnoremap N Nzz
+nnoremap n nzz
+" Make <C-u> and <C-w> undoable
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+" Toggle spell checking
+nnoremap <silent> <Leader>s :setlocal spell!<CR>
+" Switch fast between buffers
+" nnoremap <Leader>l :ls<CR>:b<Space>
+" Open vimrc
+nnoremap <Leader>v :e $MYVIMRC<CR>
+" cd to the directory containing the file in the buffer
+nnoremap <Leader>cd :lcd %:h<CR>
+nnoremap <Leader>e :e **/
+" Write all buffers and quit Vim
+nnoremap <Leader>wq :wa!<CR>:q<CR>
+" Select all text in current buffer
+nnoremap <Leader>a ggVG
+" Echo current tab settings
+nnoremap <Leader>i :echo 'et'&et 'sw'&sw 'sts'&sts 'ts'&ts 'sta'&sta<CR>
+" Clear search highlights
+nnoremap <silent> <Leader>/ :nohls<CR>
+" Leader
+nnoremap <Leader>- yypVr-
+nnoremap <Leader>= yypVr=
+nnoremap <Leader>` yypVr~"}}}
+" AUTOCOMMANDS"{{{
+" -----------
 augroup General
   au!
   " Remove any trailing whitespace that is in the file
@@ -130,13 +197,13 @@ augroup General
   au GUIEnter * set vb t_vb=
 augroup END
 
-" augroup Plugins
-"   au!
-"   autocmd BufWritePost *.py call Flake8()
-" augroup END
+augroup Plugins
+  au!
+  autocmd BufWritePost *.py call Flake8()
+augroup END
 
 augroup FTCheck"
-  " This is used instead of custom filetype.vim
+  " filetype.vim
   au!
   au BufNewFile,BufRead *.rss,*.atom set ft=xml
   au BufNewFile,BufRead *.txt,README,HELP,INSTALL,NEWS,TODO if &ft == ""
@@ -144,90 +211,38 @@ augroup FTCheck"
 augroup END
 
 augroup FTOptions"
-  " This is used instead of custom ftplugin
+  " ftplugin
   au!
   " au FileType markdown setlocal sw=4 sts=4
-  au FileType python setlocal fdm=indent
+  " au FileType python setlocal fdm=expr
   au FileType c,cpp,cs,java setlocal fdm=syntax cin
   au FileType git,gitcommit setlocal fdm=syntax
   au FileType gitcommit setlocal spell
-augroup END
-"}}}
-" = MAPPINGS"{{{
-" --------------
-" Remap leader
-nnoremap <Space> <Nop>
-let mapleader = ' '
-" Map semicolon to colon
-" noremap ; :
-" noremap : ;
-" noremap! ; :
-" noremap! : ;
-" Window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-c> <C-w>c
-" Toggle spell checking
-nnoremap <silent> <Leader>s :setlocal spell!<CR>
-" Switch fast between buffers
-" nnoremap <Leader>l :ls<CR>:b<Space>
-" Open vimrc
-nnoremap <Leader>v :e $MYVIMRC<CR>
-" cd to the directory containing the file in the buffer
-nnoremap <Leader>cd :lcd %:h<CR>
-nnoremap <Leader>e :e **/
-" Write current buffer
-nnoremap <C-s> :update!<CR>
-inoremap <C-s> <C-o>:update!<CR>
-vnoremap <C-s> <C-c>:update!<CR>
-" Write read-only files
-cnoremap W! w !sudo tee %
-" Write all buffers and quit Vim
-nnoremap <Leader>wq :wa!<CR>:q<CR>
-" Select all text in current buffer
-nnoremap <Leader>a ggVG
-" Echo current tab settings
-nnoremap <Leader>i :echo 'et'&et 'sw'&sw 'sts'&sts 'ts'&ts 'sta'&sta<CR>
-" Switch fast between tab settings
-cnoremap t2e setlocal sw=2 sts=2 ts=2 et
-cnoremap t2n setlocal sw=2 sts=2 ts=2 noet
-cnoremap t4e setlocal sw=4 sts=4 ts=4 et
-cnoremap t4n setlocal sw=4 sts=4 ts=4 noet
-" Reselect visual block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
-" Make Y behave like other capitals
-nnoremap Y y$
-" Improve up/down movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
-" Clear search highlights
-nnoremap <silent> <Leader>/ :nohls<CR>
-" Toggle paste / nopaste
-set pastetoggle=<F4>
-" '+' = Linux clipboard register
-noremap <F3> "+
-" Disable <f1>'s default help functionality
-nnoremap <F1> <Esc>
-inoremap <F1> <Esc>
-" Esc
-inoremap jk <Esc>
-inoremap kj <Esc>
-" Close all folds
-nnoremap zm zM
-" Open all folds
-nnoremap zr zR
-" Center screen on next / prev found
-nnoremap N Nzz
-nnoremap n nzz
-" Make <C-u> and <C-w> undoable
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
-"}}}
-" = PLUGINS SETTINGS"{{{
-" ----------------------
+augroup END"}}}
+" FUNCTIONS{{{
+" ------------
+fun! CustomFoldText()
+  "get first non-blank line
+  let fs = v:foldstart
+  while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+  endwhile
+  if fs > v:foldend
+      let line = getline(v:foldstart)
+  else
+      let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+  endif
+
+  let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+  let foldSize = 1 + v:foldend - v:foldstart
+  let foldSizeStr = " " . foldSize . " lines "
+  let foldLevelStr = repeat("+--", v:foldlevel)
+  let lineCount = line("$")
+  let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+  let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+  return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endfunction"}}}
+" PLUGINS SETTINGS"{{{
+" --------------------
 " Flake8
 " E111 = indentation is not a multiple of four
 let g:flake8_ignore="E111"
@@ -265,8 +280,6 @@ nmap \u <Plug>CommentaryUndo
 "let g:ctrlp_max_files = 1000
 "let g:ctrlp_working_path_mode = 'c'
 
-" Buffalo
-
 " Pyflakes
 " Error highlight color
 "highlight SpellBad term=reverse ctermfg=0 ctermbg=3
@@ -278,10 +291,16 @@ nmap \u <Plug>CommentaryUndo
 
 " Rope-vim
 "map <Leader>j :RopeGotoDefinition<CR>
-"map <Leader>r :RopeRename<CR>
-"}}}
-" = GUI SETTINGS"{{{
-" ------------------
+"map <Leader>r :RopeRename<CR>"}}}
+" FIXUPS"{{{
+" ----------
+" Fix arrow key navigation in insert mode
+imap <ESC>oA <ESC>ki
+imap <ESC>oB <ESC>ji
+imap <ESC>oC <ESC>li
+imap <ESC>oD <ESC>hi"}}}
+" GUI & COLOR SCHEME"{{{
+" ----------------
 if has('gui_running')
   if has('unix')
     set guifont=Droid\ Sans\ Mono\ 10.0
@@ -305,4 +324,5 @@ endif
 " let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
-"}}}
+" Get rid of the underline in fold text
+hi Folded term=bold cterm=bold"}}}

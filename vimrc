@@ -247,6 +247,9 @@ endfunction"}}}
 " E111 = indentation is not a multiple of four
 let g:flake8_ignore="E111"
 
+" Neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+
 " Supertab
 au FileType *
   \ if &omnifunc != '' |
@@ -269,7 +272,7 @@ let g:UltiSnipsListSnippets = '<c-s-l>'
 nnoremap <F2> :GundoToggle<CR>
 
 " Commentary
-autocmd FileType python set commentstring=#\ %s
+" autocmd FileType python set commentstring=#\ %s
 xmap \ <Plug>Commentary
 nmap \ <Plug>Commentary
 nmap \\ <Plug>CommentaryLine

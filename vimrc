@@ -249,13 +249,15 @@ let g:flake8_ignore="E111"
 
 " Neocomplcache
 let g:neocomplcache_enable_at_startup = 1
+" Use underscore completion.
+let g:neocomplcache_enable_underbar_completion = 1
 
 " Supertab
-au FileType *
-  \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<c-p>") |
-  \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-  \ endif
+" au FileType *
+"   \ if &omnifunc != '' |
+"   \   call SuperTabChain(&omnifunc, "<c-p>") |
+"   \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+"   \ endif
 
 " Powerline
 "let g:Powerline_symbols = 'fancy'

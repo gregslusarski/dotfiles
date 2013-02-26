@@ -1,4 +1,4 @@
-## Installation
+### Installation
 
     cd ~
     git clone https://github.com/viszu/dotfiles.git
@@ -9,7 +9,7 @@ Vim plugins are installed as a git submodules, so:
     git submodule init
     git submodule update
 
-## Generate symlinks
+### Generate symlinks
 
     ln -s ~/dotfiles/vim ~/.vim
     ln -s ~/dotfiles/vimrc ~/.vimrc
@@ -27,7 +27,7 @@ Or use install.sh:
     sudo chmod +x install.sh
     sh install.sh
 
-## Remove symlinks (careful here!)
+### Remove symlinks
 
     rm -r ~/.vim
     rm ~/.vimrc
@@ -39,12 +39,12 @@ Or use install.sh:
     rm ~/.dircolors
     rm ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
-## Update Vim plugins
+### Update Vim plugins
 
     cd dotfiles
     git submodule foreach 'git pull origin master'
 
-## Install new plugins
+### Install new plugins
 
 Example:
 

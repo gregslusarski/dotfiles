@@ -174,7 +174,7 @@ nnoremap <Leader>a ggVG
 " Echo current tab settings
 nnoremap <Leader>i :echo 'et'&et 'sw'&sw 'sts'&sts 'ts'&ts 'sta'&sta<CR>
 " Clear search highlights
-nnoremap <silent> <Leader>/ :nohls<CR>
+nnoremap <silent> <Leader>/ :noh<CR>
 " Leader
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=
@@ -249,8 +249,23 @@ let g:flake8_ignore="E111"
 
 " Neocomplcache
 let g:neocomplcache_enable_at_startup = 1
-" Use underscore completion.
-let g:neocomplcache_enable_underbar_completion = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_force_overwrite_completefunc=1
+
+" Neosnippet
+" Plugin key-mappings.
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+" Tell Neosnippet about the other snippets
+" let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
 " Supertab
 " au FileType *
@@ -265,10 +280,10 @@ let g:Powerline_stl_path_style = 'filename'
 call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsListSnippets = '<c-s-l>'
+" let g:UltiSnipsExpandTrigger = '<tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<tab>'
+" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" let g:UltiSnipsListSnippets = '<c-s-l>'
 
 " Gundo
 nnoremap <F2> :GundoToggle<CR>
@@ -308,10 +323,10 @@ imap <ESC>oD <ESC>hi"}}}
 " ----------------
 if has('gui_running')
   if has('unix')
-    set guifont=Droid\ Sans\ Mono\ 10.0
+    set guifont=Droid\ Sans\ Mono\ 10.2
   elseif has('gui_win32') || has('gui_win64')
     let g:skip_loading_mswin=1
-    set guifont=Droid_Sans_Mono:h10.0
+    set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
   set lines=44 columns=84

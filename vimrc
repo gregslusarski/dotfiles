@@ -1,11 +1,13 @@
-" GENERAL"{{{
-" --------------------
+" = GENERAL"{{{
+" -------------
+" viszu's vimrc - https://github.com/viszu
 " Disable vi compatibilty restrictions
 set nocompatible
-" Initialize plugin manager
+" - Initialize plugin manager"{{{
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
+"}}}
 " Enable unicode characters
 set encoding=utf-8
 " Enable syntax highlighting
@@ -22,10 +24,11 @@ set nrformats-=octal
 set autoindent
 set smarttab
 set shiftround
-" Folding stuff
+" - Folding"{{{
 set foldmethod=marker
 " Use custom fold text
 set foldtext=CustomFoldText()
+"}}}
 " Buffer becomes hidden when it is abandoned
 set hidden
 " Create new split window below the current one
@@ -42,7 +45,7 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
 set completeopt=menuone,preview
-" Display special characters for certain whitespace situations
+" - Display special characters for certain whitespace situations"{{{
 set list
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
@@ -50,6 +53,7 @@ if &listchars ==# 'eol:$'
     let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
   endif
 endif
+"}}}
 " Search stuff
 set incsearch
 " Highlight search results
@@ -94,10 +98,7 @@ set viminfo^=!
 " Look for file changes
 set autoread
 set autowrite
-" Command-line history
-if &history < 1000
-  set history=1000
-endif
+" - Backup, undo, history"{{{
 " Disable swapfile and backup
 set nobackup
 set noswapfile
@@ -107,12 +108,18 @@ set undodir=~/tmp/vim/undo
 if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")
 endif
+" Command-line history
+if &history < 1000
+  set history=1000
+endif
 " Netrw stuff
 if !exists('g:netrw_list_hide')
   let g:netrw_list_hide = '^\.,\~$,^tags$'
-endif"}}}
-" MAPPINGS"{{{
-" ------------
+endif
+"}}}
+"}}}
+" = MAPPINGS"{{{
+" --------------
 " Remap leader
 nnoremap <Space> <Nop>
 let mapleader = ' '
@@ -178,9 +185,116 @@ nnoremap <silent> <Leader>/ :noh<CR>
 " Leader
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=
-nnoremap <Leader>` yypVr~"}}}
-" AUTOCOMMANDS"{{{
-" -----------
+nnoremap <Leader>` yypVr~
+"}}}
+" = PLUGINS SETTINGS & MAPPINGS"{{{
+" ---------------------------------
+" - Fugitive"{{{
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
+"}}}
+" - Tabularize"{{{
+nnoremap <Leader>a& :Tabularize /&<CR>
+vnoremap <Leader>a& :Tabularize /&<CR>
+nnoremap <Leader>a= :Tabularize /=<CR>
+vnoremap <Leader>a= :Tabularize /=<CR>
+nnoremap <Leader>a: :Tabularize /:<CR>
+vnoremap <Leader>a: :Tabularize /:<CR>
+nnoremap <Leader>a:: :Tabularize /:\zs<CR>
+vnoremap <Leader>a:: :Tabularize /:\zs<CR>
+nnoremap <Leader>a, :Tabularize /,<CR>
+vnoremap <Leader>a, :Tabularize /,<CR>
+nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+"}}}
+" - CtrlP"{{{
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$' }
+"}}}
+" - Flake8"{{{
+" E111 = indentation is not a multiple of four
+let g:flake8_ignore="E111"
+"}}}
+" - Neocomplcache"{{{
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_force_overwrite_completefunc=1
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+"}}}
+" - Neosnippet"{{{
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" SuperTab like snippets behavior.
+" imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+" Tell Neosnippet about the other snippets
+" let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+"}}}
+" - Powerline"{{{
+"let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'filename'
+call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
+"}}}
+" - Commentary"{{{
+" autocmd FileType python set commentstring=#\ %s
+xmap \ <Plug>Commentary
+nmap \ <Plug>Commentary
+nmap \\ <Plug>CommentaryLine
+nmap \u <Plug>CommentaryUndo
+"}}}
+" Supertab
+" au FileType *
+"   \ if &omnifunc != '' |
+"   \   call SuperTabChain(&omnifunc, "<c-p>") |
+"   \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+"   \ endif
+
+" Ultisnips
+" let g:UltiSnipsExpandTrigger = '<tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<tab>'
+" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" let g:UltiSnipsListSnippets = '<c-s-l>'
+
+" Gundo
+nnoremap <silent> <F2> :GundoToggle<CR>
+
+" CtrlP
+"let g:ctrlp_map = '<Leader>p'
+"let g:ctrlp_max_files = 1000
+"let g:ctrlp_working_path_mode = 'c'
+
+" Pyflakes
+" Error highlight color
+"highlight SpellBad term=reverse ctermfg=0 ctermbg=3
+
+" Taglist
+"map <Leader>t :TlistToggle<CR>
+"let Tlist_Inc_Winwidth=0
+"let Tlist_Compact_Format=1
+
+" Rope-vim
+"map <Leader>j :RopeGotoDefinition<CR>
+"map <Leader>r :RopeRename<CR>
+"}}}
+" = AUTOCOMMANDS"{{{
+" ------------------
 augroup General
   au!
   " Remove any trailing whitespace that is in the file
@@ -218,9 +332,10 @@ augroup FTOptions"
   au FileType c,cpp,cs,java setlocal fdm=syntax cin
   au FileType git,gitcommit setlocal fdm=syntax
   au FileType gitcommit setlocal spell
-augroup END"}}}
-" FUNCTIONS{{{
-" ------------
+augroup END
+"}}}
+" = FUNCTIONS{{{
+" --------------
 fun! CustomFoldText()
   "get first non-blank line
   let fs = v:foldstart
@@ -240,94 +355,18 @@ fun! CustomFoldText()
   let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
   let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
   return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
-endfunction"}}}
-" PLUGINS SETTINGS"{{{
-" --------------------
-" Flake8
-" E111 = indentation is not a multiple of four
-let g:flake8_ignore="E111"
-
-" Neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_force_overwrite_completefunc=1
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>
-
-" Neosnippet
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" SuperTab like snippets behavior.
-" imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-" Tell Neosnippet about the other snippets
-" let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
-
-" Supertab
-" au FileType *
-"   \ if &omnifunc != '' |
-"   \   call SuperTabChain(&omnifunc, "<c-p>") |
-"   \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-"   \ endif
-
-" Powerline
-"let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'filename'
-call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
-
-" Ultisnips
-" let g:UltiSnipsExpandTrigger = '<tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<tab>'
-" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-" let g:UltiSnipsListSnippets = '<c-s-l>'
-
-" Gundo
-nnoremap <F2> :GundoToggle<CR>
-
-" Commentary
-" autocmd FileType python set commentstring=#\ %s
-xmap \ <Plug>Commentary
-nmap \ <Plug>Commentary
-nmap \\ <Plug>CommentaryLine
-nmap \u <Plug>CommentaryUndo
-
-" CtrlP
-"let g:ctrlp_map = '<Leader>p'
-"let g:ctrlp_max_files = 1000
-"let g:ctrlp_working_path_mode = 'c'
-
-" Pyflakes
-" Error highlight color
-"highlight SpellBad term=reverse ctermfg=0 ctermbg=3
-
-" Taglist
-"map <Leader>t :TlistToggle<CR>
-"let Tlist_Inc_Winwidth=0
-"let Tlist_Compact_Format=1
-
-" Rope-vim
-"map <Leader>j :RopeGotoDefinition<CR>
-"map <Leader>r :RopeRename<CR>"}}}
-" FIXUPS"{{{
-" ----------
+endfunction
+"}}}
+" = FIXUPS"{{{
+" ------------
 " Fix arrow key navigation in insert mode
 imap <ESC>oA <ESC>ki
 imap <ESC>oB <ESC>ji
 imap <ESC>oC <ESC>li
-imap <ESC>oD <ESC>hi"}}}
-" GUI & COLOR SCHEME"{{{
-" ----------------
+imap <ESC>oD <ESC>hi
+"}}}
+" = GUI & COLOR SCHEME"{{{
+" ------------------------
 if has('gui_running')
   if has('unix')
     set guifont=Droid\ Sans\ Mono\ 10.2
@@ -348,8 +387,12 @@ else
   set t_Co=256 t_md=
 endif
 
-" let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+" let g:solarized_termtrans=1
+" let g:solarized_termcolors=256
+" let g:solarized_contrast="high"
+" let g:solarized_visibility="high"
 " Get rid of the underline in fold text
-hi Folded term=bold cterm=bold"}}}
+hi Folded term=bold cterm=bold
+"}}}

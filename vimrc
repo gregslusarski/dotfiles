@@ -1,13 +1,13 @@
-" = GENERAL"{{{
-" -------------
+" = GENERAL"{{{1
+" --------------
 " viszu's vimrc - https://github.com/viszu
 " Disable vi compatibilty restrictions
 set nocompatible
-" - Initialize plugin manager"{{{
+" - Initialize plugin manager"{{{2
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
-"}}}
+" }}}2
 " Enable unicode characters
 set encoding=utf-8
 " Enable syntax highlighting
@@ -24,11 +24,11 @@ set nrformats-=octal
 set autoindent
 set smarttab
 set shiftround
-" - Folding"{{{
+" - Folding"{{{2
 set foldmethod=marker
 " Use custom fold text
 set foldtext=CustomFoldText()
-"}}}
+" }}}2
 " Buffer becomes hidden when it is abandoned
 set hidden
 " Create new split window below the current one
@@ -45,7 +45,7 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
 set completeopt=menuone,preview
-" - Display special characters for certain whitespace situations"{{{
+" - Display special characters for certain whitespace situations"{{{2
 set list
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
@@ -53,7 +53,7 @@ if &listchars ==# 'eol:$'
     let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
   endif
 endif
-"}}}
+" }}}2
 " Search stuff
 set incsearch
 " Highlight search results
@@ -98,7 +98,7 @@ set viminfo^=!
 " Look for file changes
 set autoread
 set autowrite
-" - Backup, undo, history"{{{
+" - Backup, undo, history"{{{2
 " Disable swapfile and backup
 set nobackup
 set noswapfile
@@ -116,9 +116,8 @@ endif
 if !exists('g:netrw_list_hide')
   let g:netrw_list_hide = '^\.,\~$,^tags$'
 endif
-"}}}
-"}}}
-" = MAPPINGS"{{{
+
+" = MAPPINGS"{{{1
 " --------------
 " Remap leader
 nnoremap <Space> <Nop>
@@ -150,7 +149,7 @@ nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
 " Toggle paste / nopaste
-set pastetoggle=<F4>
+nnoremap <F4> :set invpaste paste?<CR>
 " '+' = Linux clipboard register
 noremap <F3> "+
 " Disable <f1>'s default help functionality
@@ -166,7 +165,7 @@ nnoremap n nzz
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 " Toggle spell checking
-nnoremap <silent> <Leader>s :setlocal spell!<CR>
+nnoremap <Leader>s :setlocal invspell spell?<CR>
 " Switch fast between buffers
 " nnoremap <Leader>l :ls<CR>:b<Space>
 " Open vimrc
@@ -179,25 +178,25 @@ nnoremap <Leader>wq :wa!<CR>:q<CR>
 " Select all text in current buffer
 nnoremap <Leader>a ggVG
 " Echo current tab settings
-nnoremap <Leader>i :echo 'et'&et 'sw'&sw 'sts'&sts 'ts'&ts 'sta'&sta<CR>
+nnoremap <Leader>i :set sw? sts? ts? et?<CR>
 " Clear search highlights
 nnoremap <silent> <Leader>/ :noh<CR>
 " Leader
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=
 nnoremap <Leader>` yypVr~
-"}}}
-" = PLUGINS SETTINGS & MAPPINGS"{{{
-" ---------------------------------
-" - Fugitive"{{{
+
+" = PLUGINS SETTINGS & MAPPINGS"{{{1
+" ----------------------------------
+" - Fugitive"{{{2
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
-"}}}
-" - Tabularize"{{{
+
+" - Tabularize"{{{2
 nnoremap <Leader>a& :Tabularize /&<CR>
 vnoremap <Leader>a& :Tabularize /&<CR>
 nnoremap <Leader>a= :Tabularize /=<CR>
@@ -210,17 +209,19 @@ nnoremap <Leader>a, :Tabularize /,<CR>
 vnoremap <Leader>a, :Tabularize /,<CR>
 nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
-"}}}
-" - CtrlP"{{{
+
+" - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$',
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
-"}}}
-" - Flake8"{{{
+let g:ctrlp_jump_to_buffer = 0
+let g:ctrlp_working_path_mode = 0
+
+" - Flake8"{{{2
 " E111 = indentation is not a multiple of four
 let g:flake8_ignore="E111"
-"}}}
-" - Neocomplcache"{{{
+
+" - Neocomplcache"{{{2
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
@@ -232,8 +233,8 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 " inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-"}}}
-" - Neosnippet"{{{
+
+" - Neosnippet"{{{2
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -246,19 +247,19 @@ if has('conceal')
 endif
 " Tell Neosnippet about the other snippets
 " let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
-"}}}
-" - Powerline"{{{
+
+" - Powerline"{{{2
 "let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
 call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
-"}}}
-" - Commentary"{{{
+
+" - Commentary"{{{2
 " autocmd FileType python set commentstring=#\ %s
 xmap \ <Plug>Commentary
 nmap \ <Plug>Commentary
 nmap \\ <Plug>CommentaryLine
 nmap \u <Plug>CommentaryUndo
-"}}}
+" }}}2
 " Supertab
 " au FileType *
 "   \ if &omnifunc != '' |
@@ -292,9 +293,9 @@ nnoremap <silent> <F2> :GundoToggle<CR>
 " Rope-vim
 "map <Leader>j :RopeGotoDefinition<CR>
 "map <Leader>r :RopeRename<CR>
-"}}}
-" = AUTOCOMMANDS"{{{
-" ------------------
+
+" = AUTOCOMMANDS"{{{1
+" -------------------
 augroup General
   au!
   " Remove any trailing whitespace that is in the file
@@ -305,7 +306,7 @@ augroup General
       \ exe "normal! g`\"" |
     \ endif
   " When leaving insert mode, set nopaste
-  au InsertLeave * set nopaste
+  au InsertLeave * set nopaste paste?
   " Turns off error bells
   set noerrorbells visualbell t_vb=
   au GUIEnter * set vb t_vb=
@@ -316,7 +317,7 @@ augroup Plugins
   autocmd BufWritePost *.py call Flake8()
 augroup END
 
-augroup FTCheck"
+augroup FTCheck
   " filetype.vim
   au!
   au BufNewFile,BufRead *.rss,*.atom set ft=xml
@@ -324,7 +325,7 @@ augroup FTCheck"
     \ | set ft=text|endif
 augroup END
 
-augroup FTOptions"
+augroup FTOptions
   " ftplugin
   au!
   " au FileType markdown setlocal sw=4 sts=4
@@ -333,9 +334,40 @@ augroup FTOptions"
   au FileType git,gitcommit setlocal fdm=syntax
   au FileType gitcommit setlocal spell
 augroup END
-"}}}
-" = FUNCTIONS{{{
-" --------------
+
+" = FUNCTIONS{{{1
+" ---------------
+" - Stab{{{2
+" Set tabstop, softtabstop and shiftwidth to the same value
+" From http://vimcasts.org/episodes/tabs-and-spaces/
+command! -nargs=* Stab call Stab()
+fun! Stab()
+  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+  if l:tabstop > 0
+    let &l:sts = l:tabstop
+    let &l:ts = l:tabstop
+    let &l:sw = l:tabstop
+  endif
+  call SummarizeTabs()
+endfunction
+
+fun! SummarizeTabs()
+  try
+    echohl ModeMsg
+    echon 'tabstop='.&l:ts
+    echon ' shiftwidth='.&l:sw
+    echon ' softtabstop='.&l:sts
+    if &l:et
+      echon ' expandtab'
+    else
+      echon ' noexpandtab'
+    end
+  finally
+    echohl None
+  endtry
+endfunction
+
+" - CustomFoldText{{{2
 fun! CustomFoldText()
   "get first non-blank line
   let fs = v:foldstart
@@ -356,17 +388,17 @@ fun! CustomFoldText()
   let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
   return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
 endfunction
-"}}}
-" = FIXUPS"{{{
-" ------------
+
+" = FIXUPS"{{{1
+" -------------
 " Fix arrow key navigation in insert mode
 imap <ESC>oA <ESC>ki
 imap <ESC>oB <ESC>ji
 imap <ESC>oC <ESC>li
 imap <ESC>oD <ESC>hi
-"}}}
-" = GUI & COLOR SCHEME"{{{
-" ------------------------
+
+" = GUI & COLOR SCHEME"{{{1
+" -------------------------
 if has('gui_running')
   if has('unix')
     set guifont=Droid\ Sans\ Mono\ 10.2
@@ -395,4 +427,3 @@ colorscheme solarized
 " let g:solarized_visibility="high"
 " Get rid of the underline in fold text
 hi Folded term=bold cterm=bold
-"}}}

@@ -9,6 +9,7 @@ case $- in
 esac
 
 export PATH=/usr/local/bin:$PATH
+export EDITOR='vim'
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -131,7 +132,7 @@ alias c='clear'
 alias sagi='sudo apt-get install'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update'
-alias saguu='sudo apt-get update && sudo apt-get upgrade'
+alias sup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
 alias saar='sudo add-apt-repository'
 
 # Bookmarks

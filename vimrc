@@ -422,10 +422,11 @@ else
 endif
 
 set background=dark
-colorscheme solarized
+let g:solarized_menu=0
 " let g:solarized_termtrans=1
 " let g:solarized_termcolors=256
 " let g:solarized_contrast="high"
 " let g:solarized_visibility="high"
 " Get rid of the underline in fold text
+colorscheme solarized
 hi Folded term=bold cterm=bold

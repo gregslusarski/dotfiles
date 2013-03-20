@@ -149,7 +149,7 @@ nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
 " Toggle paste / nopaste
-nnoremap <F4> :set invpaste paste?<CR>
+nnoremap <F4> :set paste! paste?<CR>
 " '+' = Linux clipboard register
 noremap <F3> "+
 " Disable <f1>'s default help functionality
@@ -165,11 +165,13 @@ nnoremap n nzz
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 " Toggle spell checking
-nnoremap <Leader>s :setlocal invspell spell?<CR>
+nnoremap <Leader>s :setlocal spell! spell?<CR>
 " Switch fast between buffers
 " nnoremap <Leader>l :ls<CR>:b<Space>
 " Open vimrc
 nnoremap <Leader>v :e $MYVIMRC<CR>
+" Source current file
+nnoremap <Leader>fs :source %<CR>
 " cd to the directory containing the file in the buffer
 nnoremap <Leader>cd :lcd %:h<CR>
 nnoremap <Leader>e :e **/
@@ -181,7 +183,7 @@ nnoremap <Leader>a ggVG
 nnoremap <Leader>i :set sw? sts? ts? et?<CR>
 " Clear search highlights
 nnoremap <silent> <Leader>/ :noh<CR>
-" Leader
+" Underline text, to create headers
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=
 nnoremap <Leader>` yypVr~
@@ -306,7 +308,7 @@ augroup General
       \ exe "normal! g`\"" |
     \ endif
   " When leaving insert mode, set nopaste
-  au InsertLeave * set nopaste paste?
+  au InsertLeave * set nopaste
   " Turns off error bells
   set noerrorbells visualbell t_vb=
   au GUIEnter * set vb t_vb=

@@ -212,6 +212,14 @@ vnoremap <Leader>a, :Tabularize /,<CR>
 nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
+" - NERDTree"{{{2
+nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+let g:NERDTreeShowBookmarks=1
+let g:NERDTreeHijackNetrw=0
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeChDirMode=0
+let g:NERDTreeQuitOnOpen=1
+
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$',

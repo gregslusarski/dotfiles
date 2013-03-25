@@ -22,8 +22,14 @@ set nojoinspaces
 set nrformats-=octal
 " When creating a new line, set indentation same as previous line
 set autoindent
-set smarttab
-set shiftround
+" - Indentation"{{{2
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+" set smarttab
+" set shiftround
+"}}}2
 " - Folding"{{{2
 set foldmethod=marker
 " Use custom fold text
@@ -256,7 +262,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 " Tell Neosnippet about the other snippets
-" let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets'
 
 " - Powerline"{{{2
 "let g:Powerline_symbols = 'fancy'
@@ -435,6 +441,9 @@ let g:solarized_menu=0
 " let g:solarized_termcolors=256
 " let g:solarized_contrast="high"
 " let g:solarized_visibility="high"
-" Get rid of the underline in fold text
 colorscheme solarized
+" Get rid of the underline in fold text
 hi Folded term=bold cterm=bold
+" SignColumn will use same bg color as linenumber (GitGutter will set it)
+hi clear SignColumn
+" hi SignColumn ctermbg=0 guibg=DarkGrey

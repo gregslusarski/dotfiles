@@ -352,40 +352,38 @@ augroup END
 " = FUNCTIONS{{{1
 " ---------------
 " - Stab"{{{2
-" Set tabstop, softtabstop and shiftwidth to the same value + set et
+" Set tabstop, softtabstop and shiftwidth to the same value + set et / noet
 " Inspired by http://vimcasts.org/episodes/tabs-and-spaces/
 nnoremap <Leader>tt :call Stab()<CR>
 command! -nargs=* Stab call Stab()
 fun! Stab()
-  let l:message = '{sw=sts=ts=} {et / noet}: '
-  let l:arglist = split(input(l:message))
-  if len(l:arglist) > 0
-    let l:tabstop = 1 * l:arglist[0]
-    if l:tabstop > 0
-      let &l:sw = l:tabstop
-      let &l:sts = l:tabstop
-      let &l:ts = l:tabstop
+  let message = '{sw=sts=ts=} {et / noet}: '
+  let arglist = split(input(message))
+  let len_arglist = len(arglist)
+  if len_arglist > 0
+    let tabstop = 1 * arglist[0]
+    if tabstop > 0
+      let &l:sw = tabstop
+      let &l:sts = tabstop
+      let &l:ts = tabstop
     endif
-    if len(l:arglist) > 1
-      let l:expandtab = l:arglist[1]
-      if l:expandtab == 'et'
-        setlocal et
-      elseif l:expandtab == 'noet'
-        setlocal noet
+    if len_arglist > 1
+      let expandtab = arglist[1]
+      if expandtab =~ '\(no\)\?et'
+        execute 'setlocal '.expandtab
       endif
     endif
   endif
   call SummarizeTabs()
-endfunction
+endfun
 
 nnoremap <Leader>ti :call SummarizeTabs()<CR>
 fun! SummarizeTabs()
   try
+    echo "\r"
     echohl ModeMsg
-    echon 'sw='.&l:sw
-    echon ' sts='.&l:sts
-    echon ' ts='.&l:ts
-    if &l:et
+    echon 'sw='.&sw ' sts='.&sts ' ts='.&ts
+    if &et
       echon ' et'
     else
       echon ' noet'
@@ -393,7 +391,33 @@ fun! SummarizeTabs()
   finally
     echohl None
   endtry
-endfunction
+endfun
+
+" - CloseHiddenBuffers"{{{2
+" Wipe all buffers which are not active (i.e. not visible in a window/tab)
+" Using elements from each of these:
+"   http://stackoverflow.com/questions/2974192
+"   http://stackoverflow.com/questions/1534835
+nnoremap <Leader>ch :call CloseHiddenBuffers()<CR>
+command! -nargs=* Only call CloseHiddenBuffers()
+fun! CloseHiddenBuffers()
+  " figure out which buffers are visible in any tab
+  let visible = {}
+  for t in range(1, tabpagenr('$'))
+    for b in tabpagebuflist(t)
+      let visible[b] = 1
+    endfor
+  endfor
+  " close any buffer that are loaded and not visible
+  let l:tally = 0
+  for b in range(1, bufnr('$'))
+    if bufloaded(b) && !has_key(visible, b)
+      let l:tally += 1
+      exe 'bw ' . b
+    endif
+  endfor
+  echon "Deleted " . l:tally . " buffers"
+endfun
 
 " - CustomFoldText{{{2
 fun! CustomFoldText()
@@ -415,7 +439,7 @@ fun! CustomFoldText()
   let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
   let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
   return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
-endfunction
+endfun
 
 " = FIXUPS"{{{1
 " -------------

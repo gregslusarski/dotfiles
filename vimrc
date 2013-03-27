@@ -175,9 +175,9 @@ nnoremap <Leader>s :setlocal spell! spell?<CR>
 " Switch fast between buffers
 " nnoremap <Leader>l :ls<CR>:b<Space>
 " Open vimrc
-nnoremap <Leader>v :e $MYVIMRC<CR>
-" Source current file
-nnoremap <Leader>fs :source %<CR>
+nnoremap <Leader>vv :e $MYVIMRC<CR>
+" Source vimrc
+nnoremap <Leader>vs :source $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer
 nnoremap <Leader>cd :lcd %:h<CR>
 nnoremap <Leader>e :e **/
@@ -185,8 +185,6 @@ nnoremap <Leader>e :e **/
 nnoremap <Leader>wq :wa!<CR>:q<CR>
 " Select all text in current buffer
 nnoremap <Leader>a ggVG
-" Echo current tab settings
-nnoremap <Leader>i :set sw? sts? ts? et?<CR>
 " Clear search highlights
 nnoremap <silent> <Leader>/ :noh<CR>
 " Underline text, to create headers
@@ -262,7 +260,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets'
+let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
 " - Powerline"{{{2
 "let g:Powerline_symbols = 'fancy'
@@ -353,31 +351,45 @@ augroup END
 
 " = FUNCTIONS{{{1
 " ---------------
-" - Stab{{{2
-" Set tabstop, softtabstop and shiftwidth to the same value
-" From http://vimcasts.org/episodes/tabs-and-spaces/
+" - Stab"{{{2
+" Set tabstop, softtabstop and shiftwidth to the same value + set et
+" Inspired by http://vimcasts.org/episodes/tabs-and-spaces/
+nnoremap <Leader>tt :call Stab()<CR>
 command! -nargs=* Stab call Stab()
 fun! Stab()
-  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
-  if l:tabstop > 0
-    let &l:sts = l:tabstop
-    let &l:ts = l:tabstop
-    let &l:sw = l:tabstop
+  let l:message = '{sw=sts=ts=} {et / noet}: '
+  let l:arglist = split(input(l:message))
+  if len(l:arglist) > 0
+    let l:tabstop = 1 * l:arglist[0]
+    if l:tabstop > 0
+      let &l:sw = l:tabstop
+      let &l:sts = l:tabstop
+      let &l:ts = l:tabstop
+    endif
+    if len(l:arglist) > 1
+      let l:expandtab = l:arglist[1]
+      if l:expandtab == 'et'
+        setlocal et
+      elseif l:expandtab == 'noet'
+        setlocal noet
+      endif
+    endif
   endif
   call SummarizeTabs()
 endfunction
 
+nnoremap <Leader>ti :call SummarizeTabs()<CR>
 fun! SummarizeTabs()
   try
     echohl ModeMsg
-    echon 'tabstop='.&l:ts
-    echon ' shiftwidth='.&l:sw
-    echon ' softtabstop='.&l:sts
+    echon 'sw='.&l:sw
+    echon ' sts='.&l:sts
+    echon ' ts='.&l:ts
     if &l:et
-      echon ' expandtab'
+      echon ' et'
     else
-      echon ' noexpandtab'
-    end
+      echon ' noet'
+    endif
   finally
     echohl None
   endtry

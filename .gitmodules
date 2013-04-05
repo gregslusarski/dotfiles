@@ -61,6 +61,3 @@
 [submodule "vim/bundle/gitgutter"]
 	path = vim/bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "vim/bundle/snipmate-snippets"]
-	path = vim/bundle/snipmate-snippets
-	url = https://github.com/honza/snipmate-snippets.git

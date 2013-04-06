@@ -478,8 +478,8 @@ let g:solarized_menu=0
 " let g:solarized_contrast="high"
 " let g:solarized_visibility="high"
 colorscheme solarized
-" Get rid of the underline in fold text
-hi Folded term=bold cterm=bold
+" Get rid of the underline and bold in fold text
+hi Folded term=none gui=none
 " SignColumn will use same bg color as linenumber (GitGutter will set it)
 hi clear SignColumn
 " hi SignColumn ctermbg=0 guibg=DarkGrey

@@ -19,6 +19,7 @@ Vim plugins are installed as a git submodules, so:
     ln -s ~/dotfiles/redshift.conf ~/.config/redshift.conf
     ln -s ~/dotfiles/terminalrc ~/.config/Terminal/terminalrc
     ln -s ~/dotfiles/dircolors ~/.dircolors
+    ln -s ~/dotfiles/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
     ln -s ~/dotfiles/xfce4-keyboard-shortcuts.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
 Or use install.sh:
@@ -37,6 +38,7 @@ Or use install.sh:
     rm ~/.config/redshift.conf
     rm ~/.config/Terminal/terminalrc
     rm ~/.dircolors
+    rm ~/.local/share/radiotray/bookmarks.xml
     rm ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
 ### Update Vim plugins

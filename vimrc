@@ -459,7 +459,7 @@ if has('gui_running')
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
-  set lines=44 columns=84
+  set lines=39 columns=84
   set guioptions-=T
   set guioptions-=m
   set guioptions+=lrb

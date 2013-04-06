@@ -6,4 +6,5 @@ ln -s ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/redshift.conf ~/.config/redshift.conf
 ln -s ~/dotfiles/terminalrc ~/.config/Terminal/terminalrc
 ln -s ~/dotfiles/dircolors ~/.dircolors
+ln -s ~/dotfiles/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
 ln -s ~/dotfiles/xfce4-keyboard-shortcuts.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml

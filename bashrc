@@ -94,10 +94,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias v='vim'
-alias sv='sudo vim'
-alias df='vimdiff'
-
 # Unmap C-s in terminal so vim can use it for saving files.
 vim()
 {
@@ -106,72 +102,6 @@ vim()
     command vim "$@"
     stty "$STTYOPTS"
 }
-
-# Git
-alias g='git'
-
-# Tmux
-alias tmux='TERM=screen-256color-bce tmux'
-alias t='TERM=screen-256color-bce tmux'
-alias ta='tmux attach'
-alias td='tmux detach'
-
-# Clear terminal history buffer.
-alias r='reset'
-# Some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Custom
-alias ..='cd ..'
-alias qq='exit'
-alias c='clear'
-
-# Apt stuff.
-alias sagi='sudo apt-get install'
-alias saga='sudo apt-get autoremove'
-alias sagu='sudo apt-get update'
-alias sup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
-alias saar='sudo add-apt-repository'
-
-# Bookmarks
-alias togs='cd /media/viszu/Data/GS-Data/'
-alias topy='cd /media/viszu/Data/GS-Data/Dropbox/Projekty/Py2/'
-
-# Git
-alias gcl='git clone'
-
-alias gi='git init'
-alias ga='git add'
-alias ga.='git add .'
-
-alias gc='git commit'
-alias gci='git commit -m'
-alias gcia='git commit -am'
-alias gciam='git commit --ammend -m'
-
-alias gst='git status'
-alias gsts='git status -s'
-alias gstis='git status --ignore-submodules'
-
-alias glg='git log'
-alias glgo='git log --oneline'
-
-alias gdf='git diff'
-alias gdfc='git diff --cached'
-alias gdfis='git diff --ignore-submodules'
-
-alias gsmi='git submodule init'
-alias gsma='git submodule add'
-alias gsmu='git submodule update'
-
-alias grtaog='git remote add origin'
-alias gpsuogmt='git push -u origin master'
-alias gplsub='git submodule foreach "git pull origin master"'
-
-alias grmc='git rm --cached'
-
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

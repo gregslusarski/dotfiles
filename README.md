@@ -15,6 +15,7 @@ Vim plugins are installed as a git submodules, so:
     ln -s ~/dotfiles/vimrc ~/.vimrc
     ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
     ln -s ~/dotfiles/bashrc ~/.bashrc
+    ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
     ln -s ~/dotfiles/gitconfig ~/.gitconfig
     ln -s ~/dotfiles/redshift.conf ~/.config/redshift.conf
     ln -s ~/dotfiles/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
@@ -31,6 +32,7 @@ Or use install.sh:
     rm ~/.vimrc
     rm ~/.tmux.conf
     rm ~/.bashrc
+    rm ~/.bash_aliases
     rm ~/.gitconfig
     rm ~/.config/redshift.conf
     rm ~/.local/share/radiotray/bookmarks.xml

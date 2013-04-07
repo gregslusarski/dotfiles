@@ -9,36 +9,3 @@
 	ui = true
 [credential]
 	helper = cache --timeout=3600
-[alias]
-	a = add
-	i = init
-	aa = add .
-	ps = push
-	lg = log
-	lgp = log -p
-	lgo = log --oneline
-	st = status
-	stis = status --ignore-submodules
-	sts = status -s
-	df = diff
-	dfis = diff --ignore-submodules
-	dfc = diff --cached
-	ci = commit -m
-	cia = commit -am
-	ciam = commit --ammend -m
-	br = branch
-	co = checkout
-	rt = remote
-	rtr = remote rm
-	pl = pull
-	cl = clone
-	smi = submodule init
-	sma = submodule add
-	smu = submodule update
-	# rm --cached path_to_submodule (no trailing slash).
-	rmc = rm --cached
-	rtaog = remote add origin
-	psuogmt = push -u origin master
-	psufogmt = push -uf origin master
-	pssub = submodule foreach 'git push origin master'
-	plsub = submodule foreach 'git pull origin master'

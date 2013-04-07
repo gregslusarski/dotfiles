@@ -139,6 +139,40 @@ alias saar='sudo add-apt-repository'
 alias togs='cd /media/viszu/Data/GS-Data/'
 alias topy='cd /media/viszu/Data/GS-Data/Dropbox/Projekty/Py2/'
 
+# Git
+alias gcl='git clone'
+
+alias gi='git init'
+alias ga='git add'
+alias ga.='git add .'
+
+alias gc='git commit'
+alias gci='git commit -m'
+alias gcia='git commit -am'
+alias gciam='git commit --ammend -m'
+
+alias gst='git status'
+alias gsts='git status -s'
+alias gstis='git status --ignore-submodules'
+
+alias glg='git log'
+alias glgo='git log --oneline'
+
+alias gdf='git diff'
+alias gdfc='git diff --cached'
+alias gdfis='git diff --ignore-submodules'
+
+alias gsmi='git submodule init'
+alias gsma='git submodule add'
+alias gsmu='git submodule update'
+
+alias grtaog='git remote add origin'
+alias gpsuogmt='git push -u origin master'
+alias gplsub='git submodule foreach "git pull origin master"'
+
+alias grmc='git rm --cached'
+
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

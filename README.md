@@ -11,12 +11,13 @@ Vim plugins are installed as a git submodules, so:
 
 ### Generate symlinks
 
-    ln -s ~/dotfiles/vim ~/.vim
-    ln -s ~/dotfiles/vimrc ~/.vimrc
-    ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+    ln -s ~/dotfiles/profile ~/.profile
     ln -s ~/dotfiles/bashrc ~/.bashrc
     ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
     ln -s ~/dotfiles/gitconfig ~/.gitconfig
+    ln -s ~/dotfiles/vim ~/.vim
+    ln -s ~/dotfiles/vimrc ~/.vimrc
+    ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
     ln -s ~/dotfiles/redshift.conf ~/.config/redshift.conf
     ln -s ~/dotfiles/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
 
@@ -28,12 +29,13 @@ Or use install.sh:
 
 ### Remove symlinks
 
-    rm -r ~/.vim
-    rm ~/.vimrc
-    rm ~/.tmux.conf
+    rm ~/.profile
     rm ~/.bashrc
     rm ~/.bash_aliases
     rm ~/.gitconfig
+    rm -r ~/.vim
+    rm ~/.vimrc
+    rm ~/.tmux.conf
     rm ~/.config/redshift.conf
     rm ~/.local/share/radiotray/bookmarks.xml
 

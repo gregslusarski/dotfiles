@@ -262,6 +262,10 @@ if has('conceal')
 endif
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/snippets/snippets'
+" Disable built-in snippets
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
 
 " - Powerline"{{{2
 "let g:Powerline_symbols = 'fancy'

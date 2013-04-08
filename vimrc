@@ -135,20 +135,24 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-c> <C-w>c
+" Be consistent with bash
+" Go to the 1st non blank
+inoremap <C-a> <C-o>^
+cnoremap <C-a> <Home>
+" Go to the end of a line
+inoremap <C-e> <C-o>$
+cnoremap <C-e> <End>
 " Write current buffer
 nnoremap <C-s> :update!<CR>
 inoremap <C-s> <C-o>:update!<CR>
 vnoremap <C-s> <C-c>:update!<CR>
 " Write read-only files
 cnoremap W! w !sudo tee %
-" Switch fast between tab settings
-cnoremap t2e setlocal sw=2 sts=2 ts=2 et
-cnoremap t2n setlocal sw=2 sts=2 ts=2 noet
-cnoremap t4e setlocal sw=4 sts=4 ts=4 et
-cnoremap t4n setlocal sw=4 sts=4 ts=4 noet
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
+" Easier linewise reselection
+nnoremap <leader>V V`]
 " Make Y behave like other capitals
 nnoremap Y y$
 " Improve up/down movement on wrapped lines
@@ -156,20 +160,12 @@ nnoremap j gj
 nnoremap k gk
 " Toggle paste / nopaste
 nnoremap <F4> :set paste! paste?<CR>
-" '+' = Linux clipboard register
-noremap <F3> "+
-" Disable <f1>'s default help functionality
-nnoremap <F1> <Esc>
-inoremap <F1> <Esc>
 " Esc
 inoremap jk <Esc>
 inoremap kj <Esc>
 " Center screen on next / prev found
 nnoremap N Nzz
 nnoremap n nzz
-" Make <C-u> and <C-w> undoable
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
 " Toggle spell checking
 nnoremap <Leader>s :setlocal spell! spell?<CR>
 " Switch fast between buffers
@@ -191,6 +187,12 @@ nnoremap <silent> <Leader>/ :noh<CR>
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=
 nnoremap <Leader>` yypVr~
+" Make <C-u> and <C-w> undoable
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+" Disable <f1>'s default help functionality
+nnoremap <F1> <Esc>
+inoremap <F1> <Esc>
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
@@ -329,6 +331,8 @@ augroup General
   " Turns off error bells
   set noerrorbells visualbell t_vb=
   au GUIEnter * set vb t_vb=
+  " Resize splits when the window is resized
+  au VimResized * :wincmd =
 augroup END
 
 augroup Plugins

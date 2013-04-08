@@ -6,8 +6,7 @@
 Vim plugins are installed as a git submodules, so:
 
     cd dotfiles
-    git submodule init
-    git submodule update
+    git submodule update --init
 
 ### Generate symlinks
 

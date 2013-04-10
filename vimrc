@@ -151,6 +151,9 @@ cnoremap W! w !sudo tee %
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
+" Select (charwise) the contents of the current line, excluding indentation
+" Great for pasting Python lines into REPLs.
+nnoremap vv ^vg_
 " Easier linewise reselection
 nnoremap <leader>V V`]
 " Make Y behave like other capitals
@@ -171,7 +174,7 @@ nnoremap <Leader>s :setlocal spell! spell?<CR>
 " Switch fast between buffers
 " nnoremap <Leader>l :ls<CR>:b<Space>
 " Open vimrc
-nnoremap <Leader>vv :e $MYVIMRC<CR>
+nnoremap <Leader>ev :e $MYVIMRC<CR>
 " Source vimrc
 nnoremap <Leader>vs :source $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer
@@ -196,6 +199,9 @@ inoremap <F1> <Esc>
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
+" - Snipmate"{{{2
+let g:snippets_dir='~/.vim/bundle/snippets/snippets'
+
 " - Fugitive"{{{2
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -237,37 +243,37 @@ let g:ctrlp_working_path_mode = 0
 " E111 = indentation is not a multiple of four
 let g:flake8_ignore="E111"
 
-" - Neocomplcache"{{{2
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_force_overwrite_completefunc=1
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" " - Neocomplcache"{{{2
+" let g:neocomplcache_enable_at_startup = 1
+" " Use smartcase.
+" let g:neocomplcache_enable_smart_case = 1
+" " let g:neocomplcache_force_overwrite_completefunc=1
+" " <CR>: close popup and save indent.
+" inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+" " inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
-" - Neosnippet"{{{2
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" SuperTab like snippets behavior.
-" imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/snippets/snippets'
-" Disable built-in snippets
-let g:neosnippet#disable_runtime_snippets = {
-\   '_' : 1,
-\ }
+" " - Neosnippet"{{{2
+" " Plugin key-mappings.
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" " SuperTab like snippets behavior.
+" " imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" " smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" " For snippet_complete marker.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=i
+" endif
+" " Tell Neosnippet about the other snippets
+" let g:neosnippet#snippets_directory='~/.vim/bundle/snippets/snippets'
+" " Disable built-in snippets
+" let g:neosnippet#disable_runtime_snippets = {
+" \   '_' : 1,
+" \ }
 
 " - Powerline"{{{2
 "let g:Powerline_symbols = 'fancy'
@@ -321,16 +327,20 @@ augroup General
   au!
   " Remove any trailing whitespace that is in the file
   au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
   " Jumps to the last known position in a file just after opening it
   au BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
       \ exe "normal! g`\"" |
     \ endif
+
   " When leaving insert mode, set nopaste
   au InsertLeave * set nopaste
+
   " Turns off error bells
   set noerrorbells visualbell t_vb=
   au GUIEnter * set vb t_vb=
+
   " Resize splits when the window is resized
   au VimResized * :wincmd =
 augroup END

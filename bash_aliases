@@ -52,4 +52,6 @@ alias t='TERM=screen-256color-bce tmux'
 
 # Ack-grep
 alias ack='ack-grep'
-alias a='ack-grep'
+alias ackt='ack-grep --text'
+alias ackp='ack-grep --python'
+alias ackv='ack-grep --vim'

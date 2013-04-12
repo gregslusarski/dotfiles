@@ -17,13 +17,13 @@ Vim plugins are installed as a git submodules, so:
     ln -s ~/dotfiles/vim ~/.vim
     ln -s ~/dotfiles/vimrc ~/.vimrc
     ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+    ln -s ~/dotfiles/ackrc ~/.ackrc
     ln -s ~/dotfiles/redshift.conf ~/.config/redshift.conf
     ln -s ~/dotfiles/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
 
 Or use install.sh:
 
     cd ~/dotfiles/bin
-    sudo chmod +x install.sh
     sh install.sh
 
 ### Remove symlinks
@@ -35,6 +35,7 @@ Or use install.sh:
     rm -r ~/.vim
     rm ~/.vimrc
     rm ~/.tmux.conf
+    rm ~/.ackrc
     rm ~/.config/redshift.conf
     rm ~/.local/share/radiotray/bookmarks.xml
 

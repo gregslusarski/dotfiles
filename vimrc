@@ -197,6 +197,11 @@ inoremap <C-w> <C-g>u<C-w>
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 
+" = ABBREVIATIONS"{{{1
+cnoreabbrev H h
+cnoreabbrev a Ack
+cnoreabbrev ah AckHelp
+
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 " - Snipmate"{{{2
@@ -243,19 +248,19 @@ let g:ctrlp_working_path_mode = 0
 " E111 = indentation is not a multiple of four
 let g:flake8_ignore="E111"
 
-" " - Neocomplcache"{{{2
-" let g:neocomplcache_enable_at_startup = 1
-" " Use smartcase.
-" let g:neocomplcache_enable_smart_case = 1
-" " let g:neocomplcache_force_overwrite_completefunc=1
-" " <CR>: close popup and save indent.
-" inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" " <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" " <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" " inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" - Neocomplcache"{{{2
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_force_overwrite_completefunc=1
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
 " " - Neosnippet"{{{2
 " " Plugin key-mappings.

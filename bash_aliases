@@ -9,6 +9,7 @@ alias l='ls -CF'
 
 # Apt stuff
 alias sagi='sudo apt-get install'
+alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update'
 alias sup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
@@ -48,3 +49,7 @@ alias vdf='vimdiff'
 # Tmux
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='TERM=screen-256color-bce tmux'
+
+# Ack-grep
+alias ack='ack-grep'
+alias a='ack-grep'

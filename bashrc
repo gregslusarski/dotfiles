@@ -126,3 +126,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# less will use colors
+export LESS=-RFX

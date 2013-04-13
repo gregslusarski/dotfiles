@@ -56,8 +56,11 @@ alias ackt='ack-grep --text'
 alias ackp='ack-grep --python'
 alias ackv='ack-grep --vim'
 
-# Find(search for folders)
-alias sfind='sudo find / -type d -name'
+# Find
+# find dir
+alias findd='sudo find / -type d -name'
+# find file
+alias findf='sudo find / -type f -name'
 
 # Extracting
 alias tgz='tar xvzf'

@@ -7,7 +7,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Apt stuff
+# Apt
 alias sagi='sudo apt-get install'
 alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
@@ -25,7 +25,7 @@ alias gci='git commit -m'
 alias gcia='git commit -am'
 alias gciam='git commit --ammend -m'
 alias gst='git status'
-alias gsts='git status -s'
+alias gsts='git status -s --branch'
 alias gstis='git status --ignore-submodules'
 alias glg='git log'
 alias glgo='git log --oneline'
@@ -55,3 +55,7 @@ alias ack='ack-grep'
 alias ackt='ack-grep --text'
 alias ackp='ack-grep --python'
 alias ackv='ack-grep --vim'
+
+# Extracting
+alias tgz='tar xvzf'
+alias tbz2='tar xvjf'

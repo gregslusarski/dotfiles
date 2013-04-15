@@ -65,3 +65,9 @@ alias findf='sudo find / -type f -name'
 # Extracting
 alias tgz='tar xvzf'
 alias tbz2='tar xvjf'
+
+# du (file space usage)
+alias du='du -hs * | sort -h'
+
+# df (disk space usage)
+alias df='df -h'

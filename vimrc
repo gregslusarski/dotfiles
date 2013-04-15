@@ -110,7 +110,7 @@ set nobackup
 set noswapfile
 " Enable persistent undo
 set undofile
-set undodir=~/tmp/vim/undo
+set undodir=~/.tmp/vim/undo
 if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")
 endif
@@ -209,7 +209,7 @@ cnoreabbrev hack AckHelp
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 " - Snipmate"{{{2
-let g:snippets_dir='~/.vim/bundle/snippets/snippets'
+" let g:snippets_dir='~/.vim/bundle/snippets/snippets'
 
 " - Fugitive"{{{2
 nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -295,7 +295,11 @@ xmap \ <Plug>Commentary
 nmap \ <Plug>Commentary
 nmap \\ <Plug>CommentaryLine
 nmap \u <Plug>CommentaryUndo
-" }}}2
+
+" - Gundo"{{{2
+nnoremap <silent> <F2> :GundoToggle<CR>
+"}}}2
+
 " Supertab
 " au FileType *
 "   \ if &omnifunc != '' |
@@ -308,9 +312,6 @@ nmap \u <Plug>CommentaryUndo
 " let g:UltiSnipsJumpForwardTrigger = '<tab>'
 " let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " let g:UltiSnipsListSnippets = '<c-s-l>'
-
-" Gundo
-nnoremap <silent> <F2> :GundoToggle<CR>
 
 " CtrlP
 "let g:ctrlp_map = '<Leader>p'
@@ -469,25 +470,18 @@ fun! CustomFoldText()
   return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
 endfun
 
-" = FIXUPS"{{{1
-" -------------
-" Fix arrow key navigation in insert mode
-imap <ESC>oA <ESC>ki
-imap <ESC>oB <ESC>ji
-imap <ESC>oC <ESC>li
-imap <ESC>oD <ESC>hi
-
 " = GUI & COLOR SCHEME"{{{1
 " -------------------------
 if has('gui_running')
   if has('unix')
-    set guifont=Droid\ Sans\ Mono\ 10.2
+    " set guifont=Droid\ Sans\ Mono\ 10.2
+    set guifont=Meslo\ LG\ S\ DZ\ 10
   elseif has('gui_win32') || has('gui_win64')
     let g:skip_loading_mswin=1
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
-  set lines=39 columns=84
+  set lines=37 columns=84
   set guioptions-=T
   set guioptions-=m
   set guioptions+=lrb
@@ -511,3 +505,11 @@ hi Folded term=none gui=none
 " SignColumn will use same bg color as linenumber (GitGutter will set it)
 hi clear SignColumn
 " hi SignColumn ctermbg=0 guibg=DarkGrey
+
+" = FIXUPS"{{{1
+" -------------
+" Fix arrow key navigation in insert mode
+imap <ESC>oA <ESC>ki
+imap <ESC>oB <ESC>ji
+imap <ESC>oC <ESC>li
+imap <ESC>oD <ESC>hi

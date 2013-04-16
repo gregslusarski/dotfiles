@@ -61,15 +61,9 @@
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "vim/bundle/neosnippet"]
-	path = vim/bundle/neosnippet
-	url = https://github.com/Shougo/neosnippet.git
 [submodule "vim/bundle/python-indent"]
 	path = vim/bundle/python-indent
 	url = https://github.com/hynek/vim-python-pep8-indent.git
 [submodule "vim/bundle/youcompleteme"]
 	path = vim/bundle/youcompleteme
 	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule "vim/bundle/listtoggle"]
-	path = vim/bundle/listtoggle
-	url = https://github.com/Valloric/ListToggle.git

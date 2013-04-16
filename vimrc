@@ -161,16 +161,16 @@ nnoremap Y y$
 " Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
+" Toggle spell checking
+nnoremap <F3> :setlocal spell! spell?<CR>
 " Toggle paste / nopaste
-nnoremap <F4> :set paste! paste?<CR>
+nnoremap <F4> :setlocal paste! paste?<CR>
 " Esc
 inoremap jk <Esc>
 inoremap kj <Esc>
 " Center screen on next / prev found
 nnoremap N Nzz
 nnoremap n nzz
-" Toggle spell checking
-nnoremap <Leader>s :setlocal spell! spell?<CR>
 " Switch fast between buffers
 " nnoremap <Leader>l :ls<CR>:b<Space>
 " Open vimrc
@@ -248,9 +248,19 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_jump_to_buffer = 0
 let g:ctrlp_working_path_mode = 0
 
-" - Flake8"{{{2
-" E111 = indentation is not a multiple of four
-let g:flake8_ignore="E111"
+" - Syntastic"{{{2
+nnoremap <silent> <Leader>s :SyntasticCheck<CR>
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E111,E501'
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=5
+let g:syntastic_enable_signs=0
+let g:syntastic_echo_current_error=0
+
+" " - Flake8"{{{2
+" " E111 = indentation is not a multiple of four
+" let g:flake8_ignore="E111"
 
 " " - Neocomplcache"{{{2
 " let g:neocomplcache_enable_at_startup = 1
@@ -300,6 +310,7 @@ nmap \u <Plug>CommentaryUndo
 " - Gundo"{{{2
 nnoremap <silent> <F2> :GundoToggle<CR>
 "}}}2
+
 " Supertab
 " au FileType *
 "   \ if &omnifunc != '' |
@@ -355,10 +366,10 @@ augroup General
   au VimResized * :wincmd =
 augroup END
 
-augroup Plugins
-  au!
-  autocmd BufWritePost *.py call Flake8()
-augroup END
+" augroup Plugins
+"   au!
+"   autocmd BufWritePost *.py call Flake8()
+" augroup END
 
 augroup FTCheck
   " filetype.vim

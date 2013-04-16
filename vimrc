@@ -190,9 +190,9 @@ nnoremap <silent> <Leader>/ :noh<CR>
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=
 nnoremap <Leader>` yypVr~
-" Make <C-u> and <C-w> undoable
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
+" " Make <C-u> and <C-w> undoable
+" inoremap <C-u> <C-g>u<C-u>
+" inoremap <C-w> <C-g>u<C-w>
 " Disable <f1>'s default help functionality
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
@@ -209,7 +209,7 @@ cnoreabbrev hack AckHelp
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 " - Snipmate"{{{2
-" let g:snippets_dir='~/.vim/bundle/snippets/snippets'
+let g:snippets_dir='~/.vim/bundle/snippets/snippets'
 
 " - Fugitive"{{{2
 nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -252,37 +252,38 @@ let g:ctrlp_working_path_mode = 0
 " E111 = indentation is not a multiple of four
 let g:flake8_ignore="E111"
 
-" - Neocomplcache"{{{2
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_force_overwrite_completefunc=1
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" " - Neocomplcache"{{{2
+" let g:neocomplcache_enable_at_startup = 1
+" " Use smartcase.
+" let g:neocomplcache_enable_smart_case = 1
+" " let g:neocomplcache_force_overwrite_completefunc=1
+" " <CR>: close popup and save indent.
+" inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
-" - Neosnippet"{{{2
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" SuperTab like snippets behavior.
-" imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/snippets/snippets'
-" Disable built-in snippets
-let g:neosnippet#disable_runtime_snippets = {
-\   '_' : 1,
-\ }
+" " - Neosnippet"{{{2
+" " Plugin key-mappings.
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" " SuperTab like snippets behavior.
+" " imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" " smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" " For snippet_complete marker.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=i
+" endif
+" " Tell Neosnippet about the other snippets
+" let g:neosnippet#snippets_directory='~/.vim/bundle/snippets/snippets'
+" " Disable built-in snippets
+" let g:neosnippet#disable_runtime_snippets = {
+" \   '_' : 1,
+" \ }
+" let g:neosnippet#enable_snipmate_compatibility = 1
 
 " - Powerline"{{{2
 "let g:Powerline_symbols = 'fancy'
@@ -299,7 +300,6 @@ nmap \u <Plug>CommentaryUndo
 " - Gundo"{{{2
 nnoremap <silent> <F2> :GundoToggle<CR>
 "}}}2
-
 " Supertab
 " au FileType *
 "   \ if &omnifunc != '' |

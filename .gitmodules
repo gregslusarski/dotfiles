@@ -52,9 +52,6 @@
 [submodule "vim/bundle/gitgutter"]
 	path = vim/bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "vim/bundle/snippets"]
-	path = vim/bundle/snippets
-	url = https://github.com/honza/vim-snippets.git
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git

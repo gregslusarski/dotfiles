@@ -49,6 +49,12 @@ Bundle 'SirVer/ultisnips'
 " " }}}2
 " Filetype detection:ON, plugin:ON, indent:ON
 filetype plugin indent on " required! for Vundle
+" - Path"{{{2
+" for testing out custom vim scripts
+set rtp+=~/vim_test,~/vim_test/after
+" should be the last entry in rtp (for UltiSnips)
+set rtp+=~/dotfiles/vim
+"}}}2
 " Enable syntax highlighting
 syntax on
 " Enable unicode characters

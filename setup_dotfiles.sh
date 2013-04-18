@@ -24,6 +24,11 @@ then
   ln -s $script_dir/gitconfig ~/.gitconfig
 fi
 
+if [[ ! -e ~/.gitignore_global ]]
+then
+  ln -s $script_dir/gitignore_global ~/.gitignore_global
+fi
+
 if [[ ! -e ~/.vimrc ]]
 then
   ln -s $script_dir/vimrc ~/.vimrc

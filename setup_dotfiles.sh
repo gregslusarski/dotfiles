@@ -61,3 +61,11 @@ then
   mkdir -p ~/.local/share/radiotray
   ln -s $script_dir/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
 fi
+
+# vim
+mkdir -p ~/vim_test/after
+
+if [[ ! -d ~/.vim/bundle/vundle ]]
+  then
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+fi

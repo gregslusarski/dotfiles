@@ -3,17 +3,56 @@
 " viszu's vimrc - https://github.com/viszu
 " Disable vi compatibilty restrictions
 set nocompatible
-" - Initialize plugin manager"{{{2
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
-" }}}2
-" Enable unicode characters
-set encoding=utf-8
+filetype off " required! for Vundle
+" - Vundle plugin manager"{{{2
+
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" original repos on github:
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-eunuch'
+Bundle 'dahu/vimple'
+Bundle 'Raimondi/vim-buffalo'
+Bundle 'Raimondi/delimitMate'
+Bundle 'tpope/vim-git'
+Bundle 'godlygeek/tabular'
+Bundle 'vim-scripts/Gundo'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'mileszs/ack.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
+Bundle 'SirVer/ultisnips'
+"}}}2
+" " - Initialize plugin manager"{{{2
+" runtime bundle/pathogen/autoload/pathogen.vim
+" call pathogen#infect()
+" call pathogen#helptags()
+" " }}}2
+" Filetype detection:ON, plugin:ON, indent:ON
+filetype plugin indent on " required! for Vundle
 " Enable syntax highlighting
 syntax on
-" Filetype detection:ON, plugin:ON, indent:ON
-filetype plugin indent on
+" Enable unicode characters
+set encoding=utf-8
 " Emulate typical editor navigation
 set nostartofline
 " Don't insert extra space(after .?!)
@@ -94,7 +133,9 @@ set backspace=indent,eol,start
 set complete-=i
 " Timeout for keycodes (such as arrow keys and function keys) is only 10ms
 " Timeout for Vim keymaps is a second
-set timeout timeoutlen=1000 ttimeoutlen=10
+" set timeout timeoutlen=1000 ttimeoutlen=10
+" Time to wait after ESC (default causes an annoying delay)
+set timeoutlen=250
 " Mouse support
 set mouse=a
 " Limit Vim's "hit-enter" messages
@@ -110,7 +151,7 @@ set nobackup
 set noswapfile
 " Enable persistent undo
 set undofile
-set undodir=~/.tmp/vim/undo
+set undodir=~/tmp/vim/undo
 if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")
 endif
@@ -208,8 +249,17 @@ cnoreabbrev hack AckHelp
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
-" - Snipmate"{{{2
-let g:snippets_dir='~/.vim/bundle/snippets/snippets'
+" " - Snipmate"{{{2
+" let g:snippets_dir='~/.vim/bundle/snippets/snippets'
+
+" - Ultisnips"{{{2
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+" let g:UltiSnipsListSnippets = '<c-s-l>'
+" let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+" Since this ultisnips fork can also use snipmate snips, prefer ultisnips snips
+" let g:always_use_first_snippet = 1
 
 " - Fugitive"{{{2
 nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -251,7 +301,7 @@ let g:ctrlp_working_path_mode = 0
 " - Syntastic"{{{2
 nnoremap <silent> <Leader>s :SyntasticCheck<CR>
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E111,E501'
+let g:syntastic_python_flake8_args='--ignore=E111,E501,E226'
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
@@ -317,17 +367,6 @@ nnoremap <silent> <F2> :GundoToggle<CR>
 "   \   call SuperTabChain(&omnifunc, "<c-p>") |
 "   \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
 "   \ endif
-
-" Ultisnips
-" let g:UltiSnipsExpandTrigger = '<tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<tab>'
-" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-" let g:UltiSnipsListSnippets = '<c-s-l>'
-
-" CtrlP
-"let g:ctrlp_map = '<Leader>p'
-"let g:ctrlp_max_files = 1000
-"let g:ctrlp_working_path_mode = 'c'
 
 " Pyflakes
 " Error highlight color
@@ -511,6 +550,7 @@ let g:solarized_menu=0
 " let g:solarized_contrast="high"
 " let g:solarized_visibility="high"
 colorscheme solarized
+" colorscheme hybrid
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
 " SignColumn will use same bg color as linenumber (GitGutter will set it)

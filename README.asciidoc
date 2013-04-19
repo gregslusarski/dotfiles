@@ -1,4 +1,5 @@
-.dotfiles
+dotfiles
+^^^^^^^^
 
 `sh setup_dotfiles.sh` - generate symlinks, clone vundle, clone bundles +
 `sh kill_dotfiles.sh` - remove symlinks, leave ~/.vim alone

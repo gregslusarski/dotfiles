@@ -4,7 +4,7 @@
 " Disable vi compatibilty restrictions
 set nocompatible
 filetype off " required! for Vundle
-" - Vundle plugin manager"{{{2
+" - Vundle"{{{2
 
 " :BundleList          - list configured bundles
 " :BundleInstall(!)    - install(update) bundles
@@ -42,23 +42,26 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 "}}}2
-" " - Initialize plugin manager"{{{2
-" runtime bundle/pathogen/autoload/pathogen.vim
-" call pathogen#infect()
-" call pathogen#helptags()
-" " }}}2
 " Filetype detection:ON, plugin:ON, indent:ON
 filetype plugin indent on " required! for Vundle
 " - Path"{{{2
 " for testing out custom vim scripts
 set rtp+=~/vim_test,~/vim_test/after
-" should be the last entry in rtp (for UltiSnips)
+" my snippets, spell file etc.
 set rtp+=~/dotfiles/vim
 "}}}2
 " Enable syntax highlighting
 syntax on
-" Enable unicode characters
-set encoding=utf-8
+" - Support unicode characters"{{{2
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+"}}}2
 " Emulate typical editor navigation
 set nostartofline
 " Don't insert extra space(after .?!)
@@ -139,9 +142,7 @@ set backspace=indent,eol,start
 set complete-=i
 " Timeout for keycodes (such as arrow keys and function keys) is only 10ms
 " Timeout for Vim keymaps is a second
-" set timeout timeoutlen=1000 ttimeoutlen=10
-" Time to wait after ESC (default causes an annoying delay)
-set timeoutlen=250
+set timeout timeoutlen=1000 ttimeoutlen=10
 " Mouse support
 set mouse=a
 " Limit Vim's "hit-enter" messages
@@ -262,8 +263,10 @@ cnoreabbrev hack AckHelp
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+let g:UltiSnipsSnippetsDir="~/dotfiles/vim/UltiSnips"
+let g:UltiSnipsSnippetDirectories=["Ultisnips"]
+let g:snips_author="viszu"
 " let g:UltiSnipsListSnippets = '<c-s-l>'
-" let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 " Since this ultisnips fork can also use snipmate snips, prefer ultisnips snips
 " let g:always_use_first_snippet = 1
 
@@ -422,6 +425,8 @@ augroup FTCheck
   au BufNewFile,BufRead *.rss,*.atom set ft=xml
   au BufNewFile,BufRead *.txt,README,HELP,INSTALL,NEWS,TODO if &ft == ""
     \ | set ft=text|endif
+  " UltiSnips is missing a setf trigger for snippets on BufEnter
+  au BufEnter *.snippets setf snippets
 augroup END
 
 augroup FTOptions
@@ -432,6 +437,7 @@ augroup FTOptions
   au FileType c,cpp,cs,java setlocal fdm=syntax cin
   au FileType git,gitcommit setlocal fdm=syntax
   au FileType gitcommit setlocal spell
+  au FileType snippets set noet
 augroup END
 
 " = FUNCTIONS{{{1

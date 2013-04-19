@@ -45,3 +45,11 @@ fi
 if [ -h ~/.local/share/radiotray/bookmarks.xml ]; then
   rm ~/.local/share/radiotray/bookmarks.xml
 fi
+
+if [ -h ~/.zshrc ]; then
+  rm ~/.zshrc
+fi
+
+if [ -h ~/.oh-my-zsh/themes/viszu.zsh-theme ]; then
+  rm ~/.oh-my-zsh/themes/viszu.zsh-theme
+fi

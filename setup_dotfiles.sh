@@ -4,47 +4,57 @@
 script_dir="$( cd "$( dirname "$0" )" && pwd )"
 
 # generate symlinks
-if [ ! -e ~/.profile ]; then
-  ln -s $script_dir/profile ~/.profile
-fi
+# if [ ! -e ~/.profile ]; then
+#   ln -s $script_dir/bash/profile ~/.profile
+# fi
 
-if [ ! -e ~/.bashrc ]; then
-  ln -s $script_dir/bashrc ~/.bashrc
-fi
+# if [ ! -e ~/.bashrc ]; then
+#   ln -s $script_dir/bash/bashrc ~/.bashrc
+# fi
 
 if [ ! -e ~/.bash_aliases ]; then
-  ln -s $script_dir/bash_aliases ~/.bash_aliases
+  ln -s $script_dir/bash/bash_aliases ~/.bash_aliases
 fi
 
 if [ ! -e ~/.gitconfig ]; then
-  ln -s $script_dir/gitconfig ~/.gitconfig
+  ln -s $script_dir/git/gitconfig ~/.gitconfig
 fi
 
 if [ ! -e ~/.gitignore_global ]; then
-  ln -s $script_dir/gitignore_global ~/.gitignore_global
+  ln -s $script_dir/git/gitignore_global ~/.gitignore_global
 fi
 
 if [ ! -e ~/.tmux.conf ]; then
-  ln -s $script_dir/tmux.conf ~/.tmux.conf
+  ln -s $script_dir/tmux/tmux.conf ~/.tmux.conf
 fi
 
 if [ ! -e ~/.ackrc ]; then
-  ln -s $script_dir/ackrc ~/.ackrc
+  ln -s $script_dir/stuff/ackrc ~/.ackrc
 fi
 
 if [ ! -e ~/.config/bpython/config ]; then
   # -p says to create the dir if it doesn't exist already
   mkdir -p ~/.config/bpython
-  ln -s $script_dir/bpython_config ~/.config/bpython/config
+  ln -s $script_dir/stuff/bpython_config ~/.config/bpython/config
 fi
 
 if [ ! -e ~/.config/redshift.conf ]; then
-  ln -s $script_dir/redshift.conf ~/.config/redshift.conf
+  ln -s $script_dir/stuff/redshift.conf ~/.config/redshift.conf
 fi
 
 if [ ! -e ~/.local/share/radiotray/bookmarks.xml ]; then
   mkdir -p ~/.local/share/radiotray
-  ln -s $script_dir/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
+  ln -s $script_dir/stuff/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
+fi
+
+# zsh
+if [ ! -e ~/.zshrc ]; then
+  ln -s $script_dir/zsh/zshrc ~/.zshrc
+fi
+
+if [ ! -e ~/.oh-my-zsh/themes/viszu.zsh-theme ]; then
+  mkdir -p ~/.oh-my-zsh/themes
+  ln -s $script_dir/zsh/viszu.zsh-theme ~/.oh-my-zsh/themes/viszu.zsh-theme
 fi
 
 # vim
@@ -56,5 +66,5 @@ if [ ! -d ~/.vim ]; then
 fi
 
 if [ ! -e ~/.vimrc ]; then
-  ln -s $script_dir/vimrc ~/.vimrc
+  ln -s $script_dir/vim/vimrc ~/.vimrc
 fi

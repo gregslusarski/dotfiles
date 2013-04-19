@@ -24,10 +24,6 @@ if [ ! -e ~/.gitignore_global ]; then
   ln -s $script_dir/gitignore_global ~/.gitignore_global
 fi
 
-if [ ! -e ~/.vimrc ]; then
-  ln -s $script_dir/vimrc ~/.vimrc
-fi
-
 if [ ! -e ~/.tmux.conf ]; then
   ln -s $script_dir/tmux.conf ~/.tmux.conf
 fi
@@ -57,4 +53,8 @@ mkdir -p ~/vim_test/after
 if [ ! -d ~/.vim ]; then
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
   vim +BundleInstall! +BundleClean +qall
+fi
+
+if [ ! -e ~/.vimrc ]; then
+  ln -s $script_dir/vimrc ~/.vimrc
 fi

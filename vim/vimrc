@@ -41,6 +41,7 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
+Bundle 'viszu/vim-python-fold'
 "}}}2
 " Filetype detection:ON, plugin:ON, indent:ON
 filetype plugin indent on " required! for Vundle
@@ -234,6 +235,7 @@ nnoremap <Leader>wq :wa!<CR>:q<CR>
 nnoremap <Leader>a ggVG
 " Clear search highlights
 nnoremap <silent> <Leader>/ :noh<CR>
+inoremap <C-Tab> <C-x><C-n>
 " Underline text, to create headers
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=
@@ -263,6 +265,7 @@ cnoreabbrev hack AckHelp
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+let g:UltiSnipsListSnippets="<c-s-l>"
 let g:UltiSnipsSnippetsDir="~/dotfiles/vim/UltiSnips"
 let g:UltiSnipsSnippetDirectories=["Ultisnips"]
 let g:snips_author="viszu"

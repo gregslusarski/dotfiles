@@ -12,8 +12,9 @@ alias sagi='sudo apt-get install'
 alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update'
-alias sup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
 alias saar='sudo add-apt-repository'
+alias sup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
+alias up='vim +BundleInstall! +BundleClean +qall && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
 
 # Git
 alias gcl='git clone'
@@ -45,7 +46,7 @@ alias grmc='git rm --cached'
 
 # Vim
 alias v='vim'
-alias vg='gvim'
+alias gv='gvim'
 alias vdf='vimdiff'
 alias vup='vim +BundleInstall! +BundleClean +qall'
 

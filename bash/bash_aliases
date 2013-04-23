@@ -47,6 +47,7 @@ alias grmc='git rm --cached'
 alias v='vim'
 alias vg='gvim'
 alias vdf='vimdiff'
+alias vup='vim +BundleInstall! +BundleClean +qall'
 
 # Tmux
 alias tmux='TERM=screen-256color-bce tmux'

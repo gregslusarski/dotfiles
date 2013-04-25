@@ -12,9 +12,9 @@ fi
 #   ln -s $script_dir/bash/bashrc ~/.bashrc
 # fi
 
-if [ ! -e ~/.config/terminator/config ]; then
-  ln -s $script_dir/terminator/terminator_config ~/.config/terminator/config
-fi
+# if [ ! -e ~/.config/terminator/config ]; then
+#   ln -s $script_dir/terminator/terminator_config ~/.config/terminator/config
+# fi
 
 if [ ! -e ~/.bash_aliases ]; then
   ln -s $script_dir/bash/bash_aliases ~/.bash_aliases

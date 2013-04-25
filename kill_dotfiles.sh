@@ -6,9 +6,13 @@ if [ -h ~/.profile ]; then
   rm ~/.profile
 fi
 
-if [ -h ~/.bashrc ]; then
-  rm ~/.bashrc
-fi
+# if [ -h ~/.bashrc ]; then
+#   rm ~/.bashrc
+# fi
+
+# if [ -h ~/.config/terminator/config ]; then
+#   rm ~/.config/terminator/config
+# fi
 
 if [ -h ~/.bash_aliases ]; then
   rm ~/.bash_aliases

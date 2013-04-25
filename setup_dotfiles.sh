@@ -4,13 +4,17 @@
 script_dir="$( cd "$( dirname "$0" )" && pwd )"
 
 # generate symlinks
-# if [ ! -e ~/.profile ]; then
-#   ln -s $script_dir/bash/profile ~/.profile
-# fi
+if [ ! -e ~/.profile ]; then
+  ln -s $script_dir/bash/profile ~/.profile
+fi
 
 # if [ ! -e ~/.bashrc ]; then
 #   ln -s $script_dir/bash/bashrc ~/.bashrc
 # fi
+
+if [ ! -e ~/.config/terminator/config ]; then
+  ln -s $script_dir/terminator/terminator_config ~/.config/terminator/config
+fi
 
 if [ ! -e ~/.bash_aliases ]; then
   ln -s $script_dir/bash/bash_aliases ~/.bash_aliases
@@ -60,11 +64,11 @@ fi
 # vim
 mkdir -p ~/vim_test/after
 
+if [ ! -e ~/.vimrc ]; then
+  ln -s $script_dir/vim/vimrc ~/.vimrc
+fi
+
 if [ ! -d ~/.vim ]; then
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
   vim +BundleInstall! +BundleClean +qall
-fi
-
-if [ ! -e ~/.vimrc ]; then
-  ln -s $script_dir/vim/vimrc ~/.vimrc
 fi

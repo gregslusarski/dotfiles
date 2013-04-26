@@ -3,6 +3,8 @@
 # get the dir of the current script
 script_dir="$( cd "$( dirname "$0" )" && pwd )"
 
+mkdir -p ~/bin
+
 # generate symlinks
 if [ ! -e ~/.profile ]; then
   ln -s $script_dir/bash/profile ~/.profile

@@ -235,7 +235,6 @@ nnoremap <Leader>wq :wa!<CR>:q<CR>
 nnoremap <Leader>a ggVG
 " Clear search highlights
 nnoremap <silent> <Leader>/ :noh<CR>
-inoremap <C-Tab> <C-x><C-n>
 " Underline text, to create headers
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=

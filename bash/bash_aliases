@@ -19,6 +19,8 @@ alias up='vim +BundleInstall! +BundleClean +qall && sudo apt-get update && sudo 
 # Git
 alias gcl='git clone'
 alias gi='git init'
+alias gpl='git pull'
+alias gps='git push'
 alias ga='git add'
 alias ga.='git add .'
 alias gau='git add -u'

@@ -58,6 +58,12 @@ alias vup='vim +BundleInstall! +BundleClean +qall'
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='TERM=screen-256color-bce tmux'
 
+# Python
+alias py='python'
+
+# Django
+alias dasp='django-admin.py startproject'
+
 # Ack-grep
 alias ack='ack-grep'
 alias ackt='ack-grep --text'

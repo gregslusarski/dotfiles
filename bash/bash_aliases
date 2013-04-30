@@ -7,6 +7,11 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Bookmarks
+alias .w='cd ~/workspace'
+alias .ws='cd ~/workspace/stuff'
+alias .d='cd ~/dotfiles'
+
 # Apt
 alias sagi='sudo apt-get install'
 alias sagr='sudo apt-get remove'

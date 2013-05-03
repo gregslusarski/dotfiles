@@ -8,9 +8,9 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Bookmarks
-alias .w='cd ~/workspace'
-alias .ws='cd ~/workspace/stuff'
-alias .d='cd ~/dotfiles'
+alias cdw='cd ~/workspace'
+alias cdws='cd ~/workspace/stuff'
+alias cdd='cd ~/dotfiles'
 
 # Apt
 alias sagi='sudo apt-get install'

@@ -41,6 +41,7 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
+" Bundle 'Raimondi/YAIFA.git'
 Bundle 'viszu/vim-python-fold'
 "}}}2
 " Filetype detection:ON, plugin:ON, indent:ON
@@ -80,6 +81,7 @@ set expandtab
 " set shiftround
 "}}}2
 " - Folding"{{{2
+set foldlevel=99
 set foldmethod=marker
 " Use custom fold text
 set foldtext=CustomFoldText()

@@ -18,7 +18,6 @@ alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update'
 alias saar='sudo add-apt-repository'
-alias sup='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
 alias up='vim +BundleInstall! +BundleClean +qall && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
 
 # Git
@@ -57,7 +56,6 @@ alias grmc='git rm --cached'
 alias v='vim'
 alias gv='gvim'
 alias vdf='vimdiff'
-alias vup='vim +BundleInstall! +BundleClean +qall'
 
 # Tmux
 alias tmux='TERM=screen-256color-bce tmux'
@@ -71,19 +69,19 @@ alias dasp='django-admin.py startproject'
 
 # Ack-grep
 alias ack='ack-grep'
-alias ackt='ack-grep --text'
-alias ackp='ack-grep --python'
-alias ackv='ack-grep --vim'
+alias ag='ack-grep -i'
+alias agt='ack-grep -i --text'
+alias agp='ack-grep -i --python'
+alias agv='ack-grep -i --vim'
 
-# Find
-# find dir
-alias findd='sudo find / -type d -name'
 # find file
-alias findf='sudo find / -type f -name'
+alias ff='sudo find / -type f -name'
+# find dir
+alias fd='sudo find / -type d -name'
 
 # Extracting
-alias tgz='tar xvzf'
-alias tbz2='tar xvjf'
+alias gz='tar xvzf'
+alias bz2='tar xvjf'
 
 # du (file space usage)
 alias du='du -hs * | sort -h'

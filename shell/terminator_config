@@ -1,0 +1,27 @@
+[global_config]
+  focus = system
+  inactive_color_offset = 1.0
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    use_system_font = False
+    login_shell = True
+    background_darkness = 0.6
+    background_image = None
+    use_custom_command = True
+    custom_command = /bin/zsh
+    font = Meslo LG S DZ 10
+    scrollback_infinite = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+      size = 640, 670
+[plugins]

@@ -7,41 +7,41 @@ mkdir -p ~/bin
 
 # generate symlinks
 if [ ! -e ~/.profile ]; then
-  ln -s $script_dir/bash/profile ~/.profile
+  ln -s $script_dir/shell/profile ~/.profile
 fi
 
 # if [ ! -e ~/.bashrc ]; then
-#   ln -s $script_dir/bash/bashrc ~/.bashrc
+#   ln -s $script_dir/shell/bashrc ~/.bashrc
 # fi
 
 # if [ ! -e ~/.config/terminator/config ]; then
-#   ln -s $script_dir/terminator/terminator_config ~/.config/terminator/config
+#   ln -s $script_dir/shell/terminator_config ~/.config/terminator/config
 # fi
 
-if [ ! -e ~/.bash_aliases ]; then
-  ln -s $script_dir/bash/bash_aliases ~/.bash_aliases
+if [ ! -e ~/.shell_aliases ]; then
+  ln -s $script_dir/shell/shell_aliases ~/.shell_aliases
 fi
 
 if [ ! -e ~/.gitconfig ]; then
-  ln -s $script_dir/git/gitconfig ~/.gitconfig
+  ln -s $script_dir/shell/gitconfig ~/.gitconfig
 fi
 
 if [ ! -e ~/.gitignore_global ]; then
-  ln -s $script_dir/git/gitignore_global ~/.gitignore_global
+  ln -s $script_dir/shell/gitignore_global ~/.gitignore_global
 fi
 
 if [ ! -e ~/.tmux.conf ]; then
-  ln -s $script_dir/tmux/tmux.conf ~/.tmux.conf
+  ln -s $script_dir/shell/tmux.conf ~/.tmux.conf
 fi
 
 if [ ! -e ~/.ackrc ]; then
-  ln -s $script_dir/stuff/ackrc ~/.ackrc
+  ln -s $script_dir/shell/ackrc ~/.ackrc
 fi
 
 if [ ! -e ~/.config/bpython/config ]; then
   # -p says to create the dir if it doesn't exist already
   mkdir -p ~/.config/bpython
-  ln -s $script_dir/stuff/bpython_config ~/.config/bpython/config
+  ln -s $script_dir/shell/bpython_config ~/.config/bpython/config
 fi
 
 if [ ! -e ~/.config/redshift.conf ]; then
@@ -55,12 +55,12 @@ fi
 
 # zsh
 if [ ! -e ~/.zshrc ]; then
-  ln -s $script_dir/zsh/zshrc ~/.zshrc
+  ln -s $script_dir/shell/zshrc ~/.zshrc
 fi
 
 if [ ! -e ~/.oh-my-zsh/themes/viszu.zsh-theme ]; then
   mkdir -p ~/.oh-my-zsh/themes
-  ln -s $script_dir/zsh/viszu.zsh-theme ~/.oh-my-zsh/themes/viszu.zsh-theme
+  ln -s $script_dir/shell/viszu.zsh-theme ~/.oh-my-zsh/themes/viszu.zsh-theme
 fi
 
 # vim

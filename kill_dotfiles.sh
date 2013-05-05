@@ -14,8 +14,8 @@ fi
 #   rm ~/.config/terminator/config
 # fi
 
-if [ -h ~/.bash_aliases ]; then
-  rm ~/.bash_aliases
+if [ -h ~/.shell_aliases ]; then
+  rm ~/.shell_aliases
 fi
 
 if [ -h ~/.gitconfig ]; then

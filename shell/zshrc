@@ -39,7 +39,7 @@ TERM=xterm-256color
 export EDITOR="gvim -u $HOME/.vimrc -N -U NONE -f"
 
 source $ZSH/oh-my-zsh.sh
-source ~/.bash_aliases
+source ~/.shell_aliases
 
 export PATH="$HOME/bin:$PATH"
 

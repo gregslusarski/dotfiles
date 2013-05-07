@@ -63,6 +63,7 @@ alias t='TERM=screen-256color-bce tmux'
 
 # Python
 alias py='python'
+alias bpy='bpython'
 
 # Django
 alias dasp='django-admin.py startproject'

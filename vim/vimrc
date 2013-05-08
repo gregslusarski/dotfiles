@@ -213,9 +213,10 @@ nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
 " Toggle spell checking
-nnoremap <F3> :setlocal spell! spell?<CR>
+nnoremap <F3> :setl spell! spell?<CR>
 " Toggle paste / nopaste
-nnoremap <F4> :setlocal paste! paste?<CR>
+nnoremap <F4> :setl paste! paste?<CR>
+nnoremap <F5> :!python %<CR>
 " Esc
 inoremap jk <Esc>
 inoremap kj <Esc>
@@ -436,11 +437,11 @@ augroup END
 augroup FTOptions
   " ftplugin
   au!
-  " au FileType markdown setlocal sw=4 sts=4
-  " au FileType python setlocal fdm=expr
-  au FileType c,cpp,cs,java setlocal fdm=syntax cin
-  au FileType git,gitcommit setlocal fdm=syntax
-  au FileType gitcommit setlocal spell
+  " au FileType markdown setl sw=4 sts=4
+  au FileType python setl fo=croql
+  au FileType c,cpp,cs,java setl fdm=syntax cin
+  au FileType git,gitcommit setl fdm=syntax
+  au FileType gitcommit setl spell
   au FileType snippets set noet
 augroup END
 
@@ -449,6 +450,10 @@ augroup END
 " - Stab"{{{2
 " Set tabstop, softtabstop and shiftwidth to the same value + set et / noet
 " Inspired by http://vimcasts.org/episodes/tabs-and-spaces/
+" retab! 4 spaces into 2
+nnoremap <Leader>t2 :call Stab()<CR>4 noet<CR>:retab!<CR>:call Stab()<CR>2 et<CR>:retab!<CR>
+" retab! 2 spaces into 4
+nnoremap <Leader>t4 :call Stab()<CR>2 noet<CR>:retab!<CR>:call Stab()<CR>4 et<CR>:retab!<CR>
 nnoremap <Leader>tt :call Stab()<CR>
 command! -nargs=* Stab call Stab()
 fun! Stab()
@@ -465,7 +470,7 @@ fun! Stab()
     if len_arglist > 1
       let expandtab = arglist[1]
       if expandtab =~ '\(no\)\?et'
-        execute 'setlocal '.expandtab
+        execute 'setl '.expandtab
       endif
     endif
   endif

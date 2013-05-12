@@ -75,10 +75,13 @@ alias agt='ack-grep -i --text'
 alias agp='ack-grep -i --python'
 alias agv='ack-grep -i --vim'
 
-# find file
+# Find file / dir
 alias ff='sudo find / -type f -name'
-# find dir
 alias fd='sudo find / -type d -name'
+
+# Create file / dir
+alias mkf='touch'
+alias mkd='mkdir'
 
 # Extracting
 alias gz='tar xvzf'

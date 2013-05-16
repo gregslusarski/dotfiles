@@ -9,7 +9,9 @@ alias l='ls -CF'
 
 # Bookmarks
 alias cdw='cd ~/workspace'
-alias cdws='cd ~/workspace/stuff'
+alias cdr='cd ~/workspace/ruby'
+alias cdra='cd ~/workspace/rails'
+alias cds='cd ~/workspace/stuff'
 alias cdd='cd ~/dotfiles'
 
 # Apt
@@ -23,9 +25,12 @@ alias up='vim +BundleInstall! +BundleClean +qall && sudo apt-get update && sudo 
 # Git
 alias gcl='git clone'
 alias gi='git init'
-alias gpl='git pull'
 alias gps='git push'
+alias gpl='git pull'
+# stage
 alias ga='git add'
+# unstage
+alias grs='git reset'
 alias ga.='git add .'
 alias gau='git add -u'
 alias gc='git commit'
@@ -38,9 +43,11 @@ alias gstis='git status --ignore-submodules'
 alias glg='git log --stat -p'
 alias glgo='git log --oneline'
 alias gdf='git diff'
-alias gdfc='git diff --cached'
+alias gdfh='git diff HEAD'
+alias gdfs='git diff --staged'
 alias gdfis='git diff --ignore-submodules'
 alias gco='git checkout'
+alias grb='git rebase'
 alias gbr='git branch'
 alias gsma='git submodule add'
 alias gsmi='git submodule init'

@@ -50,6 +50,10 @@ if [ -h ~/.local/share/radiotray/bookmarks.xml ]; then
   rm ~/.local/share/radiotray/bookmarks.xml
 fi
 
+if [ -h ~/scripts ]; then
+  rm -r ~/scripts
+fi
+
 if [ -h ~/.zshrc ]; then
   rm ~/.zshrc
 fi

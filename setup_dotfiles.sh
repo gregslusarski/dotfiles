@@ -53,6 +53,10 @@ if [ ! -e ~/.local/share/radiotray/bookmarks.xml ]; then
   ln -s $script_dir/stuff/radiotray.xml ~/.local/share/radiotray/bookmarks.xml
 fi
 
+if [ ! -d ~/scripts ]; then
+  ln -s $script_dir/scripts ~/scripts
+fi
+
 # zsh
 if [ ! -e ~/.zshrc ]; then
   ln -s $script_dir/shell/zshrc ~/.zshrc

@@ -81,11 +81,11 @@ alias rb='ruby'
 
 # Ack-grep
 alias ack='ack-grep'
-alias ag='ack-grep -i'
-alias agt='ack-grep -i --text'
-alias agr='ack-grep -i --ruby'
-alias agv='ack-grep -i --vim'
-alias agp='ack-grep -i --python'
+alias ag='ack-grep -i --follow'
+alias agt='ack-grep -i --follow --text'
+alias agr='ack-grep -i --follow --ruby'
+alias agv='ack-grep -i --follow --vim'
+alias agp='ack-grep -i --follow --python'
 
 # Find file / dir
 alias ff='sudo find / -type f -name'

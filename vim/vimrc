@@ -65,6 +65,8 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 "}}}2
+" Use interactive shell
+" set shellcmdflag=-ic
 " Emulate typical editor navigation
 set nostartofline
 " Don't insert extra space(after .?!)
@@ -217,7 +219,6 @@ nnoremap k gk
 nnoremap <F3> :setl spell! spell?<CR>
 " Toggle paste / nopaste
 nnoremap <F4> :setl paste! paste?<CR>
-nnoremap <F5> :!python %<CR>
 " Esc
 inoremap jk <Esc>
 inoremap kj <Esc>
@@ -261,6 +262,7 @@ cnoreabbrev hack AckHelp
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
+let ruby_fold = 1
 " " - Snipmate"{{{2
 " let g:snippets_dir='~/.vim/bundle/snippets/snippets'
 
@@ -308,10 +310,11 @@ let g:NERDTreeQuitOnOpen=1
 
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$',
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
-let g:ctrlp_jump_to_buffer = 0
+let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_follow_symlinks = 1
 
 " - Syntastic"{{{2
 nnoremap <silent> <Leader>s :SyntasticCheck<CR>
@@ -440,10 +443,13 @@ augroup FTOptions
   au!
   " au FileType markdown setl sw=4 sts=4
   au FileType python setl fo=croql
+  au FileType python nnoremap <buffer> <F5> :!python %<CR>
   au FileType c,cpp,cs,java setl fdm=syntax cin
   au FileType git,gitcommit setl fdm=syntax
   au FileType gitcommit setl spell
   au FileType snippets set noet
+  au FileType ruby setl tw=79 comments=:#\  isfname+=:
+  au FileType ruby nnoremap <buffer> <F5> :!ruby %<CR>
 augroup END
 
 " = FUNCTIONS{{{1

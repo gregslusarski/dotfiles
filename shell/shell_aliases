@@ -3,8 +3,9 @@ alias ..='cd ..'
 alias qq='exit'
 alias c='clear'
 alias r='reset'
-alias ll='ls -alF'
-alias la='ls -A'
+alias ll='ls -l'
+alias la='ls -a'
+alias l.='ls -ld .[^.]*'
 alias l='ls -CF'
 
 # Bookmarks
@@ -92,8 +93,8 @@ alias ff='sudo find / -type f -name'
 alias fd='sudo find / -type d -name'
 
 # Create file / dir
-alias mkf='touch'
-alias mkd='mkdir'
+alias mf='touch'
+alias md='mkdir -p'
 
 # Extracting
 alias gz='tar xvzf'

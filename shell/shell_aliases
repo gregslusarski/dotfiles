@@ -73,12 +73,13 @@ alias t='TERM=screen-256color-bce tmux'
 # Python
 alias py='python'
 alias bpy='bpython'
-
 # Django
 alias dasp='django-admin.py startproject'
 
 # Ruby
 alias rb='ruby'
+# Rails
+alias ra='rails'
 
 # Ack-grep
 alias ack='ack-grep'

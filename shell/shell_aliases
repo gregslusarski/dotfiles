@@ -1,4 +1,4 @@
-# Terminal # {{{
+# Terminal # {{{1
 alias ..='cd ..'
 alias qq='exit'
 alias c='clear'
@@ -8,8 +8,8 @@ alias ll='ls -l'
 alias la='ls -a'
 alias l.='ls -ld .[^.]*'
 alias l='ls -CF'
-# }}}
-# Bookmarks # {{{
+
+# Bookmarks # {{{1
 alias cdw='cd ~/workspace'
 alias cdr='cd ~/workspace/ruby'
 alias cdra='cd ~/workspace/ruby/rails'
@@ -17,16 +17,16 @@ alias cds='cd ~/workspace/stuff'
 alias cdsc='cd ~/scripts'
 alias cdd='cd ~/dotfiles'
 alias cddl='cd ~/Downloads'
-# }}}
-# Apt # {{{
+
+# Apt # {{{1
 alias sagi='sudo apt-get install'
 alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update'
 alias saar='sudo add-apt-repository'
 alias up='vim +BundleInstall! +BundleClean +qall && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
-# }}}
-# Git # {{{
+
+# Git # {{{1
 alias gcl='git clone'
 alias gi='git init'
 alias gps='git push'
@@ -62,48 +62,47 @@ alias gpsuogmt='git push -u origin master'
 alias gplsub='git submodule foreach "git pull origin master"'
 alias grm='git rm'
 alias grmc='git rm --cached'
-# }}}
-# Vim # {{{
+
+# Vim # {{{1
 alias v='vim'
 alias gv='gvim'
 alias vdf='vimdiff'
-# }}}
-# Tmux # {{{
+
+# Tmux # {{{1
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='TERM=screen-256color-bce tmux'
-# }}}
-# Python # {{{
+
+# Python # {{{1
 alias py='python'
 alias bpy='bpython'
 # Django
 alias dasp='django-admin.py startproject'
-# }}}
-# Ruby # {{{
+
+# Ruby # {{{1
 alias rb='ruby'
 # Rails
 alias ra='rails'
-# }}}
-# Ack-grep # {{{
+
+# Ack-grep # {{{1
 alias ack='ack-grep'
 alias ag='ack-grep -i --follow'
 alias agt='ack-grep -i --follow --text'
 alias agr='ack-grep -i --follow --ruby'
 alias agv='ack-grep -i --follow --vim'
 alias agp='ack-grep -i --follow --python'
-# }}}
-# Find file / dir # {{{
+
+# Find file / dir # {{{1
 alias ff='sudo find / -type f -name'
 alias fd='sudo find / -type d -name'
-# }}}
-# Create file / dir # {{{
+
+# Create file / dir # {{{1
 alias mf='touch'
 alias md='mkdir -p'
-# }}}
-# Extracting # {{{
+
+# Extracting # {{{1
 alias gz='tar xvzf'
 alias bz2='tar xvjf'
-# }}}
-# du / df (file / disk space usage) # {{{
+
+# du / df (file / disk space usage) # {{{1
 alias du='du -hs * | sort -h'
 alias df='df -h'
-# }}}

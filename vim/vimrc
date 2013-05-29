@@ -185,11 +185,11 @@ nnoremap <Space> <Nop>
 let mapleader = ' '
 let maplocalleader = '\\'
 " Window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-c> <C-w>c
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-c> <C-w>c
 " Be consistent with bash
 " Go to the 1st non blank
 inoremap <C-a> <C-o>^
@@ -222,7 +222,9 @@ nnoremap <F3> :setl spell! spell?<CR>
 nnoremap <F4> :setl paste! paste?<CR>
 " Esc
 inoremap jk <Esc>
+inoremap JK <Esc>
 inoremap kj <Esc>
+inoremap KJ <Esc>
 " Center screen on next / prev found
 nnoremap N Nzz
 nnoremap n nzz
@@ -256,14 +258,14 @@ inoremap <F1> <Esc>
 cnoreabbrev H h
 cnoreabbrev hg helpg
 cnoreabbrev ack Ack
-cnoreabbrev ackt Ack --text
-cnoreabbrev ackp Ack --python
-cnoreabbrev ackv Ack --vim
+cnoreabbrev ackt Ack -i --follow --text
+cnoreabbrev ackr Ack -i --follow --ruby
+cnoreabbrev ackp Ack -i --follow --python
+cnoreabbrev ackv Ack -i --follow --vim
 cnoreabbrev hack AckHelp
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
-let ruby_fold = 1
 " " - Snipmate"{{{2
 " let g:snippets_dir='~/.vim/bundle/snippets/snippets'
 
@@ -275,7 +277,6 @@ let g:UltiSnipsListSnippets="<c-s-l>"
 " let g:UltiSnipsSnippetsDir="~/dotfiles/vim/UltiSnips"
 " let g:UltiSnipsSnippetDirectories=["Ultisnips"]
 let g:snips_author="viszu"
-" let g:UltiSnipsListSnippets = '<c-s-l>'
 " Since this ultisnips fork can also use snipmate snips, prefer ultisnips snips
 " let g:always_use_first_snippet = 1
 
@@ -311,11 +312,12 @@ let g:NERDTreeQuitOnOpen=1
 
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$',
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$\|Downloads$',
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_follow_symlinks = 1
+" let g:ctrlp_show_hidden = 1
 
 " - Syntastic"{{{2
 nnoremap <silent> <Leader>s :SyntasticCheck<CR>
@@ -449,8 +451,13 @@ augroup FTOptions
   au FileType git,gitcommit setl fdm=syntax
   au FileType gitcommit setl spell
   au FileType snippets set noet
-  au FileType ruby setl tw=79 comments=:#\  isfname+=:
-  au FileType ruby nnoremap <buffer> <F5> :!ruby %<CR>
+  " Ruby
+  au FileType ruby,eruby let ruby_fold = 1
+  au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  au FileType ruby,eruby let g:rubycomplete_rails = 1
+  au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+  au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
+  au FileType ruby,eruby nnoremap <buffer> <F5> :!ruby %<CR>
 augroup END
 
 " = FUNCTIONS{{{1

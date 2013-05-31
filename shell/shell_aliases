@@ -24,7 +24,12 @@ alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update'
 alias saar='sudo add-apt-repository'
-alias up='vim +BundleInstall! +BundleClean +qall && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
+alias up='vim +BundleInstall! +BundleClean +qall && upgrade_oh_my_zsh && rvm get head && gem update && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
+
+# BUILD # {{{1
+alias build='./configure && make && sudo make install'
+alias ./c='./configure'
+alias smi='sudo make install'
 
 # GIT # {{{1
 alias gcl='git clone'

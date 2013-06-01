@@ -19,8 +19,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " original repos on github:
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-commentary'
@@ -29,10 +27,13 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-obsession'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'dahu/vimple'
 Bundle 'Raimondi/vim-buffalo'
 Bundle 'Raimondi/delimitMate'
-Bundle 'tpope/vim-git'
 Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/Gundo'
 Bundle 'kien/ctrlp.vim'
@@ -42,11 +43,11 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'viszu/vim-python-fold'
 Bundle 'spolu/dwm.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'altercation/vim-colors-solarized'
+" Bundle 'hynek/vim-python-pep8-indent'
+" Bundle 'viszu/vim-python-fold'
 "}}}2
 " Filetype detection:ON, plugin:ON, indent:ON
 filetype plugin indent on " required! for Vundle
@@ -369,7 +370,7 @@ let g:syntastic_echo_current_error=0
 " let g:neosnippet#enable_snipmate_compatibility = 1
 
 " - Powerline"{{{2
-"let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
 call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
 
@@ -562,8 +563,9 @@ endfun
 " -------------------------
 if has('gui_running')
   if has('unix')
+    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\ 10
+    " set guifont=Menlo\ for\ Powerline\ 10
     " set guifont=Droid\ Sans\ Mono\ 10.2
-    set guifont=Meslo\ LG\ S\ DZ\ 10
   elseif has('gui_win32') || has('gui_win64')
     let g:skip_loading_mswin=1
     set guifont=Droid_Sans_Mono:h10.2

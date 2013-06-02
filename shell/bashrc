@@ -127,7 +127,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/.rvm/scripts/rvm
-
 # less will use colors
 export LESS=-RFX

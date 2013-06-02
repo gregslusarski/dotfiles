@@ -18,6 +18,8 @@ alias cdsc='cd ~/scripts'
 alias cdd='cd ~/dotfiles'
 alias cdc='cd ~/clones'
 alias cddl='cd ~/Downloads'
+# Zsh
+alias soz='source ~/.zshrc'
 
 # APT # {{{1
 alias sagi='sudo apt-get install'

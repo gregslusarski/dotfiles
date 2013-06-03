@@ -1,4 +1,4 @@
-export PATH="$HOME/.rbenv/bin:$HOME/bin:$PATH"
+PATH=$HOME/.rbenv/bin:$HOME/bin:$PATH
 
 # cleanup
 rm -f ~/.goutputstream-*

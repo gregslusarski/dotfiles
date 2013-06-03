@@ -1,5 +1,7 @@
 # TERMINAL # {{{1
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias qq='exit'
 alias c='clear'
 alias r='reset'
@@ -8,6 +10,9 @@ alias ll='ls -l'
 alias la='ls -a'
 alias l.='ls -ld .[^.]*'
 alias l='ls -CF'
+# Zsh
+alias soz='source ~/.zshrc'
+alias sop='source ~/.profile'
 
 # BOOKMARKS # {{{1
 alias cdw='cd ~/workspace'
@@ -16,10 +21,8 @@ alias cdra='cd ~/workspace/ruby/rails'
 alias cds='cd ~/workspace/stuff'
 alias cdsc='cd ~/scripts'
 alias cdd='cd ~/dotfiles'
-alias cdc='cd ~/clones'
+alias cdcl='cd ~/clones'
 alias cddl='cd ~/Downloads'
-# Zsh
-alias soz='source ~/.zshrc'
 
 # APT # {{{1
 alias sagi='sudo apt-get install'
@@ -27,7 +30,7 @@ alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update'
 alias saar='sudo add-apt-repository'
-alias up='vim +BundleInstall! +BundleClean +qall && upgrade_oh_my_zsh && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
+alias up='vim +BundleInstall! +BundleClean +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
 
 # BUILD # {{{1
 alias build='./configure && make && sudo make install'

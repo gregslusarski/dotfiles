@@ -1,0 +1,12 @@
+Pry.config.editor = "gvim -u $HOME/.vimrc -N -U NONE -f"
+
+# Use awesome_print
+begin
+  require 'awesome_print'
+  Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
+rescue LoadError => err
+  puts "no awesome_print :("
+end
+
+Pry.commands.delete 'exit'
+Pry.config.collision_warnings = true

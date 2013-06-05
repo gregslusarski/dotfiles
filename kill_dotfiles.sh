@@ -38,9 +38,9 @@ if [ -h ~/.ackrc ]; then
   rm ~/.ackrc
 fi
 
-if [ -h ~/.config/bpython/config ]; then
-  rm ~/.config/bpython/config
-fi
+# if [ -h ~/.config/bpython/config ]; then
+#   rm ~/.config/bpython/config
+# fi
 
 if [ -h ~/.config/redshift.conf ]; then
   rm ~/.config/redshift.conf
@@ -60,4 +60,8 @@ fi
 
 if [ -h ~/.oh-my-zsh/themes/viszu.zsh-theme ]; then
   rm ~/.oh-my-zsh/themes/viszu.zsh-theme
+fi
+
+if [ -h ~/.pryrc ]; then
+  rm ~/.pryrc
 fi

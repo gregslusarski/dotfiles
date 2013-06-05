@@ -38,11 +38,11 @@ if [ ! -e ~/.ackrc ]; then
   ln -s $script_dir/shell/ackrc ~/.ackrc
 fi
 
-if [ ! -e ~/.config/bpython/config ]; then
-  # -p says to create the dir if it doesn't exist already
-  mkdir -p ~/.config/bpython
-  ln -s $script_dir/shell/bpython_config ~/.config/bpython/config
-fi
+# if [ ! -e ~/.config/bpython/config ]; then
+#   # -p says to create the dir if it doesn't exist already
+#   mkdir -p ~/.config/bpython
+#   ln -s $script_dir/shell/bpython_config ~/.config/bpython/config
+# fi
 
 if [ ! -e ~/.config/redshift.conf ]; then
   ln -s $script_dir/stuff/redshift.conf ~/.config/redshift.conf
@@ -65,6 +65,10 @@ fi
 if [ ! -e ~/.oh-my-zsh/themes/viszu.zsh-theme ]; then
   mkdir -p ~/.oh-my-zsh/themes
   ln -s $script_dir/shell/viszu.zsh-theme ~/.oh-my-zsh/themes/viszu.zsh-theme
+fi
+
+if [ ! -e ~/.pryrc ]; then
+  ln -s $script_dir/shell/pryrc ~/.pryrc
 fi
 
 # vim

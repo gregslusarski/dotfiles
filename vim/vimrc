@@ -46,6 +46,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'spolu/dwm.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'rking/vim-detailed'
 " Bundle 'hynek/vim-python-pep8-indent'
 " Bundle 'viszu/vim-python-fold'
 "}}}2
@@ -185,6 +186,7 @@ endif
 " --------------
 " Remap leader
 nnoremap <Space> <Nop>
+nnoremap Q <Nop>
 let mapleader = ' '
 let maplocalleader = '\\'
 " Window navigation
@@ -316,11 +318,11 @@ let g:NERDTreeShowHidden=1
 
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$\|Downloads$',
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$\|Downloads$\|clones$',
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_follow_symlinks = 1
+" let g:ctrlp_follow_symlinks = 1
 " let g:ctrlp_show_hidden = 1
 
 " - Syntastic"{{{2
@@ -457,6 +459,7 @@ augroup FTOptions
   au FileType snippets set noet
   " Ruby
   au FileType ruby,eruby let ruby_fold = 1
+  " au FileType ruby,eruby let ruby_minlines = 500
   au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
   au FileType ruby,eruby let g:rubycomplete_rails = 1
   au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
@@ -585,12 +588,13 @@ else
 endif
 
 set background=dark
-let g:solarized_menu=0
+" let g:solarized_menu=0
 " let g:solarized_termtrans=1
 " let g:solarized_termcolors=256
 " let g:solarized_contrast="high"
 " let g:solarized_visibility="high"
-colorscheme solarized
+" colorscheme solarized
+colorscheme detailed
 " colorscheme hybrid
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none

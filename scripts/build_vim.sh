@@ -4,6 +4,7 @@
 # Dependencies (Install manually):
 # sudo apt-get build-dep vim-gnome
 # sudo apt-get install gnome-devel
+# rbenv
 
 hg clone https://vim.googlecode.com/hg/ /tmp/vim_source && \
 cd /tmp/vim_source && \

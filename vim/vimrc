@@ -114,8 +114,8 @@ set completeopt=menuone,preview
 set list
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-  if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
-    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+  if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+    let &listchars = "tab:\u21e5\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
   endif
 endif
 " }}}2
@@ -137,7 +137,7 @@ set title
 " Always show cursor position in statusline
 set ruler
 " Print line numbers on the left
-set number
+" set number
 " This shows what you are typing as a command
 set showcmd
 set cmdheight=2
@@ -318,7 +318,7 @@ let g:NERDTreeShowHidden=1
 
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$\|Downloads$\|clones$',
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$\|Downloads$',
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
@@ -386,7 +386,10 @@ nmap \u <Plug>CommentaryUndo
 
 " - Gundo"{{{2
 nnoremap <silent> <F2> :GundoToggle<CR>
-"}}}2
+
+" - Dwm"{{{2
+let g:dwm_master_pane_width="50%"
+"}}}
 
 " Supertab
 " au FileType *
@@ -575,7 +578,7 @@ if has('gui_running')
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
-  set lines=37 columns=84
+  set lines=37 columns=80
   set guioptions-=T
   set guioptions-=m
   set guioptions+=lrb

@@ -45,6 +45,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 Bundle 'spolu/dwm.vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'majutsushi/tagbar.git'
+Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'goldfeld/vim-seek.git'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/vim-detailed'
 " Bundle 'hynek/vim-python-pep8-indent'
@@ -108,7 +111,7 @@ set magic
 " Enable menu for command-line completion
 set wildmenu
 set wildmode=longest:full,full
-set wildignore=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
+set wildignore+=*.fo,*.xml,.svn,.git,.hg,*.pyc,*.o,*.a,*.class,*.obj,*.swp
 set completeopt=menuone,preview
 " - Display special characters for certain whitespace situations"{{{2
 set list
@@ -271,9 +274,6 @@ cnoreabbrev hack AckHelp
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
-" " - Snipmate"{{{2
-" let g:snippets_dir='~/.vim/bundle/snippets/snippets'
-
 " - Ultisnips"{{{2
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
@@ -335,6 +335,39 @@ let g:syntastic_loc_list_height=5
 let g:syntastic_enable_signs=0
 let g:syntastic_echo_current_error=0
 
+" - Powerline"{{{2
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'filename'
+call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
+
+" - Commentary"{{{2
+" autocmd FileType python set commentstring=#\ %s
+xmap \ <Plug>Commentary
+nmap \ <Plug>Commentary
+nmap \\ <Plug>CommentaryLine
+nmap \u <Plug>CommentaryUndo
+
+" - Gundo"{{{2
+nnoremap <silent> <F2> :GundoToggle<CR>
+
+" - Dwm"{{{2
+let g:dwm_master_pane_width="50%"
+
+" - delimitMate"{{{2
+let delimitMate_matchpairs = "(:),[:],{:},<:>"
+
+" - Tagbar"{{{2
+let g:tagbar_autofocus = 1
+nnoremap <silent> <F9> :TagbarToggle<CR>
+nnoremap <silent> <F10> :TagbarOpenAutoClose<CR>
+
+" - EasyMotion"{{{2
+let g:EasyMotion_leader_key = '\'
+let g:EasyMotion_do_shade = 0
+
+" " - Snipmate"{{{2
+" let g:snippets_dir='~/.vim/bundle/snippets/snippets'
+
 " " - Flake8"{{{2
 " " E111 = indentation is not a multiple of four
 " let g:flake8_ignore="E111"
@@ -372,24 +405,6 @@ let g:syntastic_echo_current_error=0
 " \ }
 " let g:neosnippet#enable_snipmate_compatibility = 1
 
-" - Powerline"{{{2
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'filename'
-call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
-
-" - Commentary"{{{2
-" autocmd FileType python set commentstring=#\ %s
-xmap \ <Plug>Commentary
-nmap \ <Plug>Commentary
-nmap \\ <Plug>CommentaryLine
-nmap \u <Plug>CommentaryUndo
-
-" - Gundo"{{{2
-nnoremap <silent> <F2> :GundoToggle<CR>
-
-" - Dwm"{{{2
-let g:dwm_master_pane_width="50%"
-"}}}
 
 " Supertab
 " au FileType *
@@ -410,6 +425,7 @@ let g:dwm_master_pane_width="50%"
 " Rope-vim
 "map <Leader>j :RopeGotoDefinition<CR>
 "map <Leader>r :RopeRename<CR>
+"}}}2
 
 " = AUTOCOMMANDS"{{{1
 " -------------------
@@ -433,6 +449,7 @@ augroup General
 
   " Resize splits when the window is resized
   au VimResized * :wincmd =
+
 augroup END
 
 " augroup Plugins
@@ -461,7 +478,7 @@ augroup FTOptions
   au FileType gitcommit setl spell
   au FileType snippets set noet
   " Ruby
-  au FileType ruby,eruby let ruby_fold = 1
+  " au FileType ruby,eruby let ruby_fold = 1
   " au FileType ruby,eruby let ruby_minlines = 500
   au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
   au FileType ruby,eruby let g:rubycomplete_rails = 1

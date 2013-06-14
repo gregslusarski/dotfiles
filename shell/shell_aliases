@@ -10,6 +10,7 @@ alias ll='ls -l'
 alias la='ls -a'
 alias l.='ls -ld .[^.]*'
 alias l='ls -CF'
+alias p='pwd'
 # Zsh
 alias soz='source ~/.zshrc'
 alias sop='source ~/.profile'

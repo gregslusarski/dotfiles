@@ -21,7 +21,7 @@ alias cdra='cd ~/workspace/ruby/rails'
 alias cds='cd ~/workspace/stuff'
 alias cdsc='cd ~/scripts'
 alias cdd='cd ~/dotfiles'
-alias cdcl='cd ~/clones'
+alias cdcl='cd ~/Downloads/clones'
 alias cddl='cd ~/Downloads'
 
 # APT # {{{1

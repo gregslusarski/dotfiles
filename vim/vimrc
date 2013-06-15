@@ -596,12 +596,8 @@ if has('gui_running')
     cd c:\
   endif
   set lines=37 columns=80
-  set guioptions-=T
-  set guioptions-=m
-  set guioptions+=lrb
-  set guioptions-=lrb
-  set guioptions+=LRB
-  set guioptions-=LRB
+  " Turn off menu, toolbar, scrollbars
+  set guioptions=aegit
 else
   " Terminal
   set t_Co=256 t_md=

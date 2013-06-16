@@ -10,6 +10,7 @@ alias ll='ls -l'
 alias la='ls -a'
 alias l.='ls -ld .[^.]*'
 alias l='ls -CF'
+alias t='tree'
 alias p='pwd'
 # Zsh
 alias soz='source ~/.zshrc'
@@ -81,8 +82,7 @@ alias gv='gvim'
 alias vdf='vimdiff'
 
 # TMUX # {{{1
-alias tmux='TERM=screen-256color-bce tmux'
-alias t='TERM=screen-256color-bce tmux'
+# alias tmux='TERM=screen-256color-bce tmux'
 
 # PYTHON # {{{1
 alias py='python'

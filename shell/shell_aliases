@@ -94,6 +94,8 @@ alias dasp='django-admin.py startproject'
 alias rb='ruby'
 # Rails
 alias ra='rails'
+alias rs='rspec'
+alias rsf='rspec --format nested'
 
 # ACK-GREP # {{{1
 alias ack='ack-grep'

@@ -231,8 +231,6 @@ nnoremap <F4> :setl paste! paste?<CR>
 " Esc
 inoremap jk <Esc>
 inoremap JK <Esc>
-inoremap kj <Esc>
-inoremap KJ <Esc>
 " Center screen on next / prev found
 nnoremap N Nzz
 nnoremap n nzz
@@ -314,7 +312,7 @@ let g:NERDTreeHijackNetrw=0
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeChDirMode=0
 let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeShowHidden=1
+" let g:NERDTreeShowHidden=1
 
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
@@ -354,7 +352,7 @@ nnoremap <silent> <F2> :GundoToggle<CR>
 let g:dwm_master_pane_width="50%"
 
 " - delimitMate"{{{2
-let delimitMate_matchpairs = "(:),[:],{:},<:>"
+" let delimitMate_matchpairs = "(:),[:],{:},<:>"
 
 " - Tagbar"{{{2
 let g:tagbar_autofocus = 1
@@ -587,7 +585,7 @@ endfun
 " -------------------------
 if has('gui_running')
   if has('unix')
-    set guifont=Meslo\ LG\ S\ DZ\ 10
+    set guifont=Meslo\ LG\ S\ DZ\ 11
     " set guifont=Menlo\ for\ Powerline\ 10
     " set guifont=Droid\ Sans\ Mono\ 10.2
   elseif has('gui_win32') || has('gui_win64')
@@ -595,12 +593,12 @@ if has('gui_running')
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
-  set lines=37 columns=80
+  set lines=33 columns=80
   " Turn off menu, toolbar, scrollbars
   set guioptions=aegit
 else
   " Terminal
-  set t_Co=256 t_md=
+  " set t_Co=256 t_md=
 endif
 
 set background=dark

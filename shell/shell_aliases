@@ -30,7 +30,7 @@ alias cddl='cd ~/Downloads'
 alias sagi='sudo apt-get install'
 alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
-alias sagu='sudo apt-get update'
+alias sagu='sudo apt-get update && sudo apt-get upgrade'
 alias saar='sudo add-apt-repository'
 alias up='vim +BundleInstall! +BundleClean +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
 
@@ -79,6 +79,7 @@ alias grmc='git rm --cached'
 # VIM # {{{1
 alias v='vim'
 alias gv='gvim'
+alias sv='sudo vim'
 alias vdf='vimdiff'
 
 # TMUX # {{{1
@@ -95,7 +96,8 @@ alias rb='ruby'
 # Rails
 alias ra='rails'
 alias rs='rspec'
-alias rsf='rspec --format nested'
+alias rsf='rspec --format documentation'
+alias rsi='rspec --init'
 
 # ACK-GREP # {{{1
 alias ack='ack-grep'

@@ -356,12 +356,15 @@ let g:dwm_master_pane_width="50%"
 
 " - Tagbar"{{{2
 let g:tagbar_autofocus = 1
-nnoremap <silent> <F9> :TagbarToggle<CR>
-nnoremap <silent> <F10> :TagbarOpenAutoClose<CR>
+nnoremap <silent> <F7> :TagbarToggle<CR>
+nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
 
 " - EasyMotion"{{{2
 let g:EasyMotion_leader_key = '\'
 let g:EasyMotion_do_shade = 0
+
+" - Dispatch"{{{2
+nnoremap <F9> :Dispatch<CR>
 
 " " - Snipmate"{{{2
 " let g:snippets_dir='~/.vim/bundle/snippets/snippets'
@@ -482,7 +485,10 @@ augroup FTOptions
   au FileType ruby,eruby let g:rubycomplete_rails = 1
   au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
   au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
-  au FileType ruby,eruby nnoremap <buffer> <F5> :!ruby %<CR>
+  au FileType ruby,eruby nnoremap <buffer> <F5> :!clear<CR>:!ruby %<CR>
+  " Dispatch.vim
+  au FileType ruby,eruby nnoremap <buffer> <F9> :!clear<CR>:!rspec %<CR>
+  " au FileType ruby,eruby let b:dispatch = 'rspec %'
 augroup END
 
 " = FUNCTIONS{{{1

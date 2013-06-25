@@ -188,10 +188,10 @@ endif
 " = MAPPINGS"{{{1
 " --------------
 " Remap leader
-nnoremap <Space> <Nop>
+" nnoremap <Space> <Nop>
 nnoremap Q <Nop>
-let mapleader = ' '
-let maplocalleader = '\\'
+let mapleader = ','
+" let maplocalleader = '\\'
 " Window navigation
 " nnoremap <C-h> <C-w>h
 " nnoremap <C-j> <C-w>j
@@ -206,9 +206,9 @@ cnoremap <C-a> <Home>
 inoremap <C-e> <C-o>$
 cnoremap <C-e> <End>
 " Write current buffer
-nnoremap <C-s> :update!<CR>
-inoremap <C-s> <C-o>:update!<CR>
-vnoremap <C-s> <C-c>:update!<CR>
+nnoremap <silent> <Leader>s :update!<CR>
+" Write all buffers and quit Vim
+nnoremap <Leader>qq :wa!<CR>:q<CR>
 " Write read-only files
 cnoremap W! w !sudo tee %
 " Reselect visual block after indent/outdent
@@ -241,10 +241,8 @@ nnoremap <Leader>ev :e $MYVIMRC<CR>
 " Source vimrc
 nnoremap <Leader>vs :source $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer
-nnoremap <Leader>cd :lcd %:h<CR>
+nnoremap <silent> <Leader>cd :lcd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>e :e **/
-" Write all buffers and quit Vim
-nnoremap <Leader>wq :wa!<CR>:q<CR>
 " Select all text in current buffer
 nnoremap <Leader>a ggVG
 " Clear search highlights
@@ -324,7 +322,7 @@ let g:ctrlp_working_path_mode = 0
 " let g:ctrlp_show_hidden = 1
 
 " - Syntastic"{{{2
-nnoremap <silent> <Leader>s :SyntasticCheck<CR>
+nnoremap <silent> <Leader>x :SyntasticCheck<CR>
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E111,E501,E226'
 let g:syntastic_auto_jump=1
@@ -360,7 +358,7 @@ nnoremap <silent> <F7> :TagbarToggle<CR>
 nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
 
 " - EasyMotion"{{{2
-let g:EasyMotion_leader_key = '\'
+let g:EasyMotion_leader_key = ','
 let g:EasyMotion_do_shade = 0
 
 " - Dispatch"{{{2

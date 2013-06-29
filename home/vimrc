@@ -333,8 +333,8 @@ let g:syntastic_echo_current_error=0
 
 " - Powerline"{{{2
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'filename'
-call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
+" let g:Powerline_stl_path_style = 'filename'
+" call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
 
 " - Commentary"{{{2
 " autocmd FileType python set commentstring=#\ %s
@@ -362,7 +362,7 @@ let g:EasyMotion_leader_key = ','
 let g:EasyMotion_do_shade = 0
 
 " - Dispatch"{{{2
-nnoremap <F9> :Dispatch<CR>
+" nnoremap <F9> :Dispatch<CR>
 
 " " - Snipmate"{{{2
 " let g:snippets_dir='~/.vim/bundle/snippets/snippets'
@@ -470,6 +470,8 @@ augroup FTOptions
   " ftplugin
   au!
   " au FileType markdown setl sw=4 sts=4
+  " set nolist for quickfix window
+  au FileType qf setl nolist
   au FileType python setl fo=croql
   au FileType python nnoremap <buffer> <F5> :!python %<CR>
   au FileType c,cpp,cs,java setl fdm=syntax cin
@@ -486,7 +488,7 @@ augroup FTOptions
   au FileType ruby,eruby nnoremap <buffer> <F5> :!clear<CR>:!ruby %<CR>
   " Dispatch.vim
   au FileType ruby,eruby nnoremap <buffer> <F9> :!clear<CR>:!rspec %<CR>
-  " au FileType ruby,eruby let b:dispatch = 'rspec %'
+  au FileType ruby,eruby let b:dispatch = 'rspec %'
 augroup END
 
 " = FUNCTIONS{{{1

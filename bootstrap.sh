@@ -66,7 +66,7 @@ if [ $1 ]; then
   fi
 fi
 
-################################################################
+###############################################################################
 
 symlinkhome
 
@@ -78,7 +78,7 @@ symlink "radiotray.xml" "$HOME/.local/share/radiotray/bookmarks.xml"
 mkdir -p ~/.oh-my-zsh/themes
 symlink "viszu.zsh-theme" "$HOME/.oh-my-zsh/themes/viszu.zsh-theme"
 
-################################################################
+###############################################################################
 
 if [ ! -d ~/.vim ] && [ -e ~/.vimrc ]; then
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle

@@ -49,7 +49,7 @@ alias ga='git add'
 # unstage
 alias grs='git reset'
 alias ga.='git add .'
-alias gau='git add -u'
+alias gaa='git add -A'
 alias gc='git commit'
 alias gci='git commit -m'
 alias gcia='git commit -am'

@@ -70,13 +70,13 @@ fi
 
 symlinkhome
 
-symlink "redshift.conf" "~/.config/.redshift.conf"
+symlink "redshift.conf" "$HOME/.config/redshift.conf"
 
 mkdir -p ~/.local/share/radiotray
-symlink "radiotray.xml" "~/.local/share/radiotray/bookmarks.xml"
+symlink "radiotray.xml" "$HOME/.local/share/radiotray/bookmarks.xml"
 
 mkdir -p ~/.oh-my-zsh/themes
-symlink "viszu.zsh-theme" "~/.oh-my-zsh/themes/viszu.zsh-theme"
+symlink "viszu.zsh-theme" "$HOME/.oh-my-zsh/themes/viszu.zsh-theme"
 
 ################################################################
 

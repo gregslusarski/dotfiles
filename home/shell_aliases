@@ -15,6 +15,9 @@ alias p='pwd'
 # Zsh
 alias soz='source ~/.zshrc'
 alias sop='source ~/.profile'
+# Reboot, shutdown
+alias ss='sudo shutdown -h now'
+alias sr='sudo reboot'
 
 # BOOKMARKS # {{{1
 alias cdw='cd ~/workspace'
@@ -32,6 +35,7 @@ alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update && sudo apt-get upgrade'
 alias saar='sudo add-apt-repository'
+alias vup='vim +BundleInstall! +BundleClean +qall'
 alias up='sudo vim +BundleInstall! +BundleClean +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
 
 # BUILD # {{{1
@@ -102,11 +106,11 @@ alias rsi='rspec --init'
 
 # ACK-GREP # {{{1
 alias ack='ack-grep'
-alias ag='ack-grep -i --follow'
-alias agt='ack-grep -i --follow --text'
-alias agr='ack-grep -i --follow --ruby'
-alias agv='ack-grep -i --follow --vim'
-alias agp='ack-grep -i --follow --python'
+alias ag='ack-grep -i'
+alias agt='ack-grep -i --text'
+alias agr='ack-grep -i --ruby'
+alias agv='ack-grep -i --vim'
+alias agp='ack-grep -i --python'
 
 # FIND FILE / DIR # {{{1
 alias ff='sudo find / -type f -name'

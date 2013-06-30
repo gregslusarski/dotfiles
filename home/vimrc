@@ -262,10 +262,10 @@ inoremap <F1> <Esc>
 cnoreabbrev H h
 cnoreabbrev hg helpg
 cnoreabbrev ack Ack
-cnoreabbrev ackt Ack -i --follow --text
-cnoreabbrev ackr Ack -i --follow --ruby
-cnoreabbrev ackp Ack -i --follow --python
-cnoreabbrev ackv Ack -i --follow --vim
+cnoreabbrev ackt Ack -i --text
+cnoreabbrev ackr Ack -i --ruby
+cnoreabbrev ackp Ack -i --python
+cnoreabbrev ackv Ack -i --vim
 cnoreabbrev hack AckHelp
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1

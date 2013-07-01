@@ -31,8 +31,6 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'dahu/vimple'
-Bundle 'Raimondi/vim-buffalo'
 Bundle 'Raimondi/delimitMate'
 Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/Gundo'
@@ -50,6 +48,9 @@ Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'goldfeld/vim-seek.git'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/vim-detailed'
+Bundle 'chrisbra/NrrwRgn'
+Bundle 'jeetsukumaran/vim-buffergator'
+Bundle 'skalnik/vim-vroom'
 " Bundle 'hynek/vim-python-pep8-indent'
 " Bundle 'viszu/vim-python-fold'
 "}}}2
@@ -242,7 +243,7 @@ nnoremap <Leader>ev :e $MYVIMRC<CR>
 nnoremap <Leader>vs :source $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer
 nnoremap <silent> <Leader>cd :lcd %:p:h<CR>:pwd<CR>
-nnoremap <Leader>e :e **/
+" nnoremap <Leader>e :e **/
 " Select all text in current buffer
 nnoremap <Leader>a ggVG
 " Clear search highlights
@@ -270,6 +271,12 @@ cnoreabbrev hack AckHelp
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
+noremap <silent> <leader>e :NR<CR>
+" - Buffergator"{{{2
+let g:buffergator_suppress_keymaps = 1
+nnoremap <silent> <leader>b :BuffergatorOpen<CR>
+nnoremap <silent> <leader>B :BuffergatorClose<CR>
+
 " - Ultisnips"{{{2
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
@@ -358,7 +365,7 @@ nnoremap <silent> <F7> :TagbarToggle<CR>
 nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
 
 " - EasyMotion"{{{2
-let g:EasyMotion_leader_key = ','
+" let g:EasyMotion_leader_key = ','
 let g:EasyMotion_do_shade = 0
 
 " - Dispatch"{{{2

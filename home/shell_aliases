@@ -16,8 +16,8 @@ alias p='pwd'
 alias soz='source ~/.zshrc'
 alias sop='source ~/.profile'
 # Reboot, shutdown
-alias ss='sudo shutdown -h now'
-alias sr='sudo reboot'
+alias _ss='sudo shutdown -h now'
+alias _sr='sudo reboot'
 
 # BOOKMARKS # {{{1
 alias cdw='cd ~/workspace'
@@ -35,7 +35,7 @@ alias sagr='sudo apt-get remove'
 alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update && sudo apt-get upgrade'
 alias saar='sudo add-apt-repository'
-alias vup='vim +BundleInstall! +BundleClean +qall'
+alias vup='sudo vim +BundleInstall! +BundleClean +qall'
 alias up='sudo vim +BundleInstall! +BundleClean +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
 
 # BUILD # {{{1

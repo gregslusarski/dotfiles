@@ -273,9 +273,11 @@ cnoreabbrev hack AckHelp
 " ----------------------------------
 noremap <silent> <leader>e :NR<CR>
 " - Buffergator"{{{2
+" let g:buffergator_split_size = 30
+let g:buffergator_display_regime = "bufname"
+let g:buffergator_autoexpand_on_split = 0
 let g:buffergator_suppress_keymaps = 1
-nnoremap <silent> <leader>b :BuffergatorOpen<CR>
-nnoremap <silent> <leader>B :BuffergatorClose<CR>
+nnoremap <silent> <leader>b :BuffergatorToggle<CR>
 
 " - Ultisnips"{{{2
 let g:UltiSnipsExpandTrigger="<c-k>"

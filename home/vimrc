@@ -188,8 +188,13 @@ endif
 
 " = MAPPINGS"{{{1
 " --------------
-" Remap leader
-" nnoremap <Space> <Nop>
+" Unbind the cursor keys in insert, normal and visual modes.
+for prefix in ['i', 'n', 'v']
+  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+    exe prefix . "noremap " . key . " <Nop>"
+  endfor
+endfor
+nnoremap <Space> za
 nnoremap Q <Nop>
 let mapleader = ','
 " let maplocalleader = '\\'
@@ -488,7 +493,7 @@ augroup FTOptions
   au FileType gitcommit setl spell
   au FileType snippets set noet
   " Ruby
-  " au FileType ruby,eruby let ruby_fold = 1
+  au FileType ruby,eruby let ruby_fold = 1
   " au FileType ruby,eruby let ruby_minlines = 500
   au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
   au FileType ruby,eruby let g:rubycomplete_rails = 1
@@ -634,7 +639,7 @@ hi clear SignColumn
 " = FIXUPS"{{{1
 " -------------
 " Fix arrow key navigation in insert mode
-imap <ESC>oA <ESC>ki
-imap <ESC>oB <ESC>ji
-imap <ESC>oC <ESC>li
-imap <ESC>oD <ESC>hi
+" imap <ESC>oA <ESC>ki
+" imap <ESC>oB <ESC>ji
+" imap <ESC>oC <ESC>li
+" imap <ESC>oD <ESC>hi

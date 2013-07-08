@@ -51,6 +51,8 @@ Bundle 'rking/vim-detailed'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'skalnik/vim-vroom'
+" Bundle 'vim-scripts/Skittles-Dark'
+" Bundle 'shawncplus/skittles_berry'
 " Bundle 'hynek/vim-python-pep8-indent'
 " Bundle 'viszu/vim-python-fold'
 "}}}2
@@ -194,6 +196,7 @@ for prefix in ['i', 'n', 'v']
     exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
+
 nnoremap <Space> za
 nnoremap Q <Nop>
 let mapleader = ','
@@ -212,7 +215,7 @@ cnoremap <C-a> <Home>
 inoremap <C-e> <C-o>$
 cnoremap <C-e> <End>
 " Write current buffer
-nnoremap <silent> <Leader>s :update!<CR>
+nnoremap <silent> <Leader>s :w!<CR>
 " Write all buffers and quit Vim
 nnoremap <Leader>qq :wa!<CR>:q<CR>
 " Write read-only files
@@ -235,8 +238,8 @@ nnoremap <F3> :setl spell! spell?<CR>
 " Toggle paste / nopaste
 nnoremap <F4> :setl paste! paste?<CR>
 " Esc
-inoremap jk <Esc>
-inoremap JK <Esc>
+" inoremap jk <Esc>
+" inoremap JK <Esc>
 " Center screen on next / prev found
 nnoremap N Nzz
 nnoremap n nzz
@@ -279,15 +282,15 @@ cnoreabbrev hack AckHelp
 noremap <silent> <leader>e :NR<CR>
 " - Buffergator"{{{2
 " let g:buffergator_split_size = 30
-let g:buffergator_display_regime = "bufname"
+" let g:buffergator_display_regime = "bufname"
 let g:buffergator_autoexpand_on_split = 0
 let g:buffergator_suppress_keymaps = 1
 nnoremap <silent> <leader>b :BuffergatorToggle<CR>
 
 " - Ultisnips"{{{2
-let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets="<c-s-l>"
 " let g:UltiSnipsSnippetsDir="~/dotfiles/vim/UltiSnips"
 " let g:UltiSnipsSnippetDirectories=["Ultisnips"]
@@ -332,6 +335,7 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_user_command = 'find %s -type f'
 " let g:ctrlp_follow_symlinks = 1
 " let g:ctrlp_show_hidden = 1
 
@@ -372,7 +376,7 @@ nnoremap <silent> <F7> :TagbarToggle<CR>
 nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
 
 " - EasyMotion"{{{2
-" let g:EasyMotion_leader_key = ','
+let g:EasyMotion_leader_key = ','
 let g:EasyMotion_do_shade = 0
 
 " - Dispatch"{{{2
@@ -629,6 +633,8 @@ set background=dark
 " let g:solarized_visibility="high"
 " colorscheme solarized
 colorscheme detailed
+" colorscheme skittles_berry
+" colorscheme skittles_dark
 " colorscheme hybrid
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none

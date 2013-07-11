@@ -124,7 +124,7 @@ set list
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-    let &listchars = "tab:\u21e5\u00b7,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+    let &listchars = "tab:\u21e5\u00b7,trail:\u2022,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
   endif
 endif
 " }}}2
@@ -239,7 +239,7 @@ nnoremap k gk
 " Toggle spell checking
 nnoremap <F3> :setl spell! spell?<CR>
 " Toggle paste / nopaste
-nnoremap <F4> :setl paste! paste?<CR>
+nnoremap <silent> <F4> :setl paste!<CR>
 " inoremap jk <Esc>
 " inoremap JK <Esc>
 " Center screen on next / prev found
@@ -253,6 +253,9 @@ nnoremap <Leader>ev :e $MYVIMRC<CR>
 nnoremap <Leader>vs :source $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer
 nnoremap <silent> <Leader>cd :lcd %:p:h<CR>:pwd<CR>
+nnoremap <silent> <Leader>p :pwd<CR>
+" undo to last write
+nnoremap <silent> <Leader>u :ea 1f<CR>
 " nnoremap <Leader>e :e **/
 " Select all text in current buffer
 nnoremap <Leader>a ggVG
@@ -288,7 +291,10 @@ noremap <silent> <leader>e :NR<CR>
 let g:airline_theme='badwolf'
 let g:airline_powerline_fonts=1
 let g:airline_enable_fugitive=1
+" '%t' - only filename
 let g:airline_section_c = '%t'
+" filetype
+let g:airline_section_x = ''
 " let g:airline_enable_syntastic=1
 " let g:bufferline_echo = 0
 set noshowmode

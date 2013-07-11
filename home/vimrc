@@ -42,7 +42,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 Bundle 'spolu/dwm.vim'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar.git'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'goldfeld/vim-seek.git'
@@ -52,6 +52,8 @@ Bundle 'chrisbra/NrrwRgn'
 Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'skalnik/vim-vroom'
 Bundle 'flazz/vim-colorschemes'
+" Bundle 'bling/vim-bufferline'
+" Bundle 'Lokaltog/vim-powerline'
 " Bundle 'vim-scripts/Skittles-Dark'
 " Bundle 'shawncplus/skittles_berry'
 " Bundle 'hynek/vim-python-pep8-indent'
@@ -282,6 +284,15 @@ cnoreabbrev hack AckHelp
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 noremap <silent> <leader>e :NR<CR>
+" - Airline"{{{2
+let g:airline_theme='badwolf'
+let g:airline_powerline_fonts=1
+let g:airline_enable_fugitive=1
+let g:airline_section_c = '%t'
+" let g:airline_enable_syntastic=1
+" let g:bufferline_echo = 0
+set noshowmode
+
 " - Buffergator"{{{2
 " let g:buffergator_split_size = 30
 " let g:buffergator_display_regime = "bufname"
@@ -611,7 +622,7 @@ endfun
 " -------------------------
 if has('gui_running')
   if has('unix')
-    set guifont=Meslo\ LG\ S\ DZ\ 11
+    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\ 11
     " set guifont=Menlo\ for\ Powerline\ 10
     " set guifont=Droid\ Sans\ Mono\ 10.2
   elseif has('gui_win32') || has('gui_win64')

@@ -51,6 +51,7 @@ Bundle 'rking/vim-detailed'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'skalnik/vim-vroom'
+Bundle 'flazz/vim-colorschemes'
 " Bundle 'vim-scripts/Skittles-Dark'
 " Bundle 'shawncplus/skittles_berry'
 " Bundle 'hynek/vim-python-pep8-indent'
@@ -89,7 +90,7 @@ set autoindent
 " - Indentation"{{{2
 set shiftwidth=2
 set softtabstop=2
-" set tabstop=2
+set tabstop=2
 set expandtab
 " set smarttab
 " set shiftround
@@ -133,7 +134,8 @@ set hlsearch
 nohlsearch
 set ignorecase
 set smartcase
-set nomodeline
+set modeline
+set modelines=5
 " Lang for spell checker
 set spelllang=en,pl
 " Number of suggested words for spell checker popup
@@ -142,7 +144,6 @@ set spellsuggest=9
 set title
 " Always show cursor position in statusline
 set ruler
-" Print line numbers on the left
 " set number
 " This shows what you are typing as a command
 set showcmd
@@ -196,11 +197,10 @@ for prefix in ['i', 'n', 'v']
     exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
-
 nnoremap <Space> za
 nnoremap Q <Nop>
 let mapleader = ','
-" let maplocalleader = '\\'
+let maplocalleader = '\\'
 " Window navigation
 " nnoremap <C-h> <C-w>h
 " nnoremap <C-j> <C-w>j
@@ -230,6 +230,7 @@ nnoremap vv ^vg_
 nnoremap <leader>V V`]
 " Make Y behave like other capitals
 nnoremap Y y$
+nnoremap <F12> "+
 " Improve up/down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -237,7 +238,6 @@ nnoremap k gk
 nnoremap <F3> :setl spell! spell?<CR>
 " Toggle paste / nopaste
 nnoremap <F4> :setl paste! paste?<CR>
-" Esc
 " inoremap jk <Esc>
 " inoremap JK <Esc>
 " Center screen on next / prev found
@@ -254,18 +254,20 @@ nnoremap <silent> <Leader>cd :lcd %:p:h<CR>:pwd<CR>
 " nnoremap <Leader>e :e **/
 " Select all text in current buffer
 nnoremap <Leader>a ggVG
-" Clear search highlights
 nnoremap <silent> <Leader>/ :noh<CR>
 " Underline text, to create headers
 nnoremap <Leader>- yypVr-
 nnoremap <Leader>= yypVr=
 nnoremap <Leader>` yypVr~
-" " Make <C-u> and <C-w> undoable
-" inoremap <C-u> <C-g>u<C-u>
-" inoremap <C-w> <C-g>u<C-w>
-" Disable <f1>'s default help functionality
-nnoremap <F1> <Esc>
-inoremap <F1> <Esc>
+" Make <C-u> and <C-w> undoable
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
 
 " = ABBREVIATIONS"{{{1
 cnoreabbrev H h
@@ -376,7 +378,7 @@ nnoremap <silent> <F7> :TagbarToggle<CR>
 nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
 
 " - EasyMotion"{{{2
-let g:EasyMotion_leader_key = ','
+let g:EasyMotion_leader_key = '\'
 let g:EasyMotion_do_shade = 0
 
 " - Dispatch"{{{2
@@ -635,7 +637,8 @@ set background=dark
 colorscheme detailed
 " colorscheme skittles_berry
 " colorscheme skittles_dark
-" colorscheme hybrid
+" colorscheme 256-jungle
+" colorscheme charged-256
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
 " SignColumn will use same bg color as linenumber (GitGutter will set it)

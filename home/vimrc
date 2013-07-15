@@ -167,7 +167,7 @@ set timeout timeoutlen=1000 ttimeoutlen=10
 set mouse=a
 " Limit Vim's "hit-enter" messages
 set shortmess=atI
-set fileformats+=mac
+" set fileformats+=mac
 set viminfo^=!
 " Look for file changes
 set autoread
@@ -290,7 +290,7 @@ noremap <silent> <leader>e :NR<CR>
 " - Airline"{{{2
 let g:airline_theme='badwolf'
 let g:airline_powerline_fonts=1
-let g:airline_enable_fugitive=1
+" let g:airline_enable_fugitive=1
 " '%t' - only filename
 let g:airline_section_c = '%t'
 " filetype
@@ -360,8 +360,12 @@ let g:ctrlp_working_path_mode = 0
 
 " - Syntastic"{{{2
 nnoremap <silent> <Leader>x :SyntasticCheck<CR>
+" Disable all ruby warnings. Default setting is '-w -T1 -c'
+let g:syntastic_ruby_mri_args='-T1 -c'
+
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E111,E501,E226'
+
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
@@ -369,7 +373,7 @@ let g:syntastic_enable_signs=0
 let g:syntastic_echo_current_error=0
 
 " - Powerline"{{{2
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
 " let g:Powerline_stl_path_style = 'filename'
 " call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
 
@@ -628,7 +632,7 @@ endfun
 " -------------------------
 if has('gui_running')
   if has('unix')
-    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\ 11
+    set guifont=Menlo\ for\ Powerline\ 11
     " set guifont=Menlo\ for\ Powerline\ 10
     " set guifont=Droid\ Sans\ Mono\ 10.2
   elseif has('gui_win32') || has('gui_win64')
@@ -636,7 +640,7 @@ if has('gui_running')
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
-  set lines=33 columns=80
+  set lines=37 columns=80
   " Turn off menu, toolbar, scrollbars
   set guioptions=aegit
 else

@@ -277,12 +277,17 @@ endif
 " = ABBREVIATIONS"{{{1
 cnoreabbrev H h
 cnoreabbrev hg helpg
-cnoreabbrev ack Ack
-cnoreabbrev ackt Ack -i --text
-cnoreabbrev ackr Ack -i --ruby
-cnoreabbrev ackp Ack -i --python
-cnoreabbrev ackv Ack -i --vim
-cnoreabbrev hack AckHelp
+cnoreabbrev ag Ack
+cnoreabbrev agt Ack -i --text
+cnoreabbrev agr Ack -i --ruby
+cnoreabbrev agp Ack -i --python
+cnoreabbrev agv Ack -i --vim
+cnoreabbrev hag AckHelp
+
+cnoreabbrev <silent> md !mkdir -p
+cnoreabbrev <silent> mf !touch
+cnoreabbrev <silent> .. cd ..
+cnoreabbrev <silent> - cd -
 
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------

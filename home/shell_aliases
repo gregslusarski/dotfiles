@@ -20,11 +20,8 @@ alias _ss='sudo shutdown -h now'
 alias _sr='sudo reboot'
 
 # BOOKMARKS # {{{1
-alias cdw='cd ~/workspace'
-alias cdr='cd ~/workspace/ruby'
-alias cdra='cd ~/workspace/ruby/rails'
-alias cds='cd ~/workspace/stuff'
-alias cdsc='cd ~/scripts'
+alias cdr='cd ~/ruby'
+alias cdra='cd ~/rails'
 alias cdd='cd ~/dotfiles'
 alias cdcl='cd ~/Downloads/clones'
 alias cddl='cd ~/Downloads'

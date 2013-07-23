@@ -52,6 +52,7 @@ Bundle 'chrisbra/NrrwRgn'
 Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'skalnik/vim-vroom'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'rstacruz/sparkup'
 " Bundle 'bling/vim-bufferline'
 " Bundle 'Lokaltog/vim-powerline'
 " Bundle 'vim-scripts/Skittles-Dark'
@@ -535,6 +536,8 @@ augroup FTOptions
   " Dispatch.vim
   au FileType ruby,eruby nnoremap <buffer> <F9> :!clear<CR>:!rspec %<CR>
   au FileType ruby,eruby let b:dispatch = 'rspec %'
+
+  au FileType ruby,eruby inoreabbrev ARB ActiveRecord::Base
 augroup END
 
 " = FUNCTIONS{{{1

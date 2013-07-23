@@ -14,10 +14,10 @@ alias tr='tree'
 alias p='pwd'
 # Zsh
 alias soz='source ~/.zshrc'
-alias sop='source ~/.profile'
+# alias sop='source ~/.profile'
 # Reboot, shutdown
-alias _ss='sudo shutdown -h now'
-alias _sr='sudo reboot'
+# alias _ss='sudo shutdown -h now'
+# alias _sr='sudo reboot'
 
 # BOOKMARKS # {{{1
 alias cdr='cd ~/ruby'
@@ -34,11 +34,6 @@ alias sagu='sudo apt-get update && sudo apt-get upgrade'
 alias saar='sudo add-apt-repository'
 alias vup='sudo vim +BundleInstall! +BundleClean +qall'
 alias up='sudo vim +BundleInstall! +BundleClean +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
-
-# BUILD # {{{1
-alias build='./configure && make && sudo make install'
-alias ./c='./configure'
-alias smi='sudo make install'
 
 # GIT # {{{1
 alias gcl='git clone'
@@ -87,16 +82,10 @@ alias vdf='vimdiff'
 # alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
 
-# PYTHON # {{{1
-alias py='python'
-alias bpy='bpython'
-# Django
-alias dasp='django-admin.py startproject'
-
 # RUBY # {{{1
 alias rb='ruby'
 # Rails
-alias ra='rails'
+alias ran='rails new'
 alias rs='rspec'
 alias rsf='rspec --format documentation'
 alias rsi='rspec --init'
@@ -118,8 +107,8 @@ alias mf='touch'
 alias md='mkdir -p'
 
 # EXTRACTING # {{{1
-alias gz='tar xvzf'
-alias bz2='tar xvjf'
+# alias gz='tar xvzf'
+# alias bz2='tar xvjf'
 
 # DU / DF (FILE / DISK SPACE USAGE) # {{{1
 alias du='du -hs * | sort -h'

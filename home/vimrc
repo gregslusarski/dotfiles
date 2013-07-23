@@ -221,9 +221,9 @@ cnoremap <C-a> <Home>
 inoremap <C-e> <C-o>$
 cnoremap <C-e> <End>
 " Write current buffer
-nnoremap <silent> <Leader>s :w!<CR>
+nnoremap <silent> <leader>s :w!<CR>
 " Write all buffers and quit Vim
-nnoremap <Leader>qq :wa!<CR>:q<CR>
+nnoremap <leader>qq :wa!<CR>:q<CR>
 " Write read-only files
 cnoremap W! w !sudo tee %
 " Reselect visual block after indent/outdent
@@ -250,24 +250,24 @@ nnoremap <silent> <F4> :setl paste!<CR>
 nnoremap N Nzz
 nnoremap n nzz
 " Switch fast between buffers
-" nnoremap <Leader>l :ls<CR>:b<Space>
+" nnoremap <leader>l :ls<CR>:b<Space>
 " Open vimrc
-nnoremap <Leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>ev :e $MYVIMRC<CR>
 " Source vimrc
-nnoremap <Leader>vs :source $MYVIMRC<CR>
+nnoremap <leader>vs :source $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer
-nnoremap <silent> <Leader>cd :lcd %:p:h<CR>:pwd<CR>
-nnoremap <silent> <Leader>p :pwd<CR>
+nnoremap <silent> <leader>cd :lcd %:p:h<CR>:pwd<CR>
+nnoremap <silent> <leader>p :pwd<CR>
 " undo to last write
-nnoremap <silent> <Leader>u :ea 1f<CR>
-" nnoremap <Leader>e :e **/
+nnoremap <silent> <leader>u :ea 1f<CR>
+" nnoremap <leader>e :e **/
 " Select all text in current buffer
-nnoremap <Leader>a ggVG
-nnoremap <silent> <Leader>/ :noh<CR>
+nnoremap <leader>a ggVG
+nnoremap <silent> <leader>/ :noh<CR>
 " Underline text, to create headers
-nnoremap <Leader>- yypVr-
-nnoremap <Leader>= yypVr=
-nnoremap <Leader>` yypVr~
+nnoremap <leader>- yypVr-
+nnoremap <leader>= yypVr=
+nnoremap <leader>` yypVr~
 " Make <C-u> and <C-w> undoable
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
@@ -297,11 +297,9 @@ cnoreabbrev <silent> - cd -
 " ----------------------------------
 noremap <silent> <leader>e :NR<CR>
 " - Sparkup"{{{2
-" let g:sparkupExecuteMapping (Default: '<c-e>') -
-" Mapping used to execute sparkup.
-let g:sparkupNextMapping='<c-d>'
+let g:sparkupExecuteMapping='<leader>j'
+let g:sparkupNextMapping='<leader>n'
 " let g:sparkupPreviousMapping='<c-f>'
-" Mapping used to jump to the next empty tag/attribute.
 
 " - Airline"{{{2
 let g:airline_theme='badwolf'
@@ -333,7 +331,6 @@ let g:snips_author="viszu"
 " Since this ultisnips fork can also use snipmate snips, prefer ultisnips snips
 " let g:always_use_first_snippet = 1
 
-
 " - Fugitive"{{{2
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -343,18 +340,18 @@ nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
 " - Tabularize"{{{2
-nnoremap <Leader>a& :Tabularize /&<CR>
-vnoremap <Leader>a& :Tabularize /&<CR>
-nnoremap <Leader>a= :Tabularize /=<CR>
-vnoremap <Leader>a= :Tabularize /=<CR>
-nnoremap <Leader>a: :Tabularize /:<CR>
-vnoremap <Leader>a: :Tabularize /:<CR>
-nnoremap <Leader>a:: :Tabularize /:\zs<CR>
-vnoremap <Leader>a:: :Tabularize /:\zs<CR>
-nnoremap <Leader>a, :Tabularize /,<CR>
-vnoremap <Leader>a, :Tabularize /,<CR>
-nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
-vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+nnoremap <leader>a& :Tabularize /&<CR>
+vnoremap <leader>a& :Tabularize /&<CR>
+nnoremap <leader>a= :Tabularize /=<CR>
+vnoremap <leader>a= :Tabularize /=<CR>
+nnoremap <leader>a: :Tabularize /:<CR>
+vnoremap <leader>a: :Tabularize /:<CR>
+nnoremap <leader>a:: :Tabularize /:\zs<CR>
+vnoremap <leader>a:: :Tabularize /:\zs<CR>
+nnoremap <leader>a, :Tabularize /,<CR>
+vnoremap <leader>a, :Tabularize /,<CR>
+nnoremap <leader>a<Bar> :Tabularize /<Bar><CR>
+vnoremap <leader>a<Bar> :Tabularize /<Bar><CR>
 
 " - NERDTree"{{{2
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
@@ -376,7 +373,7 @@ let g:ctrlp_working_path_mode = 0
 " let g:ctrlp_show_hidden = 1
 
 " - Syntastic"{{{2
-nnoremap <silent> <Leader>x :SyntasticCheck<CR>
+nnoremap <silent> <leader>x :SyntasticCheck<CR>
 " Disable all ruby warnings. Default setting is '-w -T1 -c'
 let g:syntastic_ruby_mri_args='-T1 -c'
 
@@ -475,13 +472,13 @@ let g:EasyMotion_do_shade = 0
 "highlight SpellBad term=reverse ctermfg=0 ctermbg=3
 
 " Taglist
-"map <Leader>t :TlistToggle<CR>
+"map <leader>t :TlistToggle<CR>
 "let Tlist_Inc_Winwidth=0
 "let Tlist_Compact_Format=1
 
 " Rope-vim
-"map <Leader>j :RopeGotoDefinition<CR>
-"map <Leader>r :RopeRename<CR>
+"map <leader>j :RopeGotoDefinition<CR>
+"map <leader>r :RopeRename<CR>
 "}}}2
 " = AUTOCOMMANDS"{{{1
 " -------------------
@@ -557,10 +554,10 @@ augroup END
 " Set tabstop, softtabstop and shiftwidth to the same value + set et / noet
 " Inspired by http://vimcasts.org/episodes/tabs-and-spaces/
 " retab! 4 spaces into 2
-nnoremap <Leader>t2 :call Stab()<CR>4 noet<CR>:retab!<CR>:call Stab()<CR>2 et<CR>:retab!<CR>
+nnoremap <leader>t2 :call Stab()<CR>4 noet<CR>:retab!<CR>:call Stab()<CR>2 et<CR>:retab!<CR>
 " retab! 2 spaces into 4
-nnoremap <Leader>t4 :call Stab()<CR>2 noet<CR>:retab!<CR>:call Stab()<CR>4 et<CR>:retab!<CR>
-nnoremap <Leader>tt :call Stab()<CR>
+nnoremap <leader>t4 :call Stab()<CR>2 noet<CR>:retab!<CR>:call Stab()<CR>4 et<CR>:retab!<CR>
+nnoremap <leader>tt :call Stab()<CR>
 command! -nargs=* Stab call Stab()
 fun! Stab()
   let message = '{sw=sts=ts=} {et / noet}: '
@@ -583,7 +580,7 @@ fun! Stab()
   call SummarizeTabs()
 endfun
 
-nnoremap <Leader>ti :call SummarizeTabs()<CR>
+nnoremap <leader>ti :call SummarizeTabs()<CR>
 fun! SummarizeTabs()
   try
     echo "\r"
@@ -604,7 +601,7 @@ endfun
 " Using elements from each of these:
 "   http://stackoverflow.com/questions/2974192
 "   http://stackoverflow.com/questions/1534835
-nnoremap <Leader>ch :call CloseHiddenBuffers()<CR>
+nnoremap <leader>ch :call CloseHiddenBuffers()<CR>
 command! -nargs=* Only call CloseHiddenBuffers()
 fun! CloseHiddenBuffers()
   " figure out which buffers are visible in any tab

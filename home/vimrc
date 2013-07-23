@@ -52,7 +52,10 @@ Bundle 'chrisbra/NrrwRgn'
 Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'skalnik/vim-vroom'
 Bundle 'flazz/vim-colorschemes'
-Bundle 'rstacruz/sparkup'
+Bundle 'tristen/vim-sparkup'
+" Bundle 'rstacruz/sparkup'
+" Bundle 'mattn/zencoding-vim'
+" Bundle 'romainl/sparkup'
 " Bundle 'bling/vim-bufferline'
 " Bundle 'Lokaltog/vim-powerline'
 " Bundle 'vim-scripts/Skittles-Dark'
@@ -293,6 +296,13 @@ cnoreabbrev <silent> - cd -
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 noremap <silent> <leader>e :NR<CR>
+" - Sparkup"{{{2
+" let g:sparkupExecuteMapping (Default: '<c-e>') -
+" Mapping used to execute sparkup.
+let g:sparkupNextMapping='<c-d>'
+" let g:sparkupPreviousMapping='<c-f>'
+" Mapping used to jump to the next empty tag/attribute.
+
 " - Airline"{{{2
 let g:airline_theme='badwolf'
 let g:airline_powerline_fonts=1
@@ -322,6 +332,7 @@ let g:UltiSnipsListSnippets="<c-s-l>"
 let g:snips_author="viszu"
 " Since this ultisnips fork can also use snipmate snips, prefer ultisnips snips
 " let g:always_use_first_snippet = 1
+
 
 " - Fugitive"{{{2
 nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -472,7 +483,6 @@ let g:EasyMotion_do_shade = 0
 "map <Leader>j :RopeGotoDefinition<CR>
 "map <Leader>r :RopeRename<CR>
 "}}}2
-
 " = AUTOCOMMANDS"{{{1
 " -------------------
 augroup General
@@ -538,6 +548,7 @@ augroup FTOptions
   au FileType ruby,eruby let b:dispatch = 'rspec %'
 
   au FileType ruby,eruby inoreabbrev ARB ActiveRecord::Base
+  au FileType eruby :UltiSnipsAddFiletypes eruby.html
 augroup END
 
 " = FUNCTIONS{{{1

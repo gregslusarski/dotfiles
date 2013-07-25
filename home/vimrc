@@ -226,6 +226,7 @@ nn <silent> <leader>s :w!<CR>
 nn <leader>qq :wa!<CR>:q<CR>
 " Write read-only files
 cno W! w !sudo tee %
+cno ara ar **/*.*
 " Reselect visual block after indent/outdent
 vn < <gv
 vn > >gv
@@ -262,7 +263,6 @@ nn <silent> <leader>p :pwd<CR>
 nn <silent> <leader>u :ea 1f<CR>
 " nn <leader>e :e **/
 " Select all text in current buffer
-nn <leader>a ggVG
 nn <silent> <leader>/ :noh<CR>
 " Underline text, to create headers
 nn <leader>- yypVr-
@@ -540,12 +540,12 @@ augroup FTOptions
   au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
   au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
   au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
-  " Dispatch.vim
   au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
+  " Dispatch.vim
   au FileType ruby,eruby let b:dispatch = 'rspec %'
 
-  au FileType ruby,eruby inoreabbrev ARB ActiveRecord::Base
-  au FileType ruby inoreabbrev AC ApplicationController
+  au FileType ruby inorea ARB ActiveRecord::Base
+  au FileType ruby inorea AC ApplicationController
   au FileType eruby :UltiSnipsAddFiletypes eruby.html
 
   "html

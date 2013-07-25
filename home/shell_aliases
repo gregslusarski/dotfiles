@@ -84,11 +84,12 @@ alias t='tmux'
 
 # RUBY # {{{1
 alias rb='ruby'
-# Rails
 alias ran='rails new'
+alias ras='rails server'
+alias bi='bundle install'
+alias rsi='rspec --init'
 alias rs='rspec'
 alias rsf='rspec --format documentation'
-alias rsi='rspec --init'
 
 # ACK-GREP # {{{1
 alias ack='ack-grep'

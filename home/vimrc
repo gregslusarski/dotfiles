@@ -200,7 +200,7 @@ endif
 " Unbind the cursor keys in insert, normal and visual modes.
 for prefix in ['i', 'n', 'v']
   for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-    exe prefix . "no " . key . " <Nop>"
+    exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
 nn <Space> za
@@ -545,6 +545,7 @@ augroup FTOptions
   au FileType ruby,eruby let b:dispatch = 'rspec %'
 
   au FileType ruby,eruby inoreabbrev ARB ActiveRecord::Base
+  au FileType ruby inoreabbrev AC ApplicationController
   au FileType eruby :UltiSnipsAddFiletypes eruby.html
 
   "html

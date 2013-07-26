@@ -158,7 +158,8 @@ set cmdheight=2
 set showmatch
 " Always show status line
 set laststatus=2
-"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+" set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+" set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
 " Enable wordwrap
 set textwidth=79 wrap linebreak
 " Backspace
@@ -302,7 +303,7 @@ let g:sparkupNextMapping='<leader>n'
 " let g:sparkupPreviousMapping='<c-f>'
 
 " - Airline"{{{2
-let g:airline_theme='badwolf'
+let g:airline_theme='luna'
 let g:airline_powerline_fonts=1
 " let g:airline_enable_fugitive=1
 " '%t' - only filename
@@ -660,6 +661,7 @@ if has('gui_running')
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
+  colorscheme detailed
   set lines=36 columns=80
   " Turn off menu, toolbar, scrollbars
   set guioptions=aegit
@@ -675,11 +677,11 @@ set background=dark
 " let g:solarized_contrast="high"
 " let g:solarized_visibility="high"
 " colorscheme solarized
-colorscheme detailed
-" colorscheme skittles_berry
+" colorscheme detailed
+" colorscheme koehler
 " colorscheme skittles_dark
 " colorscheme 256-jungle
-" colorscheme charged-256
+colorscheme charged-256
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
 " SignColumn will use same bg color as linenumber (GitGutter will set it)

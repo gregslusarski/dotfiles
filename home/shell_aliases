@@ -12,6 +12,7 @@ alias l.='ls -ld .[^.]*'
 alias l='ls -CF'
 alias tr='tree'
 alias p='pwd'
+alias cl='wc -l * | sort -g'
 # Zsh
 alias soz='source ~/.zshrc'
 # alias sop='source ~/.profile'

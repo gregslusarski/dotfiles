@@ -303,7 +303,7 @@ let g:sparkupNextMapping='<leader>n'
 " let g:sparkupPreviousMapping='<c-f>'
 
 " - Airline"{{{2
-let g:airline_theme='luna'
+let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts=1
 " let g:airline_enable_fugitive=1
 " '%t' - only filename

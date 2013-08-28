@@ -42,7 +42,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 Bundle 'spolu/dwm.vim'
-Bundle 'bling/vim-airline'
+Bundle 'itchyny/lightline.vim'
 Bundle 'majutsushi/tagbar.git'
 Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'goldfeld/vim-seek.git'
@@ -53,6 +53,7 @@ Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'skalnik/vim-vroom'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'tristen/vim-sparkup'
+" Bundle 'bling/vim-airline'
 " Bundle 'rstacruz/sparkup'
 " Bundle 'mattn/zencoding-vim'
 " Bundle 'romainl/sparkup'
@@ -259,7 +260,10 @@ nn <leader>ev :e $MYVIMRC<CR>
 nn <leader>vs :source $MYVIMRC<CR>
 " cd to the directory containing the file in the buffer
 nn <silent> <leader>cd :lcd %:p:h<CR>:pwd<CR>
-nn <silent> <leader>p :pwd<CR>
+" print working directory
+nn <silent> <leader>pw :pwd<CR>
+" print directory of the current file
+nn <silent> <leader>pf :echo expand('%:p:h')<CR>
 " undo to last write
 nn <silent> <leader>u :ea 1f<CR>
 " nn <leader>e :e **/
@@ -297,22 +301,67 @@ cnorea <silent> - cd -
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 no <silent> <leader>e :NR<CR>
+" - Lightline"{{{2
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'MyModified',
+      \   'readonly': 'MyReadonly',
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode',
+      \ },
+      \ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+endfunction
+
+function! MyFugitive()
+  return &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head()) ? ' '.fugitive#head() : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFileformat()
+  return winwidth('.') > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth('.') > 60 ? lightline#mode() : ''
+endfunction
+
 " - Sparkup"{{{2
 let g:sparkupExecuteMapping='<leader>j'
 let g:sparkupNextMapping='<leader>n'
 " let g:sparkupPreviousMapping='<c-f>'
-
-" - Airline"{{{2
-let g:airline_theme='simple'
-let g:airline_powerline_fonts=1
-" let g:airline_enable_fugitive=1
-" '%t' - only filename
-let g:airline_section_c = '%t'
-" filetype
-let g:airline_section_x = ''
-" let g:airline_enable_syntastic=1
-" let g:bufferline_echo = 0
-set noshowmode
 
 " - Buffergator"{{{2
 " let g:buffergator_split_size = 30
@@ -419,6 +468,18 @@ let g:EasyMotion_do_shade = 0
 
 " - Dispatch"{{{2
 " nn <F9> :Dispatch<CR>
+
+" " - Airline"{{{2
+" let g:airline_theme='simple'
+" let g:airline_powerline_fonts=1
+" " let g:airline_enable_fugitive=1
+" " '%t' - only filename
+" let g:airline_section_c = '%t'
+" " filetype
+" let g:airline_section_x = ''
+" " let g:airline_enable_syntastic=1
+" " let g:bufferline_echo = 0
+" set noshowmode
 
 " " - Snipmate"{{{2
 " let g:snippets_dir='~/.vim/bundle/snippets/snippets'

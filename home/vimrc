@@ -778,14 +778,15 @@ if has('gui_running')
   if has('unix')
     " set guifont=Menlo\ for\ Powerline\ 11
     " set guifont=Menlo\ for\ Powerline\ 10
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
+    " set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 13
   elseif has('gui_win32') || has('gui_win64')
     let g:skip_loading_mswin=1
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
+  set lines=41 columns=80
   colorscheme detailed
-  set lines=36 columns=80
   " Turn off menu, toolbar, scrollbars
   set guioptions=aegit
 else

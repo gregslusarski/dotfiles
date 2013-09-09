@@ -3,7 +3,7 @@ cd /tmp/vim_source && \
 ./configure --with-features=huge \
 --prefix=/usr/local \
 --disable-nls \
---enable-gui=gtk2 \
+--enable-gui=gnome2 \
 --enable-multibyte \
 --enable-pythoninterp \
 --with-python-config-dir=/usr/lib/python2.7/config \

@@ -160,9 +160,6 @@ set cmdheight=2
 set showmatch
 " Always show status line
 set laststatus=2
-" set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-" set statusline=[%n]\ %<%.99f\ %h%w%m%r%{SL('CapsLockStatusline')}%y%{SL('fugitive#statusline')}%#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*%=%-14.(%l,%c%V%)\ %P
-" Enable wordwrap
 set textwidth=79 wrap linebreak
 " Backspace
 set backspace=indent,eol,start
@@ -277,8 +274,6 @@ nn <leader>` yypVr~
 " Make <C-u> and <C-w> undoable
 ino <C-u> <C-g>u<C-u>
 ino <C-w> <C-g>u<C-w>
-nn & :&&<CR>
-xn & :&&<CR>
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
@@ -499,11 +494,6 @@ let g:syntastic_loc_list_height=5
 let g:syntastic_enable_signs=0
 let g:syntastic_echo_current_error=0
 
-" - Powerline"{{{2
-" let g:Powerline_symbols = 'fancy'
-" let g:Powerline_stl_path_style = 'filename'
-" call Pl#Theme#InsertSegment('charcode', 'after', 'filetype')
-
 " - Commentary"{{{2
 " autocmd FileType python set commentstring=#\ %s
 xmap \ <Plug>Commentary
@@ -517,9 +507,6 @@ nn <silent> <F2> :GundoToggle<CR>
 " - Dwm"{{{2
 let g:dwm_master_pane_width="50%"
 
-" - delimitMate"{{{2
-" let delimitMate_matchpairs = "(:),[:],{:},<:>"
-
 " - Tagbar"{{{2
 let g:tagbar_autofocus = 1
 nn <silent> <F7> :TagbarToggle<CR>
@@ -532,79 +519,6 @@ let g:EasyMotion_do_shade = 0
 " - Dispatch"{{{2
 " nn <F9> :Dispatch<CR>
 
-" " - Airline"{{{2
-" let g:airline_theme='simple'
-" let g:airline_powerline_fonts=1
-" " let g:airline_enable_fugitive=1
-" " '%t' - only filename
-" let g:airline_section_c = '%t'
-" " filetype
-" let g:airline_section_x = ''
-" " let g:airline_enable_syntastic=1
-" " let g:bufferline_echo = 0
-" set noshowmode
-
-" " - Snipmate"{{{2
-" let g:snippets_dir='~/.vim/bundle/snippets/snippets'
-
-" " - Flake8"{{{2
-" " E111 = indentation is not a multiple of four
-" let g:flake8_ignore="E111"
-
-" " - Neocomplcache"{{{2
-" let g:neocomplcache_enable_at_startup = 1
-" " Use smartcase.
-" let g:neocomplcache_enable_smart_case = 1
-" " let g:neocomplcache_force_overwrite_completefunc=1
-" " <CR>: close popup and save indent.
-" ino <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" " <TAB>: completion.
-" ino <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" ino <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" " <C-h>, <BS>: close popup and delete backword char.
-" ino <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" ino <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-
-" " - Neosnippet"{{{2
-" " Plugin key-mappings.
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" " SuperTab like snippets behavior.
-" " imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" " smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" " For snippet_complete marker.
-" if has('conceal')
-"   set conceallevel=2 concealcursor=i
-" endif
-" " Tell Neosnippet about the other snippets
-" let g:neosnippet#snippets_directory='~/.vim/bundle/snippets/snippets'
-" " Disable built-in snippets
-" let g:neosnippet#disable_runtime_snippets = {
-" \   '_' : 1,
-" \ }
-" let g:neosnippet#enable_snipmate_compatibility = 1
-
-
-" Supertab
-" au FileType *
-"   \ if &omnifunc != '' |
-"   \   call SuperTabChain(&omnifunc, "<c-p>") |
-"   \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-"   \ endif
-
-" Pyflakes
-" Error highlight color
-"highlight SpellBad term=reverse ctermfg=0 ctermbg=3
-
-" Taglist
-"map <leader>t :TlistToggle<CR>
-"let Tlist_Inc_Winwidth=0
-"let Tlist_Compact_Format=1
-
-" Rope-vim
-"map <leader>j :RopeGotoDefinition<CR>
-"map <leader>r :RopeRename<CR>
-"}}}2
 " = AUTOCOMMANDS"{{{1
 " -------------------
 augroup General
@@ -630,15 +544,9 @@ augroup General
 
 augroup END
 
-" augroup Plugins
-"   au!
-"   autocmd BufWritePost *.py call Flake8()
-" augroup END
-
 augroup FTCheck
   " filetype.vim
   au!
-  au BufNewFile,BufRead *.rss,*.atom set ft=xml
   au BufNewFile,BufRead *.txt,README,HELP,INSTALL,NEWS,TODO if &ft == ""
     \ | set ft=text|endif
   " UltiSnips is missing a setf trigger for snippets on BufEnter
@@ -681,7 +589,6 @@ augroup END
 " ---------------
 " - Stab"{{{2
 " Set tabstop, softtabstop and shiftwidth to the same value + set et / noet
-" Inspired by http://vimcasts.org/episodes/tabs-and-spaces/
 " retab! 4 spaces into 2
 nn <leader>t2 :call Stab()<CR>4 noet<CR>:retab!<CR>:call Stab()<CR>2 et<CR>:retab!<CR>
 " retab! 2 spaces into 4
@@ -727,9 +634,6 @@ endfun
 
 " - CloseHiddenBuffers"{{{2
 " Wipe all buffers which are not active (i.e. not visible in a window/tab)
-" Using elements from each of these:
-"   http://stackoverflow.com/questions/2974192
-"   http://stackoverflow.com/questions/1534835
 nn <leader>ch :call CloseHiddenBuffers()<CR>
 command! -nargs=* Only call CloseHiddenBuffers()
 fun! CloseHiddenBuffers()
@@ -777,9 +681,6 @@ endfun
 " -------------------------
 if has('gui_running')
   if has('unix')
-    " set guifont=Menlo\ for\ Powerline\ 11
-    " set guifont=Menlo\ for\ Powerline\ 10
-    " set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
     set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 13
   elseif has('gui_win32') || has('gui_win64')
     let g:skip_loading_mswin=1
@@ -796,27 +697,9 @@ else
 endif
 
 set background=dark
-" let g:solarized_menu=0
-" let g:solarized_termtrans=1
-" let g:solarized_termcolors=256
-" let g:solarized_contrast="high"
-" let g:solarized_visibility="high"
-" colorscheme solarized
-" colorscheme detailed
-" colorscheme koehler
-" colorscheme skittles_dark
-" colorscheme 256-jungle
 colorscheme charged-256
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
 " SignColumn will use same bg color as linenumber (GitGutter will set it)
 hi clear SignColumn
 " hi SignColumn ctermbg=0 guibg=DarkGrey
-
-" = FIXUPS"{{{1
-" -------------
-" Fix arrow key navigation in insert mode
-" imap <ESC>oA <ESC>ki
-" imap <ESC>oB <ESC>ji
-" imap <ESC>oC <ESC>li
-" imap <ESC>oD <ESC>hi

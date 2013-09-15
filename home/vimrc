@@ -687,7 +687,7 @@ if has('gui_running')
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
-  set lines=41 columns=80
+  set lines=39 columns=80
   colorscheme detailed
   " Turn off menu, toolbar, scrollbars
   set guioptions=aegit

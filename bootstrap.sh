@@ -80,9 +80,11 @@ symlink "viszu.zsh-theme" "$HOME/.oh-my-zsh/themes/viszu.zsh-theme"
 
 ###############################################################################
 
-if [ ! -d ~/.vim ] && [ -e ~/.vimrc ]; then
-  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  vim +BundleInstall! +BundleClean +qall
+mkdir -p ~/.vim/autoload
+curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
+
+if [ -e ~/.vimrc ]; then
+  sudo vim +PlugUpdate +PlugClean +PlugUpgrade +qall
 fi
 
 if [ $counter = 1 ]; then

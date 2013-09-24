@@ -34,8 +34,8 @@ alias saga='sudo apt-get autoremove'
 alias sagu='sudo apt-get update'
 alias sup='sudo apt-get update && sudo apt-get upgrade'
 alias saar='sudo add-apt-repository'
-alias vup='sudo vim +PlugInstall +PlugClean +PlugUpgrade +qall'
-alias up='sudo vim +PlugInstall +PlugClean +PlugUpgrade +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
+alias vup='sudo vim +PlugUpdate +PlugClean +PlugUpgrade +qall'
+alias up='sudo vim +PlugUpdate +PlugClean +PlugUpgrade +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
 
 # GIT # {{{1
 alias gcl='git clone'

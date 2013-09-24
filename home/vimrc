@@ -3,67 +3,58 @@
 " viszu's vimrc - https://github.com/viszu
 " Disable vi compatibilty restrictions
 set nocompatible
-filetype off " required! for Vundle
-" - Vundle"{{{2
-
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-" original repos on github:
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-obsession'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-endwise'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'Raimondi/delimitMate'
-Bundle 'godlygeek/tabular'
-Bundle 'vim-scripts/Gundo'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'mileszs/ack.vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
-Bundle 'spolu/dwm.vim'
-Bundle 'itchyny/lightline.vim'
-Bundle 'majutsushi/tagbar.git'
-Bundle 'Lokaltog/vim-easymotion.git'
-Bundle 'goldfeld/vim-seek.git'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'rking/vim-detailed'
-Bundle 'chrisbra/NrrwRgn'
-Bundle 'jeetsukumaran/vim-buffergator'
-Bundle 'skalnik/vim-vroom'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'tristen/vim-sparkup'
-" Bundle 'bling/vim-airline'
-" Bundle 'rstacruz/sparkup'
-" Bundle 'mattn/zencoding-vim'
-" Bundle 'romainl/sparkup'
-" Bundle 'bling/vim-bufferline'
-" Bundle 'Lokaltog/vim-powerline'
-" Bundle 'vim-scripts/Skittles-Dark'
-" Bundle 'shawncplus/skittles_berry'
-" Bundle 'hynek/vim-python-pep8-indent'
-" Bundle 'viszu/vim-python-fold'
+call plug#begin()
+" Plug 'user/repo', 'branch_or_tag'
+" Plug 'git@github.com:junegunn/vim-github-dashboard.git'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-github-dashboard'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-endwise'
+Plug 'vim-ruby/vim-ruby'
+Plug 'Raimondi/delimitMate'
+Plug 'godlygeek/tabular'
+Plug 'vim-scripts/Gundo'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'mileszs/ack.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'spolu/dwm.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'majutsushi/tagbar'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'goldfeld/vim-seek'
+Plug 'altercation/vim-colors-solarized'
+Plug 'rking/vim-detailed'
+Plug 'chrisbra/NrrwRgn'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'skalnik/vim-vroom'
+Plug 'flazz/vim-colorschemes'
+Plug 'tristen/vim-sparkup'
+" Plug 'bling/vim-airline'
+" Plug 'rstacruz/sparkup'
+" Plug 'mattn/zencoding-vim'
+" Plug 'romainl/sparkup'
+" Plug 'bling/vim-bufferline'
+" Plug 'Lokaltog/vim-powerline'
+" Plug 'vim-scripts/Skittles-Dark'
+" Plug 'shawncplus/skittles_berry'
+" Plug 'hynek/vim-python-pep8-indent'
+" Plug 'viszu/vim-python-fold'
+call plug#end()
 "}}}2
 " Filetype detection:ON, plugin:ON, indent:ON
 filetype plugin indent on " required! for Vundle
@@ -297,6 +288,12 @@ cnorea <silent> - cd -
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 no <silent> <leader>e :NR<CR>
+" - Github-Dashboard"{{{2
+let g:github_dashboard = {}
+" Options: tab, top, bottom, above, below, left, right
+let g:github_dashboard['position'] = 'bottom'
+let g:github_dashboard['statusline'] = 0
+
 " - Lighline"{{{2
 let g:lightline = {
       \ 'colorscheme': 'powerline',
@@ -482,7 +479,7 @@ let g:ctrlp_working_path_mode = 0
 " - Syntastic"{{{2
 nn <silent> <leader>x :SyntasticCheck<CR>
 " Disable all ruby warnings. Default setting is '-w -T1 -c'
-" let g:syntastic_ruby_mri_args='-T1 -c'
+let g:syntastic_ruby_mri_args='-T1 -c'
 
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E111,E501,E226'

@@ -3,9 +3,9 @@
 " viszu's vimrc - https://github.com/viszu
 " Disable vi compatibilty restrictions
 set nocompatible
-call plug#begin()
 " Plug 'user/repo', 'branch_or_tag'
 " Plug 'git@github.com:junegunn/vim-github-dashboard.git'
+call plug#begin()
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-github-dashboard'
@@ -44,16 +44,6 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'skalnik/vim-vroom'
 Plug 'flazz/vim-colorschemes'
 Plug 'tristen/vim-sparkup'
-" Plug 'bling/vim-airline'
-" Plug 'rstacruz/sparkup'
-" Plug 'mattn/zencoding-vim'
-" Plug 'romainl/sparkup'
-" Plug 'bling/vim-bufferline'
-" Plug 'Lokaltog/vim-powerline'
-" Plug 'vim-scripts/Skittles-Dark'
-" Plug 'shawncplus/skittles_berry'
-" Plug 'hynek/vim-python-pep8-indent'
-" Plug 'viszu/vim-python-fold'
 call plug#end()
 "}}}2
 " Filetype detection:ON, plugin:ON, indent:ON
@@ -468,11 +458,15 @@ let g:NERDTreeQuitOnOpen=1
 
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$\|Downloads$',
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$\|Downloads$\|Videos$\|Pictures$',
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-" let g:ctrlp_user_command = 'find %s -type f'
+let ctrlp_max_height = 30
+let g:ctrlp_working_path_mode = 'a'
+let s:ag = executable('ag')
+if s:ag
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+" let g:ctrlp_switch_buffer = 0
 " let g:ctrlp_follow_symlinks = 1
 " let g:ctrlp_show_hidden = 1
 

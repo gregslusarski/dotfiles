@@ -21,9 +21,9 @@ alias soz='source ~/.zshrc'
 # alias _sr='sudo reboot'
 
 # BOOKMARKS # {{{1
-alias cdr='cd ~/ruby'
-alias cdra='cd ~/rails'
-alias cdd='cd ~/dotfiles'
+alias cdr='cd ~/Dropbox/ruby'
+alias cdra='cd ~/Dropbox/rails'
+alias cdd='cd ~/Dropbox/dotfiles'
 alias cdcl='cd ~/Downloads/clones'
 alias cddl='cd ~/Downloads'
 

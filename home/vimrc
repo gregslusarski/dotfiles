@@ -219,6 +219,7 @@ nn <leader>V V`]
 " Make Y behave like other capitals
 nn Y y$
 nn <F12> "+
+vn <F12> "+
 " Improve up/down movement on wrapped lines
 nn j gj
 nn k gk
@@ -278,6 +279,7 @@ cnorea <silent> - cd -
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 no <silent> <leader>e :NR<CR>
+let g:plug_timeout = 15
 " - Github-Dashboard"{{{2
 let g:github_dashboard = {}
 " Options: tab, top, bottom, above, below, left, right

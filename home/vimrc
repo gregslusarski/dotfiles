@@ -279,7 +279,7 @@ cnorea <silent> - cd -
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 no <silent> <leader>e :NR<CR>
-let g:plug_timeout = 15
+let g:plug_timeout = 30
 " - Github-Dashboard"{{{2
 let g:github_dashboard = {}
 " Options: tab, top, bottom, above, below, left, right
@@ -464,10 +464,10 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
 let ctrlp_max_height = 30
 let g:ctrlp_working_path_mode = 'a'
-let s:ag = executable('ag')
-if s:ag
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+" let s:ag = executable('ag')
+" if s:ag
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" endif
 " let g:ctrlp_switch_buffer = 0
 " let g:ctrlp_follow_symlinks = 1
 " let g:ctrlp_show_hidden = 1

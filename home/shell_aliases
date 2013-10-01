@@ -39,6 +39,7 @@ alias vup='vim +"set nomore" +NeoBundleInstall! +NeoBundleClean! +qall'
 alias up='sudo vim +"set nomore" +NeoBundleInstall! +NeoBundleClean! +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
 
 # GIT # {{{1
+alias gup='git add . && git commit -m "Update" && git push'
 alias gcl='git clone'
 alias gi='git init'
 alias gps='git push'

@@ -1,11 +1,11 @@
 " = GENERAL"{{{1
 " --------------
 " viszu's vimrc - https://github.com/viszu
-" Disable vi compatibilty restrictions
 set nocompatible
-" Vundle"{{{2
-filetype off
-set rtp+=~/.vim/bundle/neobundle.vim/
+" NeoBundle"{{{2
+if has('vim_starting')
+  set rtp+=~/.vim/bundle/neobundle.vim/
+endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
@@ -16,7 +16,6 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'gmarik/vundle'
 NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'junegunn/vim-github-dashboard'
@@ -57,13 +56,15 @@ NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'tristen/vim-sparkup'
 "}}}2
 " Filetype detection:ON, plugin:ON, indent:ON
-filetype plugin indent on " required! for Vundle
+filetype plugin indent on " required for plugin manager
 NeoBundleCheck
 " - Path"{{{2
-" for testing out custom vim scripts
-set rtp+=~/vim_test,~/vim_test/after
-" my snippets, spell file etc.
-set rtp+=~/dotfiles/vim
+if has('vim_starting')
+  " for testing out custom vim scripts
+  set rtp+=~/vim_test,~/vim_test/after
+  " my snippets, spell file etc.
+  set rtp+=~/Dropbox/dotfiles/vim
+endif
 "}}}2
 " Enable syntax highlighting
 syntax on
@@ -290,7 +291,6 @@ cnorea <silent> - cd -
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 no <silent> <leader>e :NR<CR>
-let g:plug_timeout = 30
 " - Github-Dashboard"{{{2
 let g:github_dashboard = {}
 " Options: tab, top, bottom, above, below, left, right

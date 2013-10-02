@@ -697,7 +697,7 @@ if has('gui_running')
   set guioptions=aegit
 else
   " Terminal
-  " set t_Co=256 t_md=
+  " set t_Co=256 "t_md=
 endif
 
 set background=dark

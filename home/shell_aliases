@@ -36,7 +36,7 @@ alias sagu='sudo apt-get update'
 alias sup='sudo apt-get update && sudo apt-get upgrade'
 alias saar='sudo add-apt-repository'
 alias vup='vim +"set nomore" +NeoBundleInstall! +NeoBundleClean! +qall'
-alias up='sudo vim +"set nomore" +NeoBundleInstall! +NeoBundleClean! +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
+alias up='vim +"set nomore" +NeoBundleInstall! +NeoBundleClean! +qall && upgrade_oh_my_zsh && gem update --system && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && clear'
 
 # GIT # {{{1
 alias gup='git add . && git commit -m "Update" && git push'

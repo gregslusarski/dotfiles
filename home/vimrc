@@ -53,6 +53,8 @@ NeoBundle 'jeetsukumaran/vim-buffergator'
 NeoBundle 'skalnik/vim-vroom'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'tristen/vim-sparkup'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'jtratner/vim-flavored-markdown'
 "}}}2
 " Filetype detection:ON, plugin:ON, indent:ON
 filetype plugin indent on " required for plugin manager

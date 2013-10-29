@@ -629,7 +629,7 @@ else
 endif
 
 " set background=dark
-colorscheme kruby
+colorscheme skittles_dark
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
 " SignColumn will use same bg color as linenumber (GitGutter will set it)

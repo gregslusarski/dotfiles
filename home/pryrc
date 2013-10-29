@@ -1,5 +1,8 @@
 Pry.config.editor = "gvim -u $HOME/.vimrc -N -U NONE -f"
 
+Pry.config.prompt = [proc { "> " },
+                     proc { "| " }]
+
 # Use awesome_print
 begin
   require 'awesome_print'

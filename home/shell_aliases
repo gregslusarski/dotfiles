@@ -86,6 +86,9 @@ alias vdf='vimdiff'
 # alias tmux='TERM=screen-256color-bce tmux'
 alias t='tmux'
 
+# PYTHON # {{{1
+alias py='python'
+
 # RUBY # {{{1
 alias rb='ruby'
 alias ran='rails new'

@@ -1,7 +1,6 @@
 Pry.config.editor = "gvim -u $HOME/.vimrc -N -U NONE -f"
 
-Pry.config.prompt = [proc { "> " },
-                     proc { "| " }]
+Pry.config.prompt = proc { |obj, nest_level, _| "\e[01;38;5;202m#{RUBY_VERSION}:#{obj}:#{nest_level}> \e[0m" }
 
 Pry.commands.delete 'exit'
 Pry.config.collision_warnings = true

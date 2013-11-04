@@ -140,7 +140,9 @@ set spellsuggest=9
 set title
 " Always show cursor position in statusline
 set ruler
-" set number
+" Use hybrid mode number + relative (7.4+)
+set number
+set relativenumber
 " This shows what you are typing as a command
 set showcmd
 set cmdheight=2
@@ -291,27 +293,41 @@ let g:github_dashboard = {}
 let g:github_dashboard['position'] = 'bottom'
 let g:github_dashboard['statusline'] = 0
 
+
 " - Lighline"{{{2
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [[ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype']]
-      \ },
-      \ 'component': {
-      \   'lineinfo': '%3l:%-2v',
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'filename': 'MyFilename',
-      \   'fileformat': 'MyFileformat',
-      \   'filetype': 'MyFiletype',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
-      \   'ctrlpmark': 'CtrlPMark',
-      \ },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
+        \ 'colorscheme': 'powerline',
+        \ 'mode_map' : {
+        \ 'n' : 'N',
+        \ 'i' : 'I',
+        \ 'R' : 'R',
+        \ 'v' : 'V',
+        \ 'V' : 'V-L',
+        \ 'c' : 'C',
+        \ "\<C-v>": 'V-B',
+        \ 's' : 'S',
+        \ 'S' : 'S-L',
+        \ "\<C-s>": 'S-B',
+        \ '?': '      ' },
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+        \   'right': [[ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype']]
+        \ },
+        \ 'component': {
+        \   'lineinfo': '%3l:%-2v',
+        \   'paste': '%{&paste?"P":""}',
+        \ },
+        \ 'component_function': {
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode',
+        \   'ctrlpmark': 'CtrlPMark',
+        \ },
+        \ 'subseparator': { 'left': '|', 'right': '|' }
+        \ }
 
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -409,10 +425,12 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
+
 " - Sparkup"{{{2
 let g:sparkupExecuteMapping='<leader>j'
 let g:sparkupNextMapping='<leader>n'
 " let g:sparkupPreviousMapping='<c-f>'
+
 
 " - Buffergator"{{{2
 " let g:buffergator_split_size = 30
@@ -420,6 +438,7 @@ let g:sparkupNextMapping='<leader>n'
 let g:buffergator_autoexpand_on_split = 0
 let g:buffergator_suppress_keymaps = 1
 nn <silent> <leader>b :BuffergatorToggle<CR>
+
 
 " - Ultisnips"{{{2
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -432,6 +451,7 @@ let g:snips_author="viszu"
 " Since this ultisnips fork can also use snipmate snips, prefer ultisnips snips
 " let g:always_use_first_snippet = 1
 
+
 " - Fugitive"{{{2
 nn <silent> <leader>gs :Gstatus<CR>
 nn <silent> <leader>gd :Gdiff<CR>
@@ -440,14 +460,16 @@ nn <silent> <leader>gb :Gblame<CR>
 nn <silent> <leader>gl :Glog<CR>
 nn <silent> <leader>gp :Git push<CR>
 
+
 " - NERDTree"{{{2
 nn <silent> <C-e> :NERDTreeToggle<CR>
 let g:NERDTreeShowBookmarks=1
-let g:NERDTreeHijackNetrw=0
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeChDirMode=0
 let g:NERDTreeQuitOnOpen=1
+" let g:NERDTreeHijackNetrw=0
 " let g:NERDTreeShowHidden=1
+
 
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
@@ -455,6 +477,7 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.exe$\|\.so$\|\.dll$' }
 let ctrlp_max_height = 30
 let g:ctrlp_working_path_mode = 'a'
+
 
 " - Syntastic"{{{2
 nn <silent> <leader>x :SyntasticCheck<CR>
@@ -471,6 +494,7 @@ let g:syntastic_loc_list_height=5
 let g:syntastic_enable_signs=0
 let g:syntastic_echo_current_error=0
 
+
 " - Commentary"{{{2
 " autocmd FileType python set commentstring=#\ %s
 xmap \ <Plug>Commentary
@@ -478,23 +502,29 @@ nmap \ <Plug>Commentary
 nmap \\ <Plug>CommentaryLine
 nmap \u <Plug>CommentaryUndo
 
+
 " - Gundo"{{{2
 nn <silent> <F2> :GundoToggle<CR>
 
+
 " - Dwm"{{{2
 let g:dwm_master_pane_width="50%"
+
 
 " - Tagbar"{{{2
 let g:tagbar_autofocus = 1
 nn <silent> <F7> :TagbarToggle<CR>
 nn <silent> <F8> :TagbarOpenAutoClose<CR>
 
+
 " - EasyMotion"{{{2
 let g:EasyMotion_leader_key = '\'
 let g:EasyMotion_do_shade = 0
 
+
 " - Dispatch"{{{2
 " nn <F9> :Dispatch<CR>
+
 
 " = AUTOCOMMANDS"{{{1
 " -------------------
@@ -633,6 +663,10 @@ endif
 colorscheme skittles_dark
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
+if g:colors_name == 'skittles_dark'
+  hi LineNr guibg=#231F20 ctermbg=234 guifg=#5D8D8F ctermfg=66
+  hi CursorLineNr guifg=#5D8D8F ctermfg=66
+endif
 " SignColumn will use same bg color as linenumber (GitGutter will set it)
 hi clear SignColumn
 " hi SignColumn ctermbg=0 guibg=DarkGrey

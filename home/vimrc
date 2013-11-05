@@ -45,7 +45,7 @@ NeoBundle 'spolu/dwm.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'goldfeld/vim-seek'
+NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'rking/vim-detailed'
 NeoBundle 'chrisbra/NrrwRgn'
@@ -650,7 +650,7 @@ if has('gui_running')
     set guifont=Droid_Sans_Mono:h10.2
     cd c:\
   endif
-  set lines=38 columns=80
+  set lines=38 columns=83
   colorscheme skittles_dark
   " Turn off menu, toolbar, scrollbars
   set guioptions=aegit

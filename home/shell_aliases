@@ -1,4 +1,5 @@
 # TERMINAL # {{{1
+alias cdc='cd && clear'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'

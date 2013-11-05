@@ -519,7 +519,7 @@ nn <silent> <F8> :TagbarOpenAutoClose<CR>
 
 " - EasyMotion"{{{2
 let g:EasyMotion_leader_key = '\'
-let g:EasyMotion_do_shade = 0
+" let g:EasyMotion_do_shade = 0
 
 
 " - Dispatch"{{{2
@@ -664,7 +664,7 @@ colorscheme skittles_dark
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
 if g:colors_name == 'skittles_dark'
-  hi LineNr guibg=#231F20 ctermbg=234 guifg=#5D8D8F ctermfg=66
+  hi LineNr gui=none guibg=#231F20 ctermbg=234 guifg=#5D8D8F ctermfg=66
   hi CursorLineNr guifg=#5D8D8F ctermfg=66
 endif
 " SignColumn will use same bg color as linenumber (GitGutter will set it)

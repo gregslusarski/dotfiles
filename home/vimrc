@@ -287,6 +287,7 @@ cnorea <silent> - cd -
 " = PLUGINS SETTINGS & MAPPINGS"{{{1
 " ----------------------------------
 no <silent> <leader>e :NR<CR>
+" let g:ycm_server_log_level = 'warning'
 " - Github-Dashboard"{{{2
 let g:github_dashboard = {}
 " Options: tab, top, bottom, above, below, left, right
@@ -554,8 +555,11 @@ augroup END
 augroup FTCheck
   " filetype.vim
   au!
-  au BufNewFile,BufRead *.txt,README,HELP,INSTALL,NEWS,TODO if &ft == ""
-    \ | set ft=text|endif
+  au BufNewFile,BufRead TODO,HELP,LINKS,NOTES,MUSIC if &ft == ""
+    \ | set ft=markdown|endif
+  " Move tasks todo <-> done
+  au BufRead TODO nn <buffer> <leader>z dd/ZROBIONEjp/TODOjj
+  au BufRead TODO nn <buffer> <leader>x dd/TODOjp/ZROBIONEjj
   " UltiSnips is missing a setf trigger for snippets on BufEnter
   au BufEnter *.snippets setf snippets
 augroup END

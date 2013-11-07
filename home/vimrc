@@ -230,9 +230,9 @@ nn <leader>V V`]
 nn Y y$
 nn <F12> "+
 vn <F12> "+
-" Improve up/down movement on wrapped lines
-nn j gj
-nn k gk
+" " Improve up/down movement on wrapped lines
+" nn j gj
+" nn k gk
 " Toggle spell checking
 nn <F3> :setl spell! spell?<CR>
 " Toggle paste / nopaste

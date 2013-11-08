@@ -101,11 +101,12 @@ alias rsf='rspec --format documentation'
 
 # ACK-GREP # {{{1
 alias ack='ack-grep'
-alias ag='ack-grep -i'
-alias agt='ack-grep -i --text'
-alias agr='ack-grep -i --ruby'
-alias agv='ack-grep -i --vim'
-alias agp='ack-grep -i --python'
+alias ag='ack-grep'
+alias agt='ack-grep --text'
+alias agr='ack-grep --ruby'
+alias agv='ack-grep --vim'
+alias agp='ack-grep --python'
+alias agc='ack-grep --c'
 
 # FIND FILE / DIR # {{{1
 alias ff='sudo find / -type f -name'

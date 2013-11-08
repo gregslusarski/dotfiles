@@ -272,11 +272,12 @@ endif
 " = ABBREVIATIONS"{{{1
 cnorea H h
 cnorea hg helpg
-cnorea ag Ack
-cnorea agt Ack -i --text
-cnorea agr Ack -i --ruby
-cnorea agp Ack -i --python
-cnorea agv Ack -i --vim
+cnorea ag Ack --smart-case
+cnorea agt Ack --smart-case --text
+cnorea agr Ack --smart-case --ruby
+cnorea agp Ack --smart-case --python
+cnorea agv Ack --smart-case --vim
+cnorea agc Ack --smart-case --c
 cnorea hag AckHelp
 
 cnorea <silent> md !mkdir -p

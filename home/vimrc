@@ -551,6 +551,8 @@ augroup General
   " Resize splits when the window is resized
   au VimResized * :wincmd =
 
+  au BufEnter * call system("tmux rename-window " . expand("%"))
+
 augroup END
 
 augroup FTCheck

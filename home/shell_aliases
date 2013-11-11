@@ -84,8 +84,8 @@ alias sv='sudo vim'
 alias vdf='vimdiff'
 
 # TMUX # {{{1
-# alias tmux='TERM=screen-256color-bce tmux'
-alias t='tmux'
+alias tmux='TERM=screen-256color-bce tmux'
+alias t='TERM=screen-256color-bce tmux'
 
 # PYTHON # {{{1
 alias py='python'

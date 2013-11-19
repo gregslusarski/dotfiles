@@ -665,6 +665,8 @@ if has('gui_running')
 else
   " Terminal
   " set t_Co=256 "t_md=
+  " fix broken colors with tmux term conflict"
+  set t_ut=
 endif
 
 " set background=dark

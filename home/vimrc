@@ -16,6 +16,7 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
+" NeoBundle 'farseer90718/vim-taskwarrior'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'junegunn/vim-github-dashboard'
 NeoBundle 'tpope/vim-fugitive'

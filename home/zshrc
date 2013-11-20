@@ -34,7 +34,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(ruby rails gem rake)
 
-export TERM=screen-256color
+export TERM=xterm-256color
 
 export EDITOR="gvim -u $HOME/.vimrc -N -U NONE -f"
 

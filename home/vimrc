@@ -476,8 +476,10 @@ let g:NERDTreeQuitOnOpen=1
 
 " - CtrlP"{{{2
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|tmp$\|Downloads$\|Videos$\|Pictures$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$' }
+    \ 'dir':  '\v[\/]\.(git|hg|svn)|tmp|Downloads|Videos|Pictures|Music$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+    \ }
 let ctrlp_max_height = 30
 let g:ctrlp_working_path_mode = 'a'
 
@@ -665,7 +667,7 @@ if has('gui_running')
 else
   " Terminal
   " set t_Co=256 "t_md=
-  " fix broken colors with tmux term conflict"
+  " Fix broken bg colors with tmux $TERM conflict"
   set t_ut=
 endif
 

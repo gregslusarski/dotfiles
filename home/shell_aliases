@@ -79,7 +79,7 @@ alias grmc='git rm --cached'
 
 alias make='make -j$(grep -c ^processor /proc/cpuinfo)'
 alias smi='sudo make -j$(grep -c ^processor /proc/cpuinfo) install'
-alias mc='make -j$(grep -c ^processor /proc/cpuinfo) cmake'
+alias mcm='make -j$(grep -c ^processor /proc/cpuinfo) cmake'
 
 # VIM # {{{1
 alias v='vim'

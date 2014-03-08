@@ -77,6 +77,10 @@ alias gplsub='git submodule foreach "git pull origin master"'
 alias grm='git rm'
 alias grmc='git rm --cached'
 
+alias make='make -j$(grep -c ^processor /proc/cpuinfo)'
+alias smi='sudo make -j$(grep -c ^processor /proc/cpuinfo) install'
+alias mc='make -j$(grep -c ^processor /proc/cpuinfo) cmake'
+
 # VIM # {{{1
 alias v='vim'
 alias gv='gvim'

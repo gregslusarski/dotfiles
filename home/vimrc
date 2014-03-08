@@ -43,7 +43,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'spolu/dwm.vim'
+" NeoBundle 'spolu/dwm.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -201,11 +201,11 @@ nn Q <Nop>
 let mapleader = ','
 let maplocalleader = '\\'
 " Window navigation
-" nn <C-h> <C-w>h
-" nn <C-j> <C-w>j
-" nn <C-k> <C-w>k
-" nn <C-l> <C-w>l
-" nn <C-c> <C-w>c
+nn <C-h> <C-w>h
+nn <C-j> <C-w>j
+nn <C-k> <C-w>k
+nn <C-l> <C-w>l
+nn <C-c> <C-w>c
 " Be consistent with bash
 " Go to the 1st non blank
 ino <C-a> <C-o>^

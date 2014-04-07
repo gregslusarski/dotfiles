@@ -46,3 +46,6 @@ unsetopt correct_all
 
 # Add rbenv init to your shell to enable shims and autocompletion.
 eval "$(rbenv init -)"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

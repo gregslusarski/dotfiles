@@ -17,8 +17,10 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 " NeoBundle 'farseer90718/vim-taskwarrior'
+NeoBundle 'leafo/moonscript-vim'
+NeoBundle 'viszu/vim-moon-fold'
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'junegunn/vim-github-dashboard'
+" NeoBundle 'junegunn/vim-github-dashboard'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-commentary'
@@ -28,11 +30,11 @@ NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-obsession'
 NeoBundle 'tpope/vim-git'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-rake'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'vim-ruby/vim-ruby'
+" NeoBundle 'tpope/vim-rails'
+" NeoBundle 'tpope/vim-rake'
+" NeoBundle 'tpope/vim-endwise'
+" NeoBundle 'tpope/vim-vinegar'
+" NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'vim-scripts/Gundo'
@@ -46,14 +48,15 @@ NeoBundle 'SirVer/ultisnips'
 " NeoBundle 'spolu/dwm.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'altercation/vim-colors-solarized'
+" NeoBundle 'Lokaltog/vim-easymotion'
+" NeoBundle 'justinmk/vim-sneak'
+" NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'rking/vim-detailed'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'jeetsukumaran/vim-buffergator'
-NeoBundle 'skalnik/vim-vroom'
+" NeoBundle 'skalnik/vim-vroom'
 NeoBundle 'flazz/vim-colorschemes'
+" NeoBundle 'morhetz/gruvbox'
 NeoBundle 'tristen/vim-sparkup'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'jtratner/vim-flavored-markdown'
@@ -233,8 +236,8 @@ nn Y y$
 nn <F12> "+
 vn <F12> "+
 " " Improve up/down movement on wrapped lines
-" nn j gj
-" nn k gk
+nn j gj
+nn k gk
 " Toggle spell checking
 nn <F3> :setl spell! spell?<CR>
 " Toggle paste / nopaste
@@ -574,6 +577,9 @@ augroup END
 augroup FTOptions
   " ftplugin
   au!
+  au FileType lua nn <buffer> <F5> :!clear<CR>:!lua %<CR>
+  au FileType moon nn <buffer> <F5> :!clear<CR>:!moon %<CR>
+  " au FileType moon setl fdm=
   " au FileType markdown setl sw=4 sts=4
   " set nolist for quickfix window
   au FileType qf setl nolist
@@ -673,7 +679,7 @@ else
 endif
 
 " set background=dark
-colorscheme skittles_dark
+colorscheme detailed
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
 if g:colors_name == 'skittles_dark'

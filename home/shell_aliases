@@ -22,8 +22,9 @@ alias soz='source ~/.zshrc'
 # alias _sr='sudo reboot'
 
 # BOOKMARKS # {{{1
-alias cdr='cd ~/Dropbox/ruby'
-alias cdra='cd ~/Dropbox/rails'
+alias cdm='cd ~/Dropbox/coding/moon'
+# alias cdr='cd ~/Dropbox/ruby'
+# alias cdra='cd ~/Dropbox/rails'
 alias cdd='cd ~/Dropbox/dotfiles'
 alias cdsc='cd ~/Dropbox/scripts'
 alias cdcl='cd ~/Downloads/clones'
@@ -37,7 +38,7 @@ alias sagu='sudo apt-get update'
 alias sup='sudo apt-get update && sudo apt-get upgrade'
 alias saar='sudo add-apt-repository'
 alias vup='vim +"set nomore" +NeoBundleInstall! +NeoBundleClean! +qall'
-alias up='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && upgrade_oh_my_zsh && gem update --system && vim +"set nomore" +NeoBundleInstall! +NeoBundleClean! +qall && clear'
+alias up='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && upgrade_oh_my_zsh && vim +"set nomore" +NeoBundleInstall! +NeoBundleClean! +qall && clear'
 
 # GIT # {{{1
 alias gup='git add . && git commit -m "Update" && git push'
@@ -92,25 +93,27 @@ alias tmux='TERM=screen-256color-bce tmux'
 alias t='TERM=screen-256color-bce tmux'
 
 # PYTHON # {{{1
-alias py='python'
+# alias py='python'
 
 # RUBY # {{{1
-alias rb='ruby'
-alias ran='rails new'
-alias ras='rails server'
-alias bi='bundle install'
-alias rsi='rspec --init'
-alias rs='rspec'
-alias rsf='rspec --format documentation'
+# alias rb='ruby'
+# alias ran='rails new'
+# alias ras='rails server'
+# alias bi='bundle install'
+# alias rsi='rspec --init'
+# alias rs='rspec'
+# alias rsf='rspec --format documentation'
 
 # ACK-GREP # {{{1
 alias ack='ack-grep'
 alias ag='ack-grep'
 alias agt='ack-grep --text'
-alias agr='ack-grep --ruby'
+alias agl='ack-grep --lua'
+alias agm='ack-grep --moon'
 alias agv='ack-grep --vim'
-alias agp='ack-grep --python'
 alias agc='ack-grep --c'
+# alias agr='ack-grep --ruby'
+# alias agp='ack-grep --python'
 
 # FIND FILE / DIR # {{{1
 alias ff='sudo find / -type f -name'

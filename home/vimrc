@@ -223,6 +223,9 @@ nn <leader>qq :wa!<CR>:q<CR>
 " Write read-only files
 cno W! w !sudo tee %
 cno ara ar **/*.*
+" Close current buffer without closing window split
+cno bd bp\|bd #
+cno bd! bp\|bd! #
 " Reselect visual block after indent/outdent
 vn < <gv
 vn > >gv

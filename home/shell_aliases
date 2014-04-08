@@ -92,6 +92,9 @@ alias vdf='vimdiff'
 alias tmux='TERM=screen-256color-bce tmux'
 alias t='TERM=screen-256color-bce tmux'
 
+# run moon file with luajit
+alias ljm='luajit ~/bin/moon'
+
 # PYTHON # {{{1
 # alias py='python'
 

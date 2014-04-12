@@ -60,6 +60,7 @@ NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'tristen/vim-sparkup'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'jtratner/vim-flavored-markdown'
+NeoBundle 'viszu/vmath.vim'
 "}}}2
 " Filetype detection:ON, plugin:ON, indent:ON
 filetype plugin indent on " required for plugin manager
@@ -201,6 +202,8 @@ for prefix in ['i', 'n', 'v']
 endfor
 nn <Space> za
 nn Q <Nop>
+" nno ; :
+" nno : ;
 let mapleader = ','
 let maplocalleader = '\\'
 " Window navigation
@@ -297,6 +300,10 @@ cnorea <silent> - cd -
 " ----------------------------------
 no <silent> <leader>e :NR<CR>
 " let g:ycm_server_log_level = 'warning'
+" - Vmath"{{{2
+vmap <expr> ++ VMATH_YankAndAnalyse()
+nmap ++ vip++
+
 " - Github-Dashboard"{{{2
 let g:github_dashboard = {}
 " Options: tab, top, bottom, above, below, left, right
@@ -580,8 +587,8 @@ augroup END
 augroup FTOptions
   " ftplugin
   au!
-  au FileType lua nn <buffer> <F5> :!clear<CR>:!lua %<CR>
-  au FileType moon nn <buffer> <F5> :!clear<CR>:!moon %<CR>
+  au FileType lua nn <buffer> <F5> :!clear<CR>:!luajit %<CR>
+  au FileType moon nn <buffer> <F5> :!clear<CR>:!luajit ~/bin/moon %<CR>
   " au FileType moon setl fdm=
   " au FileType markdown setl sw=4 sts=4
   " set nolist for quickfix window
@@ -683,6 +690,9 @@ endif
 
 " set background=dark
 colorscheme detailed
+" Make the 81st column stand out
+" hi ColorColumn ctermbg=red
+" call matchadd('ColorColumn', '\%81v', 100)
 " Get rid of the underline and bold in fold text
 hi Folded term=none gui=none
 if g:colors_name == 'skittles_dark'

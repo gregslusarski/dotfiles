@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ruby rails gem rake)
+plugins=(git)
 
 export TERM=xterm-256color
 
@@ -45,7 +45,7 @@ source $HOME/.shell_aliases
 unsetopt correct_all
 
 # Add rbenv init to your shell to enable shims and autocompletion.
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
